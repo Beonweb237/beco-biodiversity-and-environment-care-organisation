@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Outer circle -->
+  <circle cx="60" cy="60" r="56" fill="url(#bgGrad)" />
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#4A532A" stroke-width="2.5" opacity="0.4"/>
+
+  <!-- Sun rays -->
+  <circle cx="60" cy="30" r="10" fill="url(#sunGrad)" opacity="0.9"/>
+  <line x1="60" y1="16" x2="60" y2="12" stroke="#F5C842" stroke-width="2" stroke-linecap="round"/>
+  <line x1="72" y1="19" x2="74.5" y2="15.7" stroke="#F5C842" stroke-width="2" stroke-linecap="round"/>
+  <line x1="48" y1="19" x2="45.5" y2="15.7" stroke="#F5C842" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Mountains -->
+  <polygon points="30,72 50,42 70,72" fill="#4A532A" opacity="0.85"/>
+  <polygon points="55,72 75,50 95,72" fill="#5A633A" opacity="0.75"/>
+
+  <!-- River / water -->
+  <ellipse cx="60" cy="76" rx="22" ry="6" fill="#5BA4C8" opacity="0.7"/>
+  <path d="M38 76 Q50 70 62 76 Q74 82 86 76" stroke="#4A90B8" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+  <!-- Trees -->
+  <ellipse cx="22" cy="68" rx="10" ry="14" fill="#5A7A30" opacity="0.9"/>
+  <ellipse cx="98" cy="68" rx="10" ry="14" fill="#5A7A30" opacity="0.9"/>
+  <rect x="20" y="78" width="4" height="8" rx="1" fill="#6B4A2A" opacity="0.7"/>
+  <rect x="96" y="78" width="4" height="8" rx="1" fill="#6B4A2A" opacity="0.7"/>
+
+  <!-- Animal silhouettes -->
+  <!-- Bird (eagle) top right -->
+  <path d="M78 22 Q84 18 90 22 Q86 26 84 24 Q80 28 76 26 Q77 23 78 22Z" fill="#3A2A1A" opacity="0.75"/>
+
+  <!-- Butterfly bottom left -->
+  <path d="M24 84 Q20 80 24 78 Q28 80 26 84Z" fill="#E87D2A" opacity="0.8"/>
+  <path d="M26 84 Q22 88 26 90 Q30 88 28 84Z" fill="#E87D2A" opacity="0.7"/>
+  <path d="M26 84 Q30 80 34 78 Q33 84 28 84Z" fill="#C86020" opacity="0.8"/>
+  <path d="M28 84 Q32 88 30 90 Q26 90 26 86Z" fill="#C86020" opacity="0.7"/>
+  <line x1="27" y1="78" x2="27" y2="90" stroke="#3A2A1A" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Turtle bottom right -->
+  <ellipse cx="88" cy="88" rx="8" ry="6" fill="#4A7A30" opacity="0.85"/>
+  <circle cx="88" cy="88" r="5" fill="#5A8A3A" opacity="0.7"/>
+  <circle cx="84" cy="90" r="2" fill="#3A6020" opacity="0.6"/>
+  <circle cx="92" cy="90" r="2" fill="#3A6020" opacity="0.6"/>
+  <ellipse cx="88" cy="93" rx="1.5" ry="2" fill="#3A6020" opacity="0.6"/>
+  <circle cx="88" cy="84" r="1.5" fill="#3A6020" opacity="0.7"/>
+
+  <!-- Leaf accent bottom -->
+  <path d="M55 100 Q60 90 65 100 Q60 104 55 100Z" fill="#4A532A" opacity="0.6"/>
+  <path d="M48 103 Q53 95 57 103 Q52 107 48 103Z" fill="#5A633A" opacity="0.5"/>
+  <path d="M63 103 Q67 95 72 103 Q67 107 63 103Z" fill="#5A633A" opacity="0.5"/>
+
+  <!-- Hands silhouette (simplified curved arcs at sides) -->
+  <path d="M8 55 Q5 70 12 85 Q16 90 22 88 Q18 75 20 60 Q14 57 8 55Z" fill="#C49A6C" opacity="0.55"/>
+  <path d="M112 55 Q115 70 108 85 Q104 90 98 88 Q102 75 100 60 Q106 57 112 55Z" fill="#C49A6C" opacity="0.55"/>
+
+  <!-- Gradients -->
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#E8F4E0"/>
+      <stop offset="60%" stop-color="#C8DEBA"/>
+      <stop offset="100%" stop-color="#A0C080"/>
+    </radialGradient>
+    <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF176"/>
+      <stop offset="100%" stop-color="#F5C842"/>
+    </radialGradient>
+  </defs>
+</svg>

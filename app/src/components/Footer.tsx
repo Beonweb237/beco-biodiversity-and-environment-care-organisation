@@ -1,37 +1,60 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Leaf, ArrowRight } from 'lucide-react';
-
-const quickLinks1 = [
-  { label: 'ACCUEIL', path: '/' },
-  { label: 'À PROPOS', path: '/about' },
-  { label: 'PROJETS', path: '/projects' },
-  { label: 'ACTUALITÉS', path: '/news' },
-];
-
-const quickLinks2 = [
-  { label: 'ÉQUIPE', path: '/team' },
-  { label: 'S\'IMPLIQUER', path: '/involved' },
-  { label: 'CONTACT', path: '/contact' },
-  { label: 'MENTIONS LÉGALES', path: '#' },
-];
+import { ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function Footer() {
+  const { t } = useTranslation();
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newsletterEmail.trim()) {
+      alert('Merci pour votre inscription à notre newsletter !');
+      setNewsletterEmail('');
+    }
+  };
+
+  const quickLinks1 = [
+    { label: t('nav.home'), path: '/' },
+    { label: t('nav.about'), path: '/about' },
+    { label: t('nav.projects'), path: '/projects' },
+    { label: t('nav.news'), path: '/news' },
+  ];
+
+  const quickLinks2 = [
+    { label: t('nav.team'), path: '/team' },
+    { label: t('nav.involved'), path: '/involved' },
+    { label: t('nav.contact'), path: '/contact' },
+    { label: t('nav.legal'), path: '/legal' },
+  ];
+
   return (
     <footer className="bg-beco-primary text-white">
       <div className="max-w-[1200px] mx-auto px-6 pt-20 pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Colonne 1 - Logo & Description */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <Leaf className="w-5 h-5 text-beco-secondary" />
-              <span className="font-playfair font-bold italic text-xl text-white">
-                BECO
-              </span>
+            <div className="flex flex-col items-start gap-3 mb-5">
+              <img
+                src="/assets/logo-icon.png"
+                alt="BECO Logo"
+                className="h-24 w-auto brightness-110"
+              />
+              <div className="leading-tight">
+                <p className="font-playfair font-bold text-[14px] text-white leading-snug">
+                  Biodiversity and Environment
+                </p>
+                <p className="font-raleway text-[9px] uppercase tracking-[0.2em] text-[#C9B79C]">
+                  Care Organisation
+                </p>
+                <p className="font-playfair font-bold text-[18px] text-white tracking-wider mt-0.5">
+                  — BECO —
+                </p>
+              </div>
             </div>
             <p className="font-raleway text-[13px] text-white/70 leading-[1.7]">
-              Biodiversity and Environment Care Organisation — Conservation de la
-              biodiversité et protection de l'environnement au Cameroun et en
-              Afrique.
+              {t('footer.description')}
             </p>
           </div>
 
@@ -68,7 +91,7 @@ export default function Footer() {
           {/* Colonne 4 - Contact */}
           <div>
             <p className="font-raleway text-[13px] text-white/70 leading-[1.7] mb-2">
-              Yaoundé, Région du Centre, Cameroun
+              {t('footer.address')}
             </p>
             <a
               href="mailto:beco@afrotropical.org"
@@ -87,28 +110,80 @@ export default function Footer() {
           {/* Colonne 5 - Newsletter */}
           <div>
             <h4 className="font-playfair italic text-base text-white mb-4">
-              Newsletter
+              {t('footer.newsletter')}
             </h4>
-            <div className="flex items-center border-b border-white/30 pb-2">
+            <form onSubmit={handleNewsletterSubmit} className="flex items-center border-b border-white/30 pb-2">
               <input
                 type="email"
-                placeholder="Votre email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                placeholder={t('common.emailPlaceholder')}
+                required
                 className="bg-transparent text-white placeholder:text-white/50 font-raleway text-[13px] flex-1 outline-none"
               />
-              <button className="flex items-center gap-1 font-raleway font-medium text-[12px] uppercase text-white hover:text-beco-secondary transition-colors duration-300">
-                S'inscrire
+              <button type="submit" className="flex items-center gap-1 font-raleway font-medium text-[12px] uppercase text-white hover:text-beco-secondary transition-colors duration-300">
+                {t('common.subscribe')}
                 <ArrowRight className="w-4 h-4" />
               </button>
-            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      {/* Partenaires — Logos */}
+      <div className="border-t border-white/10 py-10">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <p className="font-raleway text-[11px] uppercase tracking-[0.15em] text-white/50 text-center mb-8">
+            {t('footer.partners')}
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-14">
+            <span className="font-raleway font-bold text-[20px] sm:text-[24px] tracking-[0.15em] text-white/40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:text-beco-secondary transition-all duration-300 cursor-default">
+              RUFFORD
+            </span>
+            <span className="font-raleway font-bold text-[20px] sm:text-[24px] tracking-[0.15em] text-white/40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:text-beco-secondary transition-all duration-300 cursor-default">
+              1WILD
+            </span>
+            <span className="font-raleway font-bold text-[20px] sm:text-[24px] tracking-[0.15em] text-white/40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:text-beco-secondary transition-all duration-300 cursor-default">
+              MBZ
+            </span>
+            <span className="font-raleway font-bold text-[20px] sm:text-[24px] tracking-[0.15em] text-white/40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:text-beco-secondary transition-all duration-300 cursor-default">
+              IDEA WILD
+            </span>
+            <span className="font-raleway font-bold text-[20px] sm:text-[24px] tracking-[0.15em] text-white/40 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 hover:text-beco-secondary transition-all duration-300 cursor-default">
+              BES
+            </span>
           </div>
         </div>
       </div>
 
       {/* Barre inférieure */}
       <div className="border-t border-white/10">
-        <div className="max-w-[1200px] mx-auto px-6 py-6 text-center">
-          <p className="font-raleway text-[12px] text-white/40">
-            &copy; 2026 BECO. Tous droits réservés.
+        <div className="max-w-[1200px] mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <img
+              src="/assets/logo-icon.png"
+              alt="BECO"
+              className="h-8 w-auto opacity-60"
+            />
+            <span className="font-playfair font-bold text-[11px] tracking-wider text-white/40 uppercase">
+              BECO
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link to="/faq" className="font-raleway text-[11px] uppercase tracking-wider text-white/40 hover:text-white/70 transition-colors">
+              FAQ
+            </Link>
+            <span className="text-white/20">|</span>
+            <Link to="/privacy" className="font-raleway text-[11px] uppercase tracking-wider text-white/40 hover:text-white/70 transition-colors">
+              Confidentialité
+            </Link>
+            <span className="text-white/20">|</span>
+            <Link to="/legal" className="font-raleway text-[11px] uppercase tracking-wider text-white/40 hover:text-white/70 transition-colors">
+              {t('nav.legal')}
+            </Link>
+          </div>
+          <p className="font-raleway text-[12px] text-white/40 text-center">
+            {t('common.allRightsReserved')}
           </p>
         </div>
       </div>
