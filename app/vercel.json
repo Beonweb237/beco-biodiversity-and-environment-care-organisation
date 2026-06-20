@@ -3,6 +3,7 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist/public",
   "framework": null,
+  "functions": {},
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
