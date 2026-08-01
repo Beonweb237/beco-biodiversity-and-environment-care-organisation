@@ -77,21 +77,22 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-[88px] transition-all duration-400 ${
-        showBg
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 h-[88px] transition-all duration-400 ${showBg
+        ? 'bg-white/95 backdrop-blur-sm shadow-sm'
+        : 'bg-transparent'
+        }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 shrink-0">
-          <img
-            src="/assets/logo-icon.png"
-            alt="BECO"
-            className="h-14 w-auto drop-shadow-sm"
-          />
+          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white p-1.5 shadow-sm ring-1 ring-black/5">
+            <img
+              src="/assets/logo-icon.png?v=20260801"
+              alt="BECO"
+              className="h-full w-full rounded-full object-contain"
+            />
+          </div>
           <div className="hidden sm:flex flex-col leading-none">
             <span className={`font-playfair font-bold text-[15px] leading-snug ${showBg ? 'text-beco-primary' : 'text-white drop-shadow'}`}>
               Biodiversity and Environment
@@ -113,11 +114,10 @@ export default function Header() {
             <Link
               key={link.path}
               to={link.path}
-              className={`font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${
-                location.pathname === link.path
-                  ? showBg ? 'text-beco-primary' : 'text-white'
-                  : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
-              }`}
+              className={`font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === link.path
+                ? showBg ? 'text-beco-primary' : 'text-white'
+                : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
+                }`}
             >
               {link.label}
             </Link>
@@ -131,28 +131,26 @@ export default function Header() {
             onMouseLeave={() => setBecoOpen(false)}
           >
             <button
-              className={`flex items-center gap-1 font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${
-                becoActive
-                  ? showBg ? 'text-beco-primary' : 'text-white'
-                  : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
-              }`}
+              className={`flex items-center gap-1 font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${becoActive
+                ? showBg ? 'text-beco-primary' : 'text-white'
+                : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
+                }`}
             >
               BECO
               <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${becoOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {becoOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 bg-white rounded-xl shadow-lg border border-gray-100 py-2 overflow-hidden">
-                <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-t border-l border-gray-100 rotate-45" />
+              <div className="absolute top-full start-1/2 -translate-x-1/2 mt-3 w-44 bg-white rounded-xl shadow-lg border border-gray-100 py-2 overflow-hidden">
+                <div className="absolute -top-1.5 start-1/2 -translate-x-1/2 w-3 h-3 bg-white border-t border-s border-gray-100 rotate-45" />
                 {becoSubLinks.map((sub) => (
                   <Link
                     key={sub.path}
                     to={sub.path}
-                    className={`block px-5 py-2.5 font-raleway font-semibold text-[12px] uppercase tracking-[0.08em] transition-colors duration-200 ${
-                      location.pathname === sub.path
-                        ? 'text-beco-primary bg-beco-olive-light'
-                        : 'text-beco-dark/70 hover:text-beco-primary hover:bg-beco-olive-light'
-                    }`}
+                    className={`block px-5 py-2.5 font-raleway font-semibold text-[12px] uppercase tracking-[0.08em] transition-colors duration-200 ${location.pathname === sub.path
+                      ? 'text-beco-primary bg-beco-olive-light'
+                      : 'text-beco-dark/70 hover:text-beco-primary hover:bg-beco-olive-light'
+                      }`}
                   >
                     {sub.label}
                   </Link>
@@ -166,11 +164,10 @@ export default function Header() {
             <Link
               key={link.path}
               to={link.path}
-              className={`font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${
-                location.pathname === link.path
-                  ? showBg ? 'text-beco-primary' : 'text-white'
-                  : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
-              }`}
+              className={`font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === link.path
+                ? showBg ? 'text-beco-primary' : 'text-white'
+                : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
+                }`}
             >
               {link.label}
             </Link>
@@ -183,17 +180,16 @@ export default function Header() {
           <div ref={searchRef} className="relative">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className={`p-2 rounded-full transition-colors duration-300 ${
-                showBg
-                  ? 'text-beco-dark/60 hover:text-beco-primary hover:bg-beco-olive-light'
-                  : 'text-white/70 hover:text-white hover:bg-white/10'
-              }`}
+              className={`p-2 rounded-full transition-colors duration-300 ${showBg
+                ? 'text-beco-dark/60 hover:text-beco-primary hover:bg-beco-olive-light'
+                : 'text-white/70 hover:text-white hover:bg-white/10'
+                }`}
               aria-label="Rechercher"
             >
               <Search className="w-5 h-5" />
             </button>
             {searchOpen && (
-              <div className="absolute right-0 top-full mt-2 w-[280px] bg-white rounded-xl shadow-lg border border-gray-100 p-3">
+              <div className="absolute end-0 top-full mt-2 w-[280px] bg-white rounded-xl shadow-lg border border-gray-100 p-3">
                 <form onSubmit={handleSearch} className="flex items-center gap-2">
                   <input
                     ref={searchInputRef}
@@ -224,6 +220,7 @@ export default function Header() {
           </Link>
 
           <button
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
             className="lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -238,14 +235,13 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden absolute top-[88px] left-0 right-0 bg-white shadow-lg py-6 px-6 max-h-[70vh] overflow-auto">
+        <div className="lg:hidden absolute top-[88px] inset-x-0 bg-white shadow-lg py-6 px-6 max-h-[70vh] overflow-auto">
           <nav className="flex flex-col gap-4">
             {/* Accueil */}
             <Link
               to="/"
-              className={`font-raleway font-medium text-sm uppercase tracking-[0.1em] py-2 ${
-                location.pathname === '/' ? 'text-beco-primary' : 'text-beco-dark/70'
-              }`}
+              className={`font-raleway font-medium text-sm uppercase tracking-[0.1em] py-2 ${location.pathname === '/' ? 'text-beco-primary' : 'text-beco-dark/70'
+                }`}
             >
               {t('nav.home')}
             </Link>
@@ -254,22 +250,20 @@ export default function Header() {
             <div>
               <button
                 onClick={() => setMobileBecoOpen(!mobileBecoOpen)}
-                className={`flex items-center justify-between w-full font-raleway font-medium text-sm uppercase tracking-[0.1em] py-2 ${
-                  becoActive ? 'text-beco-primary' : 'text-beco-dark/70'
-                }`}
+                className={`flex items-center justify-between w-full font-raleway font-medium text-sm uppercase tracking-[0.1em] py-2 ${becoActive ? 'text-beco-primary' : 'text-beco-dark/70'
+                  }`}
               >
                 BECO
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileBecoOpen ? 'rotate-180' : ''}`} />
               </button>
               {mobileBecoOpen && (
-                <div className="ml-4 flex flex-col gap-2 mt-1 border-l-2 border-beco-olive-light pl-4">
+                <div className="ms-4 flex flex-col gap-2 mt-1 border-s-2 border-beco-olive-light ps-4">
                   {becoSubLinks.map((sub) => (
                     <Link
                       key={sub.path}
                       to={sub.path}
-                      className={`font-raleway font-medium text-sm uppercase tracking-[0.1em] py-1.5 ${
-                        location.pathname === sub.path ? 'text-beco-primary' : 'text-beco-dark/60'
-                      }`}
+                      className={`font-raleway font-medium text-sm uppercase tracking-[0.1em] py-1.5 ${location.pathname === sub.path ? 'text-beco-primary' : 'text-beco-dark/60'
+                        }`}
                     >
                       {sub.label}
                     </Link>
@@ -283,9 +277,8 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-raleway font-medium text-sm uppercase tracking-[0.1em] py-2 ${
-                  location.pathname === link.path ? 'text-beco-primary' : 'text-beco-dark/70'
-                }`}
+                className={`font-raleway font-medium text-sm uppercase tracking-[0.1em] py-2 ${location.pathname === link.path ? 'text-beco-primary' : 'text-beco-dark/70'
+                  }`}
               >
                 {link.label}
               </Link>

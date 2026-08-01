@@ -2,16 +2,23 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { trpc } from '@/providers/trpc';
 
 export default function Footer() {
   const { t } = useTranslation();
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+  const subscribeMutation = trpc.admin.public.submitNewsletter.useMutation();
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (newsletterEmail.trim()) {
-      alert('Merci pour votre inscription à notre newsletter !');
+    if (!newsletterEmail.trim()) return;
+    try {
+      await subscribeMutation.mutateAsync({ email: newsletterEmail.trim() });
+      setSubscribed(true);
       setNewsletterEmail('');
+    } catch {
+      // silencieux en footer
     }
   };
 
@@ -36,11 +43,14 @@ export default function Footer() {
           {/* Colonne 1 - Logo & Description */}
           <div className="lg:col-span-1">
             <div className="flex flex-col items-start gap-3 mb-5">
-              <img
-                src="/assets/logo-icon.png"
-                alt="BECO Logo"
-                className="h-24 w-auto brightness-110"
-              />
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white p-2 shadow-sm">
+                <img
+                  src="/assets/logo-icon.png?v=20260801"
+                  alt="BECO Logo"
+                  loading="lazy"
+                  className="h-full w-full rounded-full object-contain"
+                />
+              </div>
               <div className="leading-tight">
                 <p className="font-playfair font-bold text-[14px] text-white leading-snug">
                   Biodiversity and Environment
@@ -112,20 +122,30 @@ export default function Footer() {
             <h4 className="font-playfair italic text-base text-white mb-4">
               {t('footer.newsletter')}
             </h4>
-            <form onSubmit={handleNewsletterSubmit} className="flex items-center border-b border-white/30 pb-2">
-              <input
-                type="email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder={t('common.emailPlaceholder')}
-                required
-                className="bg-transparent text-white placeholder:text-white/50 font-raleway text-[13px] flex-1 outline-none"
-              />
-              <button type="submit" className="flex items-center gap-1 font-raleway font-medium text-[12px] uppercase text-white hover:text-beco-secondary transition-colors duration-300">
-                {t('common.subscribe')}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+            {subscribed ? (
+              <p className="font-raleway text-[13px] text-beco-secondary">
+                Merci pour votre inscription !
+              </p>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex items-center border-b border-white/30 pb-2">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder={t('common.emailPlaceholder')}
+                  required
+                  className="bg-transparent text-white placeholder:text-white/50 font-raleway text-[13px] flex-1 outline-none"
+                />
+                <button
+                  type="submit"
+                  disabled={subscribeMutation.isPending}
+                  className="flex items-center gap-1 font-raleway font-medium text-[12px] uppercase text-white hover:text-beco-secondary transition-colors duration-300 disabled:opacity-50"
+                >
+                  {subscribeMutation.isPending ? '...' : t('common.subscribe')}
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
@@ -160,11 +180,14 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-[1200px] mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <img
-              src="/assets/logo-icon.png"
-              alt="BECO"
-              className="h-8 w-auto opacity-60"
-            />
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white p-1 shadow-sm">
+              <img
+                src="/assets/logo-icon.png?v=20260801"
+                alt="BECO"
+                loading="lazy"
+                className="h-full w-full rounded-full object-contain"
+              />
+            </div>
             <span className="font-playfair font-bold text-[11px] tracking-wider text-white/40 uppercase">
               BECO
             </span>
