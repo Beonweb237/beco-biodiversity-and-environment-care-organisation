@@ -88,9 +88,13 @@ export default function Header() {
         <Link to="/" className="flex items-center gap-3 shrink-0">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white p-1.5 shadow-sm ring-1 ring-black/5">
             <img
-              src="/assets/logo-icon.png?v=20260801"
+              src="/assets/logo-icon.png?v=20260801a"
               alt="BECO"
               className="h-full w-full rounded-full object-contain"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                target.src = '/assets/logo-icon.svg';
+              }}
             />
           </div>
           <div className="hidden sm:flex flex-col leading-none">

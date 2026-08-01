@@ -2,52 +2,60 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import gsap from 'gsap';
-
-const slides = [
-  {
-    image: '/assets/hero-1.jpg',
-    label: 'Conservation de la biodiversité',
-    title: 'Protéger la nature pour des futurs durables',
-    cta: 'Découvrir nos actions',
-    ctaLink: '/projects',
-  },
-  {
-    image: '/assets/hero-2.jpg',
-    label: 'Recherche scientifique',
-    title: 'Écouter la nature pour mieux la préserver',
-    cta: 'Nos projets de recherche',
-    ctaLink: '/projects',
-  },
-  {
-    image: '/assets/hero-3.jpg',
-    label: 'Restauration des écosystèmes',
-    title: 'Reboiser, restaurer, régénérer',
-    cta: 'Nos programmes',
-    ctaLink: '/projects',
-  },
-  {
-    image: '/assets/hero-4.jpg',
-    label: 'Éducation environnementale',
-    title: 'Former les gardiens de demain',
-    cta: 'S\'impliquer',
-    ctaLink: '/involved',
-  },
-  {
-    image: '/assets/hero-5.jpg',
-    label: 'One Health',
-    title: 'Une seule santé, un seul avenir',
-    cta: 'En savoir plus',
-    ctaLink: '/about',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export default function HeroCarousel() {
+  const { t } = useTranslation();
   const [active, setActive] = useState(0);
   const textRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const slides = [
+    {
+      image: '/assets/hero-1.jpg',
+      label: t('home.hero.slide1.label'),
+      title: t('home.hero.slide1.title'),
+      cta: t('home.hero.slide1.cta'),
+      ctaLink: '/projects',
+    },
+    {
+      image: '/assets/hero-2.jpg',
+      label: t('home.hero.slide2.label'),
+      title: t('home.hero.slide2.title'),
+      cta: t('home.hero.slide2.cta'),
+      ctaLink: '/projects',
+    },
+    {
+      image: '/assets/hero-3.jpg',
+      label: t('home.hero.slide3.label'),
+      title: t('home.hero.slide3.title'),
+      cta: t('home.hero.slide3.cta'),
+      ctaLink: '/projects',
+    },
+    {
+      image: '/assets/hero-4.jpg',
+      label: t('home.hero.slide4.label'),
+      title: t('home.hero.slide4.title'),
+      cta: t('home.hero.slide4.cta'),
+      ctaLink: '/involved',
+    },
+    {
+      image: '/assets/hero-5.jpg',
+      label: t('home.hero.slide5.label'),
+      title: t('home.hero.slide5.title'),
+      cta: t('home.hero.slide5.cta'),
+      ctaLink: '/about',
+    },
+  ];
+
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+
   const animateText = useCallback(() => {
     if (!textRef.current) return;
+    if (timelineRef.current) {
+      timelineRef.current.kill();
+      timelineRef.current = null;
+    }
     const label = textRef.current.querySelector('.slide-label');
     const title = textRef.current.querySelector('.slide-title');
     const cta = textRef.current.querySelector('.slide-cta');
@@ -57,6 +65,7 @@ export default function HeroCarousel() {
     tl.to(label, { opacity: 1, y: 0, duration: 0.8, ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }, 0.4)
       .to(title, { opacity: 1, y: 0, duration: 0.8, ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }, 0.6)
       .to(cta, { opacity: 1, y: 0, duration: 0.8, ease: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' }, 0.8);
+    timelineRef.current = tl;
   }, []);
 
   const goTo = useCallback((index: number) => {
@@ -65,11 +74,11 @@ export default function HeroCarousel() {
 
   const next = useCallback(() => {
     setActive((prev) => (prev + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   const prev = useCallback(() => {
     setActive((prev) => (prev - 1 + slides.length) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   useEffect(() => {
     animateText();
@@ -101,6 +110,7 @@ export default function HeroCarousel() {
           <img
             src={slide.image}
             alt={slide.title}
+            loading={i === 0 ? 'eager' : 'lazy'}
             className={`absolute inset-0 w-full h-full object-cover ${
               i === active ? 'ken-burns' : ''
             }`}
@@ -128,11 +138,14 @@ export default function HeroCarousel() {
       </div>
 
       {/* Dots */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+      <div className="absolute bottom-10 start-1/2 -translate-x-1/2 z-20 flex gap-3" role="tablist" aria-label="Navigation des diapositives">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => { goTo(i); resetInterval(); }}
+            role="tab"
+            aria-selected={i === active}
+            aria-label={`Diapositive ${i + 1}`}
             className={`w-2.5 h-2.5 rounded-full border-[1.5px] border-white/50 transition-all duration-300 ${
               i === active
                 ? 'bg-white border-white'
@@ -145,13 +158,15 @@ export default function HeroCarousel() {
       {/* Flèches */}
       <button
         onClick={() => { prev(); resetInterval(); }}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors duration-300 hidden md:block"
+        aria-label="Diapositive précédente"
+        className="absolute start-6 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors duration-300 hidden md:block"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={() => { next(); resetInterval(); }}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors duration-300 hidden md:block"
+        aria-label="Diapositive suivante"
+        className="absolute end-6 top-1/2 -translate-y-1/2 z-20 text-white/70 hover:text-white transition-colors duration-300 hidden md:block"
       >
         <ChevronRight className="w-6 h-6" />
       </button>

@@ -1,71 +1,64 @@
+import { useState } from 'react';
 import PageHeader from '../components/PageHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { User, Building, Award, Check, Shield, FileText, Mail } from 'lucide-react';
-
-const memberships = [
-  {
-    icon: User,
-    title: 'Membre Actif',
-    description: 'Pour les individus souhaitant s\'engager activement dans nos programmes et activités.',
-    benefits: [
-      'Participation aux assemblées générales',
-      'Droit de vote et d\'éligibilité',
-      'Accès aux formations et ateliers',
-      'Informations prioritaires sur les activités',
-      'Réseautage avec d\'autres membres',
-    ],
-  },
-  {
-    icon: Building,
-    title: 'Membre Institutionnel',
-    description: 'Pour les organisations, institutions et entreprises partageant nos valeurs.',
-    benefits: [
-      'Représentation aux assemblées générales',
-      'Partenariats prioritaires',
-      'Visibilité sur nos supports de communication',
-      'Accès à nos rapports et publications',
-      'Collaboration sur des projets conjoints',
-    ],
-  },
-  {
-    icon: Award,
-    title: 'Membre Honoraire',
-    description: 'Titre décerné aux personnes ayant rendu des services exceptionnels à l\'organisation.',
-    benefits: [
-      'Reconnaissance publique de l\'organisation',
-      'Participation aux événements spéciaux',
-      'Accès privilégié aux rapports annuels',
-      'Mention dans les publications BECO',
-    ],
-  },
-];
-
-const volunteerOps = [
-  'Mission de terrain : suivi de la faune et de la flore',
-  'Soutien à la recherche scientifique',
-  'Animation d\'ateliers d\'éducation environnementale',
-  'Communication et sensibilisation',
-  'Appui administratif et logistique',
-];
+import { useTranslation } from 'react-i18next';
+import { trpc } from '@/providers/trpc';
 
 export default function Involved() {
+  const { t } = useTranslation();
   const memRef = useScrollReveal<HTMLElement>({ stagger: 0.15 });
   const volRef = useScrollReveal<HTMLElement>({ stagger: 0.2 });
   const donRef = useScrollReveal<HTMLElement>({ stagger: 0.1 });
 
+  // Volunteer form state
+  const [volName, setVolName] = useState('');
+  const [volEmail, setVolEmail] = useState('');
+  const [volPhone, setVolPhone] = useState('');
+  const [volInterest, setVolInterest] = useState('');
+  const [volMotivation, setVolMotivation] = useState('');
+  const [volSubmitted, setVolSubmitted] = useState(false);
+  const [volError, setVolError] = useState('');
+
+  const submitVolunteer = trpc.admin.public.submitVolunteer.useMutation();
+
+  const memberships = [
+    {
+      icon: User,
+      title: t('involved.membership.activeMember'),
+      description: t('involved.membership.activeDesc'),
+      benefits: t('involved.membership.activeBenefits', { returnObjects: true }) as string[],
+    },
+    {
+      icon: Building,
+      title: t('involved.membership.institutionalMember'),
+      description: t('involved.membership.institutionalDesc'),
+      benefits: t('involved.membership.institutionalBenefits', { returnObjects: true }) as string[],
+    },
+    {
+      icon: Award,
+      title: t('involved.membership.honoraryMember'),
+      description: t('involved.membership.honoraryDesc'),
+      benefits: t('involved.membership.honoraryBenefits', { returnObjects: true }) as string[],
+    },
+  ];
+
+  const volunteerOps = t('involved.volunteer.opportunities', { returnObjects: true }) as string[];
+  const interestOptions = t('involved.volunteer.interestOptions', { returnObjects: true }) as Array<{ value: string; label: string }>;
+  const donateAmounts = t('involved.donate.amounts', { returnObjects: true }) as string[];
+
   return (
     <>
-      <PageHeader title="S'impliquer" image="/assets/involved-header.jpg" />
+      <PageHeader title={t('involved.pageTitle')} image="/assets/involved-header.jpg" />
 
       {/* Membership */}
       <section ref={memRef} className="bg-white py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-14" data-reveal>
-            <p className="section-label">DEVENIR MEMBRE</p>
-            <h2 className="section-title mt-4">Rejoignez la communauté BECO</h2>
+            <p className="section-label">{t('involved.membership.label')}</p>
+            <h2 className="section-title mt-4">{t('involved.membership.title')}</h2>
             <p className="font-raleway text-[15px] text-beco-dark/75 leading-[1.7] max-w-[640px] mx-auto mt-4">
-              BECO offre plusieurs catégories d'adhésion pour s'engager à nos côtés
-              dans la conservation de la biodiversité. Choisissez celle qui vous correspond le mieux.
+              {t('involved.membership.description')}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -82,15 +75,15 @@ export default function Involved() {
                 <p className="font-raleway text-[13px] text-beco-dark/65 leading-[1.6] mt-3">
                   {card.description}
                 </p>
-                <ul className="text-left mt-5 space-y-2">
-                  {card.benefits.map((b, j) => (
+                <ul className="text-start mt-5 space-y-2">
+                  {card.benefits?.map((b, j) => (
                     <li key={j} className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-beco-primary mt-0.5 flex-shrink-0" />
                       <span className="font-raleway text-[13px] text-beco-dark/70">{b}</span>
                     </li>
                   ))}
                 </ul>
-                <button className="btn-outline w-full mt-6">Adhérer</button>
+                <button className="btn-outline w-full mt-6">{t('involved.membership.cta')}</button>
               </div>
             ))}
           </div>
@@ -101,17 +94,15 @@ export default function Involved() {
       <section ref={volRef} className="bg-beco-primary py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div data-reveal>
-            <p className="section-label text-beco-secondary">BÉNÉVOLAT</p>
+            <p className="section-label text-beco-secondary">{t('involved.volunteer.label')}</p>
             <h2 className="font-playfair italic text-[32px] text-white leading-[1.3] mt-4">
-              Donnez de votre temps pour la nature
+              {t('involved.volunteer.title')}
             </h2>
             <p className="font-raleway text-[15px] text-white/85 leading-[1.7] mt-4">
-              Les bénévoles sont essentiels à la réussite de nos projets. Que vous soyez
-              étudiant, professionnel ou retraité, vos compétences et votre énergie peuvent
-              faire une différence concrète pour la conservation de la biodiversité au Cameroun.
+              {t('involved.volunteer.description')}
             </p>
             <div className="mt-7 space-y-4">
-              {volunteerOps.map((op, i) => (
+              {volunteerOps?.map((op, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-beco-secondary flex-shrink-0" />
                   <span className="font-raleway text-[14px] text-white/85">{op}</span>
@@ -123,25 +114,94 @@ export default function Involved() {
           <div data-reveal>
             <div className="bg-white rounded-2xl p-10">
               <h3 className="font-raleway font-semibold text-[18px] text-beco-dark text-center mb-6">
-                Formulaire de candidature
+                {t('involved.volunteer.formTitle')}
               </h3>
-              <form className="flex flex-col gap-4">
-                <input type="text" placeholder="Nom complet" className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors" />
-                <input type="email" placeholder="Adresse email" className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors" />
-                <input type="tel" placeholder="Téléphone" className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors" />
-                <select className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors bg-white">
-                  <option value="">Domaine d'intérêt</option>
-                  <option value="conservation">Conservation</option>
-                  <option value="recherche">Recherche</option>
-                  <option value="education">Éducation</option>
-                  <option value="communication">Communication</option>
-                  <option value="administration">Administration</option>
-                </select>
-                <textarea placeholder="Dites-nous en plus sur votre motivation et vos compétences..." rows={4} className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors resize-none" />
-                <button type="submit" className="btn-primary w-full mt-2">
-                  Envoyer ma candidature
-                </button>
-              </form>
+              {volSubmitted ? (
+                <div className="text-center">
+                  <div className="w-14 h-14 rounded-full bg-beco-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-7 h-7 text-beco-primary" />
+                  </div>
+                  <p className="font-raleway font-semibold text-[15px] text-beco-dark">
+                    Candidature envoyée avec succès !
+                  </p>
+                  <p className="font-raleway text-[13px] text-beco-dark/60 mt-2">
+                    Nous vous recontacterons dans les plus brefs délais.
+                  </p>
+                  <button
+                    onClick={() => { setVolSubmitted(false); setVolName(''); setVolEmail(''); setVolPhone(''); setVolInterest(''); setVolMotivation(''); }}
+                    className="font-raleway text-[13px] text-beco-primary mt-4 hover:underline"
+                  >
+                    Envoyer une autre candidature
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={async (e) => {
+                  e.preventDefault();
+                  setVolError('');
+                  try {
+                    await submitVolunteer.mutateAsync({
+                      fullName: volName,
+                      email: volEmail,
+                      phone: volPhone || undefined,
+                      interest: volInterest || undefined,
+                      motivation: volMotivation || undefined,
+                    });
+                    setVolSubmitted(true);
+                  } catch {
+                    setVolError('Une erreur est survenue. Veuillez réessayer.');
+                  }
+                }} className="flex flex-col gap-4">
+                  <input
+                    type="text"
+                    value={volName}
+                    onChange={(e) => setVolName(e.target.value)}
+                    required
+                    placeholder={t('involved.volunteer.namePlaceholder')}
+                    className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors"
+                  />
+                  <input
+                    type="email"
+                    value={volEmail}
+                    onChange={(e) => setVolEmail(e.target.value)}
+                    required
+                    placeholder={t('involved.volunteer.emailPlaceholder')}
+                    className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors"
+                  />
+                  <input
+                    type="tel"
+                    value={volPhone}
+                    onChange={(e) => setVolPhone(e.target.value)}
+                    placeholder={t('involved.volunteer.phonePlaceholder')}
+                    className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors"
+                  />
+                  <select
+                    value={volInterest}
+                    onChange={(e) => setVolInterest(e.target.value)}
+                    className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors bg-white"
+                  >
+                    {interestOptions?.map((opt, j) => (
+                      <option key={j} value={opt.value}>{opt.label}</option>
+                    ))}
+                  </select>
+                  <textarea
+                    value={volMotivation}
+                    onChange={(e) => setVolMotivation(e.target.value)}
+                    placeholder={t('involved.volunteer.motivationPlaceholder')}
+                    rows={4}
+                    className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors resize-none"
+                  />
+                  {volError && (
+                    <p className="font-raleway text-[13px] text-red-500">{volError}</p>
+                  )}
+                  <button
+                    type="submit"
+                    disabled={submitVolunteer.isPending}
+                    className="btn-primary w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {submitVolunteer.isPending ? 'Envoi en cours...' : t('involved.volunteer.cta')}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -151,19 +211,17 @@ export default function Involved() {
       <section ref={donRef} className="bg-beco-off-white py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-14" data-reveal>
-            <p className="section-label">FAIRE UN DON</p>
+            <p className="section-label">{t('involved.donate.label')}</p>
             <h2 className="section-title mt-4">
-              Soutenez nos actions de conservation
+              {t('involved.donate.title')}
             </h2>
             <p className="font-raleway text-[15px] text-beco-dark/75 leading-[1.7] max-w-[640px] mx-auto mt-4">
-              Votre contribution, quelle que soit sa taille, nous permet de mener nos projets
-              de conservation, de former de jeunes chercheurs et de protéger la biodiversité africaine.
-              Chaque don compte.
+              {t('involved.donate.description')}
             </p>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-12" data-reveal>
-            {['10 000 FCFA', '25 000 FCFA', '50 000 FCFA', 'Montant libre'].map((amount, i) => (
+            {donateAmounts?.map((amount, i) => (
               <button
                 key={i}
                 className="py-5 px-6 border-2 border-beco-primary rounded-xl font-raleway font-semibold text-[16px] text-beco-primary bg-transparent hover:bg-beco-primary hover:text-white transition-all duration-300 text-center"
@@ -175,9 +233,9 @@ export default function Involved() {
 
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {[
-              { icon: Shield, title: 'Sécurisé', text: 'Vos transactions sont sécurisées et vos données protégées.' },
-              { icon: FileText, title: 'Reçu fiscal', text: 'Un reçu fiscal vous sera délivré pour chaque don.' },
-              { icon: Mail, title: 'Transparence', text: 'Rapport annuel détaillant l\'utilisation des fonds.' },
+              { icon: Shield, title: t('involved.donate.secure.title'), text: t('involved.donate.secure.text') },
+              { icon: FileText, title: t('involved.donate.receipt.title'), text: t('involved.donate.receipt.text') },
+              { icon: Mail, title: t('involved.donate.transparency.title'), text: t('involved.donate.transparency.text') },
             ].map((info, i) => (
               <div key={i} data-reveal className="text-center">
                 <info.icon className="w-9 h-9 text-beco-primary mx-auto" />

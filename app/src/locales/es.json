@@ -1,0 +1,486 @@
+{
+  "common": {
+    "siteName": "BECO",
+    "tagline": "Biodiversity and Environment Care Organisation",
+    "donate": "Donar",
+    "readMore": "Más información →",
+    "discoverProject": "Descubrir el proyecto →",
+    "backToHome": "Volver al inicio",
+    "seeMore": "Ver más",
+    "subscribe": "Suscribirse",
+    "yourEmail": "Su dirección de correo electrónico",
+    "emailPlaceholder": "Su correo electrónico",
+    "allRightsReserved": "© 2026 BECO. Todos los derechos reservados.",
+    "funder": "Financiado por:"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Quiénes somos",
+    "projects": "Proyectos",
+    "news": "Noticias",
+    "team": "Equipo",
+    "involved": "Participa",
+    "contact": "Contacto",
+    "legal": "AVISO LEGAL"
+  },
+  "footer": {
+    "description": "Biodiversity and Environment Care Organisation — Conservación de la biodiversidad y protección del medio ambiente en Camerún y África.",
+    "address": "Yaundé, Región del Centro, Camerún",
+    "newsletter": "Boletín",
+    "followUs": "Síguenos",
+    "partners": "Nuestros socios y financiadores"
+  },
+  "home": {
+    "hero": {
+      "slide1": {
+        "label": "Conservación de la biodiversidad",
+        "title": "Proteger la naturaleza para futuros sostenibles",
+        "cta": "Descubrir nuestras acciones"
+      },
+      "slide2": {
+        "label": "Investigación científica",
+        "title": "Escuchar a la naturaleza para preservarla mejor",
+        "cta": "Nuestros proyectos de investigación"
+      },
+      "slide3": {
+        "label": "Restauración de ecosistemas",
+        "title": "Reforestar, restaurar, regenerar",
+        "cta": "Nuestros programas"
+      },
+      "slide4": {
+        "label": "Educación ambiental",
+        "title": "Formar a los guardianes del mañana",
+        "cta": "Participa"
+      },
+      "slide5": {
+        "label": "One Health",
+        "title": "Una sola salud, un solo futuro",
+        "cta": "Más información"
+      }
+    },
+    "aboutSection": {
+      "label": "SOBRE BECO",
+      "title": "Una organización dedicada a la conservación de la biodiversidad africana",
+      "description": "BECO es una organización no gubernamental, apolítica y sin ánimo de lucro con sede en Yaundé, Camerún. Trabajamos por la conservación de la biodiversidad, la protección del medio ambiente y el desarrollo sostenible a través de la investigación científica, la educación y la participación comunitaria.",
+      "cta": "Más información →",
+      "imageAlt": "Equipo de BECO sobre el terreno"
+    },
+    "focusAreas": {
+      "label": "NUESTRAS ÁREAS DE ACCIÓN",
+      "title": "Actuar en todos los frentes ambientales"
+    },
+    "impactNumbers": {
+      "activeProjects": "Proyectos activos",
+      "yearCreated": "Año de creación",
+      "domains": "Áreas de intervención",
+      "teamMembers": "Miembros del equipo"
+    },
+    "funders": {
+      "label": "NUESTROS FINANCIADORES Y SOCIOS",
+      "title": "Confían en nosotros"
+    },
+    "featuredProjects": {
+      "label": "NUESTROS PROYECTOS",
+      "title": "Acciones concretas por la naturaleza",
+      "project1": {
+        "tag": "Biodiversidad",
+        "title": "Protección de los loros grises en el Parque Nacional Mpem & Djim",
+        "description": "Proyecto apoyado por la fundación 1Wild destinado a proteger las poblaciones de loros grises del Parque Nacional Mpem & Djim mediante el seguimiento, la sensibilización de las comunidades locales y la lucha contra el comercio ilegal."
+      },
+      "project2": {
+        "tag": "Investigación",
+        "title": "Monitoreo acústico de ortópteros para la conservación",
+        "description": "Proyecto financiado por el Rufford Small Grant que utiliza la vigilancia acústica pasiva para estudiar las comunidades de ortópteros (saltamontes y grillos) en el Parque Nacional Mpem & Djim."
+      },
+      "project3": {
+        "tag": "Cambio climático",
+        "title": "Variabilidad acústica de los ortópteros en respuesta a variables climáticas",
+        "description": "Proyecto respaldado por la British Ecological Society que estudia las variaciones estacionales y altitudinales de la actividad acústica de los ortópteros en la Línea Volcánica de Camerún."
+      }
+    },
+    "newsletter": {
+      "title": "Manténgase informado de nuestras acciones",
+      "description": "Suscríbase a nuestro boletín para recibir nuestras noticias, informes de actividades y oportunidades de colaboración.",
+      "placeholder": "Su dirección de correo electrónico",
+      "cta": "Suscribirse",
+      "imageAlt": "Bosque tropical",
+      "success": "¡Gracias por suscribirse al boletín!"
+    }
+  },
+  "search": {
+    "pageTitle": "Búsqueda"
+  },
+  "about": {
+    "pageTitle": "Sobre BECO",
+    "story": {
+      "label": "NUESTRA HISTORIA",
+      "title": "Nacidos de la pasión por la naturaleza africana",
+      "p1": "La Biodiversity and Environment Care Organisation (BECO) es una organización independiente, apolítica y sin ánimo de lucro, fundada en 2025 en Yaundé, Camerún. Fundada por el Dr. SIMEU NOUTCHOM Alain y un equipo de jóvenes investigadores apasionados, BECO nació de una simple constatación: la biodiversidad africana, entre las más ricas del mundo, está amenazada como nunca antes.",
+      "p2": "Frente a la degradación de los ecosistemas, la pérdida de hábitats y los efectos del cambio climático, optamos por la acción. Nuestro enfoque combina investigación científica rigurosa, participación comunitaria e innovación tecnológica para crear soluciones sostenibles adaptadas al contexto africano.",
+      "p3": "Hoy, BECO lleva a cabo varios proyectos activos en Camerún, moviliza una red de socios internacionales y forma a la próxima generación de conservacionistas africanos."
+    },
+    "mvv": {
+      "label": "LO QUE NOS IMPULSA",
+      "title": "Misión, visión y valores",
+      "mission": "Nuestra misión",
+      "missionText": "Promover la conservación de la biodiversidad, la sostenibilidad ambiental, la mitigación y adaptación al cambio climático, la agricultura sostenible, la salud pública y el empoderamiento de las comunidades a través de la investigación, la educación, la innovación y las acciones de conservación.",
+      "vision": "Nuestra visión",
+      "visionText": "Un mundo donde la biodiversidad esté conservada, los ecosistemas se gestionen de manera sostenible, se fortalezca la resiliencia climática y las comunidades vivan en armonía con la naturaleza.",
+      "values": "Nuestros valores",
+      "valuesText": "Integridad — Innovación — Colaboración — Sostenibilidad — Inclusión — Excelencia. Estos seis valores guían cada una de nuestras acciones y decisiones en el día a día."
+    },
+    "objectives": {
+      "label": "NUESTROS OBJETIVOS",
+      "title": "Diez objetivos para un impacto medible",
+      "list": [
+        "Contribuir a la conservación de la biodiversidad y las especies amenazadas",
+        "Promover la protección del medio ambiente y la gestión sostenible de los recursos naturales",
+        "Fortalecer la resiliencia climática en comunidades vulnerables",
+        "Apoyar prácticas agrícolas sostenibles",
+        "Avanzar en los enfoques One Health que vinculan la salud humana, animal y ambiental",
+        "Restaurar ecosistemas y paisajes degradados",
+        "Mejorar la concienciación y la educación ambiental",
+        "Realizar investigaciones científicas e innovación",
+        "Empoderar a las comunidades mediante iniciativas de desarrollo sostenible",
+        "Establecer alianzas para la conservación y la sostenibilidad ambiental"
+      ]
+    },
+    "teamSection": {
+      "label": "NUESTRO EQUIPO",
+      "title": "Apasionados al servicio de la naturaleza"
+    }
+  },
+  "projects": {
+    "pageTitle": "Nuestros proyectos",
+    "categories": {
+      "label": "NUESTRAS ÁREAS DE ACCIÓN",
+      "title": "Proyectos concretos sobre el terreno",
+      "items": [
+        { "title": "Biodiversidad y Conservación", "count": "4 proyectos", "desc": "Inventarios, seguimiento de especies y protección de la biodiversidad" },
+        { "title": "Restauración de ecosistemas", "count": "2 proyectos", "desc": "Reforestación y rehabilitación de paisajes degradados" },
+        { "title": "Cambio climático", "count": "2 proyectos", "desc": "Adaptación y resiliencia de las comunidades frente al clima" },
+        { "title": "Educación ambiental", "count": "1 proyecto", "desc": "Sensibilización y formación de las comunidades" },
+        { "title": "One Health", "count": "1 proyecto", "desc": "Integración de la salud humana, animal y ambiental" },
+        { "title": "Investigación científica", "count": "3 proyectos", "desc": "Estudios e innovación para la conservación" }
+      ]
+    },
+    "current": {
+      "label": "PROYECTOS EN CURSO",
+      "title": "Nuestras acciones sobre el terreno",
+      "items": [
+        {
+          "tag": "Biodiversidad",
+          "date": "Enero 2026",
+          "title": "Protección de los loros grises en el Parque Nacional Mpem & Djim",
+          "description": "Este proyecto tiene como objetivo proteger las poblaciones de loro gris africano (Psittacus erithacus), especie amenazada por el comercio ilegal y la pérdida de hábitat, en el Parque Nacional Mpem & Djim.",
+          "details": [
+            "Seguimiento de las poblaciones de loros grises mediante conteos y observaciones",
+            "Sensibilización de las comunidades locales sobre la protección de la especie",
+            "Lucha contra la caza furtiva y el comercio ilegal",
+            "Cartografía de las zonas prioritarias de anidación"
+          ],
+          "funder": "1Wild Foundation"
+        },
+        {
+          "tag": "Investigación",
+          "date": "Septiembre 2025",
+          "title": "Monitoreo acústico pasivo de ortópteros para la conservación",
+          "description": "Proyecto que utiliza la vigilancia acústica pasiva para estudiar las comunidades de ortópteros (saltamontes y grillos) en el Parque Nacional Mpem & Djim, indicadores clave de la salud de los ecosistemas.",
+          "details": [
+            "Instalación de sensores acústicos en diferentes hábitats del parque",
+            "Análisis de las señales acústicas para identificar especies",
+            "Evaluación de la biodiversidad de ortópteros como bioindicadores",
+            "Creación de una base de datos acústica de referencia"
+          ],
+          "funder": "Rufford Foundation"
+        },
+        {
+          "tag": "Cambio climático",
+          "date": "Noviembre 2025",
+          "title": "Variabilidad acústica de los ortópteros en respuesta a variables climáticas",
+          "description": "Estudio de las variaciones estacionales y altitudinales de la actividad acústica de los ortópteros en la Línea Volcánica de Camerún, contribuyendo a la comprensión de los impactos del cambio climático en la biodiversidad.",
+          "details": [
+            "Muestreo acústico en varios sitios a diferentes altitudes",
+            "Correlación de los datos acústicos con las variables climáticas",
+            "Modelización de los impactos del cambio climático en las poblaciones",
+            "Publicación científica de los resultados"
+          ],
+          "funder": "British Ecological Society"
+        },
+        {
+          "tag": "Investigación",
+          "date": "Abril 2025",
+          "title": "Becas para investigadores en inicio de carrera sobre cambio climático",
+          "description": "Programa de apoyo a investigadores africanos en inicio de carrera que trabajan en el avance de la investigación sobre el cambio climático en toda África.",
+          "details": [
+            "Tutoría y acompañamiento de investigadores junior",
+            "Financiación de proyectos de investigación innovadores",
+            "Fortalecimiento de capacidades en investigación climática",
+            "Creación de redes de investigadores africanos"
+          ],
+          "funder": "CDKN"
+        }
+      ]
+    }
+  },
+  "news": {
+    "pageTitle": "Noticias",
+    "label": "NUESTRAS NOTICIAS",
+    "title": "Manténgase informado de nuestras acciones",
+    "filters": ["Todo", "Proyectos", "Publicaciones", "Eventos"],
+    "readMore": "Leer más →",
+    "fullContent": [
+      "BECO ha lanzado oficialmente su nuevo programa de conservación dedicado a la protección del loro gris africano (Psittacus erithacus) en el Parque Nacional Mpem & Djim. Este proyecto, apoyado por la fundación 1Wild, tiene como objetivo detener el declive de esta especie emblemática amenazada por el comercio ilegal y la pérdida de hábitat.\n\nEl programa incluye varios componentes: seguimiento científico de las poblaciones mediante conteos y observaciones directas, sensibilización de las comunidades locales sobre la importancia de proteger la especie, lucha contra la caza furtiva y el tráfico ilegal, así como la cartografía de las zonas prioritarias de anidación.\n\nLos equipos de BECO ya están sobre el terreno desplegando las primeras acciones de este ambicioso programa que se extenderá durante varios años.",
+      "La British Ecological Society (BES) ha seleccionado el proyecto de BECO titulado «Variabilidad acústica de los ortópteros en respuesta a variables climáticas en la Línea Volcánica de Camerún» para su financiación. Esta subvención permitirá a nuestra organización realizar un estudio en profundidad sobre el impacto del cambio climático en las comunidades de ortópteros.\n\nEl proyecto utilizará grabadores acústicos automatizados desplegados en varios sitios a diferentes altitudes a lo largo de la Línea Volcánica de Camerún. Los datos recogidos se correlacionarán con las variables climáticas para modelizar los impactos del cambio climático en estas poblaciones de insectos, que son excelentes bioindicadores de la salud de los ecosistemas.\n\nEste proyecto representa un avance significativo para la investigación en ecología acústica en África Central y refuerza la posición de BECO como actor de la investigación científica para la conservación.",
+      "BECO ha obtenido su segunda Rufford Small Grant (n.º 48049-2) para continuar el monitoreo acústico pasivo de los ortópteros en el Parque Nacional Mpem & Djim. Tras una primera fase concluyente, esta segunda financiación permitirá ampliar la cobertura espacial y temporal del seguimiento.\n\nLos ortópteros (saltamontes y grillos) son indicadores clave de la salud de los ecosistemas. Su diversidad y abundancia informan sobre el estado de conservación de los hábitats. Gracias a sensores acústicos desplegados en diferentes hábitats del parque, los investigadores de BECO podrán identificar las especies presentes y evaluar la biodiversidad de forma no invasiva.\n\nSe creará una base de datos acústica de referencia, que constituirá un recurso valioso para futuras investigaciones y acciones de conservación en la región.",
+      "Nuestro director ejecutivo, el Dr. SIMEU NOUTCHOM Alain, ha sido seleccionado como fellow del programa CDKN (Climate and Development Knowledge Network) para investigadores africanos en inicio de carrera. Este prestigioso programa tiene como objetivo apoyar a la próxima generación de científicos africanos que trabajan en temas de cambio climático.\n\nEl Dr. SIMEU NOUTCHOM Alain se beneficiará de una tutoría personalizada, financiación para su proyecto de investigación y oportunidades de creación de redes con otros investigadores africanos. Así se unirá a una comunidad de fellows comprometidos con el avance de la investigación climática en todo el continente.\n\nEste reconocimiento demuestra la calidad del trabajo realizado por BECO y su compromiso con la formación del talento científico del mañana.",
+      "La Biodiversity and Environment Care Organisation (BECO) ha sido creada y registrada oficialmente en Yaundé, Camerún, por un grupo de jóvenes investigadores apasionados. Fundada por el Dr. SIMEU NOUTCHOM Alain, la organización nació de una simple constatación: la biodiversidad africana, entre las más ricas del mundo, está amenazada como nunca antes.\n\nCon sede en Yaundé, BECO tiene la misión de promover la conservación de la biodiversidad, la sostenibilidad ambiental, la mitigación y adaptación al cambio climático, la agricultura sostenible, la salud pública y el empoderamiento de las comunidades.\n\nDesde su creación, el equipo de BECO se movilizó para lanzar los primeros proyectos de investigación y conservación, especialmente en el Parque Nacional Mpem & Djim, sentando las bases de una organización llamada a desempeñar un papel importante en la conservación de la biodiversidad en África Central.",
+      "Los primeros datos recogidos en el marco del proyecto de monitoreo acústico de ortópteros en el Parque Nacional Mpem & Djim revelan una riqueza notable de la comunidad de ortópteros presente en el parque. Las grabaciones realizadas por los sensores acústicos desplegados en diferentes hábitats muestran una diversidad insospechada de especies.\n\nLos análisis preliminares indican la presencia de numerosas especies de saltamontes y grillos, algunas de las cuales podrían ser nuevas para la ciencia o no haber sido documentadas nunca en esta región de Camerún. Estos resultados confirman la importancia del Parque Nacional Mpem & Djim como refugio de biodiversidad.\n\nBECO prevé la próxima publicación de estos resultados en una revista científica internacional, contribuyendo así al conocimiento y la conservación de la biodiversidad camerunesa."
+    ],
+    "articles": [
+      {
+        "tag": "Proyecto",
+        "date": "Enero 2026",
+        "title": "Lanzamiento del proyecto de protección de loros grises en Mpem & Djim",
+        "excerpt": "BECO lanza un nuevo programa de conservación financiado por la fundación 1Wild para proteger las poblaciones de loros grises en el Parque Nacional Mpem & Djim.",
+        "category": "Proyectos"
+      },
+      {
+        "tag": "Investigación",
+        "date": "Noviembre 2025",
+        "title": "BECO recibe una subvención de la British Ecological Society",
+        "excerpt": "Nuestro proyecto sobre la variabilidad acústica de los ortópteros en respuesta a variables climáticas en la Línea Volcánica de Camerún ha sido seleccionado por la BES.",
+        "category": "Publicaciones"
+      },
+      {
+        "tag": "Proyecto",
+        "date": "Septiembre 2025",
+        "title": "Segunda Rufford Small Grant para el monitoreo acústico",
+        "excerpt": "BECO recibe la segunda Rufford Small Grant (n.º 48049-2) para continuar el monitoreo acústico pasivo de los ortópteros en el Parque Nacional Mpem & Djim.",
+        "category": "Proyectos"
+      },
+      {
+        "tag": "Evento",
+        "date": "Abril 2025",
+        "title": "BECO seleccionado para el programa CDKN African Early-Career Researchers",
+        "excerpt": "Nuestro director ejecutivo, el Dr. SIMEU NOUTCHOM Alain, ha sido seleccionado como fellow del programa CDKN para investigadores africanos en inicio de carrera.",
+        "category": "Eventos"
+      },
+      {
+        "tag": "Organización",
+        "date": "Junio 2025",
+        "title": "Creación oficial de BECO en Yaundé",
+        "excerpt": "La Biodiversity and Environment Care Organisation se crea y registra oficialmente en Yaundé, Camerún, por un grupo de jóvenes investigadores apasionados.",
+        "category": "Eventos"
+      },
+      {
+        "tag": "Publicación",
+        "date": "Próximamente",
+        "title": "Primeros resultados del monitoreo acústico de ortópteros",
+        "excerpt": "Los primeros datos recogidos en el marco de nuestro proyecto de monitoreo acústico revelan una riqueza notable de la comunidad de ortópteros de Mpem & Djim.",
+        "category": "Publicaciones"
+      }
+    ]
+  },
+  "team": {
+    "pageTitle": "Nuestro equipo",
+    "label": "APASIONADOS Y COMPROMETIDOS",
+    "title": "Un equipo de investigadores y profesionales dedicados",
+    "description": "BECO reúne a expertos en biología, ecología, agronomía y comunicación, todos unidos por la misma pasión por la naturaleza y el deseo de marcar la diferencia. Nuestro equipo combina la experiencia científica con el arraigo local para desarrollar soluciones adaptadas a las realidades africanas.",
+    "members": [
+      { "name": "Dr SIMEU NOUTCHOM Alain", "role": "Director Ejecutivo", "status": "PhD", "description": "Fundador de BECO e investigador en conservación de la biodiversidad. Coordina todas las actividades de la organización y supervisa los programas de investigación." },
+      { "name": "BAPITE NLOH Gloria", "role": "Secretaria General", "status": "Doctoranda", "description": "Responsable de la administración y coordinación interna de la organización. Asegura el buen funcionamiento operativo de BECO." },
+      { "name": "TSAFACK TSAGUE Sharone", "role": "Vicesecretaria General", "status": "Doctoranda", "description": "Apoya la coordinación administrativa y participa en proyectos de investigación y conservación sobre el terreno." },
+      { "name": "NOUAKO EMENI Ange", "role": "Secretaria Financiera / Tesorera", "status": "Estudiante", "description": "Gestiona las finanzas de la organización, la contabilidad y el seguimiento de los presupuestos de los proyectos. Vela por la transparencia financiera de BECO." },
+      { "name": "FOUOGHAP DIFOUO Carmel", "role": "Coordinadora de Proyectos", "status": "Doctoranda", "description": "Supervisa la planificación, implementación y seguimiento-evaluación de todos los proyectos de conservación e investigación." },
+      { "name": "TONFACK Robert", "role": "Coordinador de Agricultura Sostenible", "status": "Doctorando", "description": "Especialista en agroecología y agricultura sostenible. Coordina los programas relacionados con prácticas agrícolas sostenibles y seguridad alimentaria." },
+      { "name": "MIMLBE Theophile / BOUTCHOUANG Will", "role": "Responsables de Comunicación / Webmasters", "status": "", "description": "Responsables de la estrategia de comunicación, redes sociales y presencia en línea de BECO. Desarrollan las herramientas digitales de la organización." }
+    ]
+  },
+  "involved": {
+    "pageTitle": "Participa",
+    "membership": {
+      "label": "HÁGASE MIEMBRO",
+      "title": "Únete a la comunidad BECO",
+      "description": "BECO ofrece varias categorías de membresía para comprometerse a nuestro lado en la conservación de la biodiversidad. Elija la que mejor se adapte a usted.",
+      "activeMember": "Miembro Activo",
+      "activeDesc": "Para personas que deseen involucrarse activamente en nuestros programas y actividades.",
+      "activeBenefits": [
+        "Participación en las asambleas generales",
+        "Derecho al voto y a ser elegido",
+        "Acceso a formaciones y talleres",
+        "Información prioritaria sobre las actividades",
+        "Creación de redes con otros miembros"
+      ],
+      "institutionalMember": "Miembro Institucional",
+      "institutionalDesc": "Para organizaciones, instituciones y empresas que compartan nuestros valores.",
+      "institutionalBenefits": [
+        "Representación en las asambleas generales",
+        "Alianzas prioritarias",
+        "Visibilidad en nuestros soportes de comunicación",
+        "Acceso a nuestros informes y publicaciones",
+        "Colaboración en proyectos conjuntos"
+      ],
+      "honoraryMember": "Miembro Honorario",
+      "honoraryDesc": "Título otorgado a personas que han prestado servicios excepcionales a la organización.",
+      "honoraryBenefits": [
+        "Reconocimiento público por parte de la organización",
+        "Participación en eventos especiales",
+        "Acceso privilegiado a los informes anuales",
+        "Mención en las publicaciones de BECO"
+      ],
+      "cta": "Afiliarse"
+    },
+    "volunteer": {
+      "label": "VOLUNTARIADO",
+      "title": "Dedique su tiempo a la naturaleza",
+      "description": "Los voluntarios son esenciales para el éxito de nuestros proyectos. Ya sea usted estudiante, profesional o jubilado, sus habilidades y energía pueden marcar una diferencia concreta para la conservación de la biodiversidad en Camerún.",
+      "opportunities": [
+        "Misiones de campo: seguimiento de la fauna y la flora",
+        "Apoyo a la investigación científica",
+        "Impartición de talleres de educación ambiental",
+        "Comunicación y sensibilización",
+        "Apoyo administrativo y logístico"
+      ],
+      "formTitle": "Formulario de solicitud",
+      "namePlaceholder": "Nombre completo",
+      "emailPlaceholder": "Dirección de correo electrónico",
+      "phonePlaceholder": "Teléfono",
+      "interestPlaceholder": "Área de interés",
+      "interestOptions": [
+        { "value": "", "label": "Área de interés" },
+        { "value": "conservation", "label": "Conservación" },
+        { "value": "research", "label": "Investigación" },
+        { "value": "education", "label": "Educación" },
+        { "value": "communication", "label": "Comunicación" },
+        { "value": "administration", "label": "Administración" }
+      ],
+      "motivationPlaceholder": "Cuéntenos más sobre su motivación y sus habilidades...",
+      "cta": "Enviar mi solicitud"
+    },
+    "donate": {
+      "label": "HACER UN DONATIVO",
+      "title": "Apoye nuestras acciones de conservación",
+      "description": "Su contribución, sea cual sea su tamaño, nos permite llevar a cabo nuestros proyectos de conservación, formar a jóvenes investigadores y proteger la biodiversidad africana. Cada donativo cuenta.",
+      "amounts": ["10 000 FCFA", "25 000 FCFA", "50 000 FCFA", "Cantidad libre"],
+      "secure": { "title": "Seguro", "text": "Sus transacciones son seguras y sus datos están protegidos." },
+      "receipt": { "title": "Recibo fiscal", "text": "Se le entregará un recibo fiscal por cada donativo." },
+      "transparency": { "title": "Transparencia", "text": "Informe anual que detalla el uso de los fondos." }
+    }
+  },
+  "contact": {
+    "pageTitle": "Contáctenos",
+    "form": {
+      "label": "ENVÍENOS UN MENSAJE",
+      "title": "Estamos a su disposición",
+      "description": "¿Tiene una pregunta, un proyecto de colaboración o desea saber más sobre nuestras actividades? No dude en contactarnos. Nuestro equipo le responderá a la mayor brevedad posible.",
+      "lastNamePlaceholder": "Su apellido",
+      "firstNamePlaceholder": "Su nombre",
+      "emailPlaceholder": "Su dirección de correo electrónico",
+      "subjectPlaceholder": "Asunto",
+      "requestTypePlaceholder": "Tipo de solicitud",
+      "requestOptions": [
+        { "value": "", "label": "Tipo de solicitud" },
+        { "value": "info", "label": "Información general" },
+        { "value": "partnership", "label": "Colaboración" },
+        { "value": "research", "label": "Proyecto de investigación" },
+        { "value": "volunteer", "label": "Voluntariado" },
+        { "value": "donation", "label": "Donativo" },
+        { "value": "other", "label": "Otro" }
+      ],
+      "messagePlaceholder": "Su mensaje...",
+      "cta": "Enviar mensaje"
+    },
+    "info": {
+      "title": "Información de contacto",
+      "address": "DIRECCIÓN",
+      "email": "CORREO ELECTRÓNICO",
+      "phone": "TELÉFONO",
+      "website": "SITIO WEB",
+      "addressValue": "Yaundé, Región del Centro, Camerún",
+      "emailValue": "beco@afrotropical.org",
+      "phoneValue": "+237 6 57 90 27 84",
+      "websiteValue": "www.beco-afrotropical.org",
+      "socialMedia": "Redes sociales",
+      "hours": "Horario",
+      "weekdays": "Lunes - Viernes: 8:00 - 17:00",
+      "saturday": "Sábado: 9:00 - 12:00"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Página no encontrada",
+    "cta": "Volver al inicio"
+  },
+  "login": {
+    "welcome": "Bienvenido",
+    "signInWithKimi": "Iniciar sesión con Kimi"
+  },
+  "legal": {
+    "pageTitle": "Aviso legal",
+    "identification": "Identificación de la organización",
+    "identificationText": "BECO — Biodiversity and Environment Care Organisation\nOrganización no gubernamental, apolítica y sin ánimo de lucro\nSede social: Yaundé, Región del Centro, Camerún",
+    "director": "Director de publicación",
+    "directorText": "Dr SIMEU NOUTCHOM Alain, Director Ejecutivo de BECO.",
+    "hosting": "Alojamiento",
+    "hostingText": "El sitio web de BECO está alojado en los servidores seguros de nuestros socios técnicos.",
+    "intellectualProperty": "Propiedad intelectual",
+    "intellectualPropertyText": "Todos los contenidos de este sitio (textos, imágenes, fotografías, logotipos, vídeos) son propiedad exclusiva de BECO, salvo que se indique lo contrario. Queda prohibida cualquier reproducción, distribución, modificación o uso sin autorización previa.",
+    "dataProtection": "Protección de datos personales",
+    "dataProtectionText": "De conformidad con la ley camerunesa de protección de datos personales, usted tiene derecho a acceder, rectificar y suprimir sus datos.",
+    "cookies": "Cookies",
+    "cookiesText": "Este sitio utiliza cookies estrictamente necesarias para su funcionamiento. Al navegar por este sitio, usted consiente el uso de estas cookies."
+  },
+  "privacy": {
+    "pageTitle": "Política de privacidad",
+    "dataCollection": "Recogida de datos",
+    "dataCollectionText": "BECO recoge los datos personales que usted nos proporciona voluntariamente a través de nuestros formularios de contacto, membresía, voluntariado y boletín.",
+    "dataUsage": "Uso de los datos",
+    "dataUsageList1": "Responder a solicitudes de información",
+    "dataUsageList2": "Tramitar solicitudes de voluntariado y membresía",
+    "dataUsageList3": "Enviar nuestro boletín (con su consentimiento)",
+    "dataUsageList4": "Mejorar nuestros servicios y comunicación",
+    "retention": "Período de conservación",
+    "retentionText": "Sus datos se conservan durante el tiempo necesario para cumplir los fines para los que fueron recogidos, y como máximo 3 años después de nuestro último contacto.",
+    "security": "Seguridad de los datos",
+    "securityText": "BECO adopta todas las medidas técnicas y organizativas adecuadas para garantizar la seguridad y confidencialidad de sus datos personales.",
+    "rights": "Sus derechos",
+    "rightsText": "Usted tiene derecho a acceder, rectificar, suprimir y portar sus datos. También puede oponerse al tratamiento de sus datos o solicitar su limitación.",
+    "sharing": "Cesión de datos",
+    "sharingText": "BECO no comparte sus datos personales con terceros sin su consentimiento explícito, salvo obligación legal."
+  },
+  "faq": {
+    "pageTitle": "FAQ",
+    "label": "PREGUNTAS FRECUENTES",
+    "title": "Todo lo que necesita saber",
+    "description": "Encuentre respuestas a las preguntas más frecuentes sobre BECO, nuestras actividades y cómo participar.",
+    "q1": "¿Qué es BECO?",
+    "a1": "BECO (Biodiversity and Environment Care Organisation) es una organización no gubernamental, apolítica y sin ánimo de lucro fundada en 2025 en Yaundé, Camerún, que trabaja por la conservación de la biodiversidad y la protección del medio ambiente.",
+    "q2": "¿Cómo puedo hacerme miembro de BECO?",
+    "a2": "BECO ofrece tres categorías de membresía: Miembro Activo, Miembro Institucional y Miembro Honorario. Visite nuestra página 'Participa' para elegir la opción que más le convenga.",
+    "q3": "¿Cómo puedo hacer un donativo?",
+    "a3": "Puede hacer un donativo a través de nuestra página 'Participa', que ofrece diferentes cantidades (10.000 FCFA, 25.000 FCFA, 50.000 FCFA o cantidad libre). Cada donativo da derecho a un recibo fiscal.",
+    "q4": "¿Dónde opera BECO?",
+    "a4": "BECO tiene su sede en Yaundé, Camerún, y lleva a cabo sus proyectos principalmente en Camerún y África Central.",
+    "q5": "¿Cómo puedo ser voluntario?",
+    "a5": "Vaya a nuestra página 'Participa' y rellene el formulario de voluntariado. Buscamos voluntarios para trabajo de campo, investigación, educación ambiental y comunicación.",
+    "q6": "¿BECO ofrece prácticas?",
+    "a6": "Sí, BECO acoge regularmente a becarios en el marco de sus programas. Contacte con nosotros a través de nuestra página de Contacto.",
+    "q7": "¿Cómo contactar con BECO?",
+    "a7": "Puede contactarnos por correo electrónico en beco@afrotropical.org, por teléfono en el +237 6 57 90 27 84, o a través de nuestro formulario de contacto en línea.",
+    "q8": "¿BECO trabaja con socios internacionales?",
+    "a8": "Sí, BECO colabora con varios socios, entre ellos la Rufford Foundation, 1Wild Foundation, MBZ Species Conservation Fund, IDEA WILD, la British Ecological Society y CDKN."
+  },
+  "focusAreas": [
+    { "title": "Conservación de la biodiversidad", "desc": "Inventarios, seguimiento y protección de especies amenazadas mediante enfoques científicos innovadores." },
+    { "title": "Protección del medio ambiente", "desc": "Preservación de los ecosistemas y gestión sostenible de los recursos naturales." },
+    { "title": "Cambio climático", "desc": "Mitigación y adaptación al cambio climático en comunidades vulnerables." },
+    { "title": "Agricultura sostenible", "desc": "Promoción de prácticas agrícolas respetuosas con el medio ambiente y la agroecología." },
+    { "title": "One Health", "desc": "Integración de la salud humana, animal y ambiental para un desarrollo sostenible." },
+    { "title": "Conservación de la fauna", "desc": "Protección de las especies silvestres y sus hábitats contra la caza furtiva y la pérdida de hábitat." },
+    { "title": "Restauración de bosques", "desc": "Reforestación y rehabilitación de paisajes degradados para recuperar la biodiversidad." },
+    { "title": "Educación ambiental", "desc": "Sensibilización y formación de comunidades, escuelas y jóvenes en la protección de la naturaleza." },
+    { "title": "Desarrollo comunitario", "desc": "Acompañamiento de las poblaciones locales hacia modos de vida sostenibles y autónomos." },
+    { "title": "Investigación e innovación", "desc": "Estudios científicos y desarrollo de tecnologías para la conservación." }
+  ]
+}

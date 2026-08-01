@@ -12,6 +12,9 @@ import {
   Shield,
   Menu,
   X,
+  Globe,
+  History,
+  UserCircle,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -20,7 +23,9 @@ const navItems = [
   { label: "Projets", path: "/administrateur/projets", icon: FolderOpen },
   { label: "Actualités", path: "/administrateur/actualites", icon: Newspaper },
   { label: "Équipe", path: "/administrateur/equipe", icon: Users },
+  { label: "Domaines", path: "/administrateur/domaines", icon: Globe },
   { label: "Messages", path: "/administrateur/messages", icon: Mail },
+  { label: "Journal", path: "/administrateur/activite", icon: History },
   { label: "Paramètres", path: "/administrateur/parametres", icon: Settings },
 ];
 
@@ -95,7 +100,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
         {/* User */}
         <div className="p-4 border-t border-white/10">
-          <div className="flex items-center gap-3 px-4 py-3">
+          <Link
+            to="/administrateur/profil"
+            onClick={() => setSidebarOpen(false)}
+            className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 rounded-lg transition-colors"
+          >
             <div className="w-8 h-8 rounded-full bg-beco-secondary/30 flex items-center justify-center">
               <Shield className="w-4 h-4 text-beco-secondary" />
             </div>
@@ -103,10 +112,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <p className="text-sm font-medium truncate">{user?.name}</p>
               <p className="text-[11px] text-white/50 capitalize">{user?.role}</p>
             </div>
-          </div>
+          </Link>
+          <Link
+            to="/administrateur/profil"
+            onClick={() => setSidebarOpen(false)}
+            className="flex items-center gap-2 px-4 py-2 text-sm text-white/60 hover:text-white transition-colors w-full rounded-lg"
+          >
+            <UserCircle className="w-4 h-4" />
+            Mon profil
+          </Link>
           <button
             onClick={logout}
-            className="flex items-center gap-2 px-4 py-2 text-sm text-white/60 hover:text-white transition-colors w-full"
+            className="flex items-center gap-2 px-4 py-2 text-sm text-white/60 hover:text-white transition-colors w-full rounded-lg"
           >
             <LogOut className="w-4 h-4" />
             Déconnexion

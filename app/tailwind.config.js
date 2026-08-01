@@ -60,7 +60,7 @@ module.exports = {
       },
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
-        raleway: ['Raleway', 'sans-serif'],
+        raleway: ['Arial', 'Helvetica', 'sans-serif'],
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

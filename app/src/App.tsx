@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 // Public site
 import Header from "./components/Header";
@@ -11,6 +12,26 @@ import News from "./pages/News";
 import Team from "./pages/Team";
 import Involved from "./pages/Involved";
 import Contact from "./pages/Contact";
+import Search from "./pages/Search";
+import Legal from "./pages/Legal";
+import Privacy from "./pages/Privacy";
+import FAQ from "./pages/FAQ";
+import NotFound from "./pages/NotFound";
+
+// Focus Areas
+import FocusAreaBiodiversity from "./pages/FocusAreaBiodiversity";
+import FocusAreaEnvironment from "./pages/FocusAreaEnvironment";
+import FocusAreaClimate from "./pages/FocusAreaClimate";
+import FocusAreaAgriculture from "./pages/FocusAreaAgriculture";
+import FocusAreaOneHealth from "./pages/FocusAreaOneHealth";
+import FocusAreaWildlife from "./pages/FocusAreaWildlife";
+import FocusAreaForest from "./pages/FocusAreaForest";
+import FocusAreaEducation from "./pages/FocusAreaEducation";
+import FocusAreaCommunity from "./pages/FocusAreaCommunity";
+import FocusAreaResearch from "./pages/FocusAreaResearch";
+
+// News articles
+import NewsArticle from "./pages/NewsArticle";
 
 // Admin
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -21,11 +42,15 @@ import AdminNews from "./pages/admin/AdminNews";
 import AdminTeam from "./pages/admin/AdminTeam";
 import AdminMessages from "./pages/admin/AdminMessages";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminFocusAreas from "./pages/admin/AdminFocusAreas";
+import AdminActivityLogs from "./pages/admin/AdminActivityLogs";
+import AdminProfile from "./pages/admin/AdminProfile";
 
 function PublicLayout() {
   return (
     <>
       <Header />
+      <ScrollToTopButton />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -35,6 +60,22 @@ function PublicLayout() {
           <Route path="/team" element={<Team />} />
           <Route path="/involved" element={<Involved />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/focus/biodiversite" element={<FocusAreaBiodiversity />} />
+          <Route path="/focus/environnement" element={<FocusAreaEnvironment />} />
+          <Route path="/focus/climat" element={<FocusAreaClimate />} />
+          <Route path="/focus/agriculture" element={<FocusAreaAgriculture />} />
+          <Route path="/focus/one-health" element={<FocusAreaOneHealth />} />
+          <Route path="/focus/faune" element={<FocusAreaWildlife />} />
+          <Route path="/focus/forets" element={<FocusAreaForest />} />
+          <Route path="/focus/education" element={<FocusAreaEducation />} />
+          <Route path="/focus/communautes" element={<FocusAreaCommunity />} />
+          <Route path="/focus/recherche" element={<FocusAreaResearch />} />
+          <Route path="/news/:slug" element={<NewsArticle />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
@@ -57,6 +98,9 @@ function AdminRoutes() {
               <Route path="/equipe" element={<AdminTeam />} />
               <Route path="/messages" element={<AdminMessages />} />
               <Route path="/parametres" element={<AdminSettings />} />
+              <Route path="/domaines" element={<AdminFocusAreas />} />
+              <Route path="/activite" element={<AdminActivityLogs />} />
+              <Route path="/profil" element={<AdminProfile />} />
             </Routes>
           </AdminLayout>
         }

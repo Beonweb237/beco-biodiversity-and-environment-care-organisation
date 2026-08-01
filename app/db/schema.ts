@@ -176,5 +176,39 @@ export const siteSettings = mysqlTable("site_settings", {
     .$onUpdate(() => new Date()),
 });
 
+// ============================================================
+// ACTIVITY LOGS
+// ============================================================
+export const activityLogs = mysqlTable("activity_logs", {
+  id: serial("id").primaryKey(),
+  adminUserId: int("admin_user_id").notNull(),
+  adminName: varchar("admin_name", { length: 255 }).notNull(),
+  action: varchar("action", { length: 100 }).notNull(),
+  entity: varchar("entity", { length: 100 }).notNull(),
+  entityId: int("entity_id"),
+  details: text("details"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type ActivityLog = typeof activityLogs.$inferSelect;
+export type InsertActivityLog = typeof activityLogs.$inferInsert;
+
+// ============================================================
+// VOLUNTEER APPLICATIONS
+// ============================================================
+export const volunteerApplications = mysqlTable("volunteer_applications", {
+  id: serial("id").primaryKey(),
+  fullName: varchar("full_name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 50 }),
+  interest: varchar("interest", { length: 100 }),
+  motivation: text("motivation"),
+  isRead: boolean("is_read").default(false).notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export type VolunteerApplication = typeof volunteerApplications.$inferSelect;
+export type InsertVolunteerApplication = typeof volunteerApplications.$inferInsert;
+
 export type SiteSetting = typeof siteSettings.$inferSelect;
 export type InsertSiteSetting = typeof siteSettings.$inferInsert;

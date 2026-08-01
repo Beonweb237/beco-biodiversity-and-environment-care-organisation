@@ -4,8 +4,8 @@ import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { Leaf, Lock, User } from "lucide-react";
 
 export default function AdminLogin() {
-  const [username, setUsername] = useState("admin");
-  const [password, setPassword] = useState("beco2026");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { user, isLoading } = useAdminAuth();
 
@@ -62,7 +62,7 @@ export default function AdminLogin() {
             Connexion
           </h2>
           <p className="font-raleway text-sm text-gray-500 mb-6">
-            Identifiants pré-remplis prêts à l'emploi
+            Connectez-vous avec vos identifiants personnels
           </p>
 
           {error && (
@@ -82,8 +82,8 @@ export default function AdminLogin() {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg font-raleway text-sm outline-none focus:border-beco-primary focus:ring-1 focus:ring-beco-primary/20 transition-all"
-                  placeholder="admin"
+                  className="w-full ps-10 pe-4 py-2.5 border border-gray-300 rounded-lg font-raleway text-sm outline-none focus:border-beco-primary focus:ring-1 focus:ring-beco-primary/20 transition-all"
+                  placeholder="Nom d'utilisateur"
                 />
               </div>
             </div>
@@ -93,12 +93,12 @@ export default function AdminLogin() {
                 Mot de passe
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Lock className="absolute start-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg font-raleway text-sm outline-none focus:border-beco-primary focus:ring-1 focus:ring-beco-primary/20 transition-all"
+                  className="w-full ps-10 pe-4 py-2.5 border border-gray-300 rounded-lg font-raleway text-sm outline-none focus:border-beco-primary focus:ring-1 focus:ring-beco-primary/20 transition-all"
                   placeholder="••••••••"
                 />
               </div>
@@ -115,7 +115,7 @@ export default function AdminLogin() {
 
           <div className="mt-4 pt-4 border-t border-gray-100 text-center">
             <p className="text-xs text-gray-400">
-              Par défaut : <span className="font-medium">admin</span> / <span className="font-medium">beco2026</span>
+              Espace réservé aux administrateurs
             </p>
           </div>
         </div>

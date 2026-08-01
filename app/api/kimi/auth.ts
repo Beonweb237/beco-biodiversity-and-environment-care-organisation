@@ -2,14 +2,14 @@ import type { Context } from "hono";
 import { setCookie } from "hono/cookie";
 import * as jose from "jose";
 import * as cookie from "cookie";
-import { env } from "../lib/env";
-import { getSessionCookieOptions } from "../lib/cookies";
+import { env } from "../lib/env.js";
+import { getSessionCookieOptions } from "../lib/cookies.js";
 import { Session } from "@contracts/constants";
 import { Errors } from "@contracts/errors";
-import { signSessionToken, verifySessionToken } from "./session";
-import { users as kimiUsers } from "./platform";
-import { findUserByUnionId, upsertUser } from "../queries/users";
-import type { TokenResponse } from "./types";
+import { signSessionToken, verifySessionToken } from "./session.js";
+import { users as kimiUsers } from "./platform.js";
+import { findUserByUnionId, upsertUser } from "../queries/users.js";
+import type { TokenResponse } from "./types.js";
 
 async function exchangeAuthCode(
   code: string,
@@ -37,14 +37,19 @@ async function exchangeAuthCode(
   return resp.json() as Promise<TokenResponse>;
 }
 
-const jwks = jose.createRemoteJWKSet(
-  new URL(`${env.kimiAuthUrl}/api/.well-known/jwks.json`),
-);
+function getJwks() {
+  if (!env.kimiAuthUrl) {
+    throw new Error("KIMI_AUTH_URL environment variable is required");
+  }
+  return jose.createRemoteJWKSet(
+    new URL(`${env.kimiAuthUrl}/api/.well-known/jwks.json`),
+  );
+}
 
 async function verifyAccessToken(
   accessToken: string,
 ): Promise<{ userId: string; clientId: string }> {
-  const { payload } = await jose.jwtVerify(accessToken, jwks);
+  const { payload } = await jose.jwtVerify(accessToken, getJwks());
   const userId = payload.user_id as string;
   const clientId = payload.client_id as string;
   if (!userId) {

@@ -1,23 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
+import { trpc } from '@/providers/trpc';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const stats = [
-  { value: 4, suffix: '+', label: 'Projets actifs' },
-  { value: 2025, suffix: '', label: 'Année de création' },
-  { value: 10, suffix: '', label: 'Domaines d\'intervention' },
-  { value: 7, suffix: '', label: 'Membres de l\'équipe' },
-];
-
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const [display, setDisplay] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || hasAnimated) return;
 
     const proxy = { val: 0 };
     const tween = gsap.to(proxy, {
@@ -30,13 +26,14 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
         toggleActions: 'play none none none',
       },
       onUpdate: () => setDisplay(Math.round(proxy.val)),
+      onComplete: () => setHasAnimated(true),
     });
 
     return () => {
       tween.scrollTrigger?.kill();
       tween.kill();
     };
-  }, [value]);
+  }, [value, hasAnimated]);
 
   return (
     <span ref={ref}>
@@ -46,7 +43,19 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export default function ImpactNumbers() {
+  const { t } = useTranslation();
   const ref = useRef<HTMLElement>(null);
+
+  const { data: dbStats } = trpc.admin.public.getStats.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+  });
+
+  const stats = [
+    { value: dbStats?.activeProjects ?? 4, suffix: '+', label: t('home.impactNumbers.activeProjects') },
+    { value: dbStats?.yearCreated ?? 2025, suffix: '', label: t('home.impactNumbers.yearCreated') },
+    { value: dbStats?.domains ?? 10, suffix: '', label: t('home.impactNumbers.domains') },
+    { value: dbStats?.teamMembers ?? 7, suffix: '', label: t('home.impactNumbers.teamMembers') },
+  ];
 
   useEffect(() => {
     const el = ref.current;
@@ -72,7 +81,7 @@ export default function ImpactNumbers() {
     });
 
     return () => triggers.forEach((t) => t.kill());
-  }, []);
+  }, [stats]);
 
   return (
     <section ref={ref} className="bg-beco-primary py-20">

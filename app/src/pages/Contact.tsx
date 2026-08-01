@@ -1,70 +1,176 @@
+import { useState, useMemo } from 'react';
 import PageHeader from '../components/PageHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { MapPin, Mail, Phone, Globe, Facebook, Instagram, Linkedin } from 'lucide-react';
-
-const contactItems = [
-  { icon: MapPin, label: 'ADRESSE', value: 'Yaoundé, Région du Centre, Cameroun', href: null },
-  { icon: Mail, label: 'EMAIL', value: 'beco@afrotropical.org', href: 'mailto:beco@afrotropical.org' },
-  { icon: Phone, label: 'TÉLÉPHONE', value: '+237 6 57 90 27 84', href: 'tel:+237657902784' },
-  { icon: Globe, label: 'SITE WEB', value: 'www.beco-afrotropical.org', href: 'https://www.beco-afrotropical.org' },
-];
-
-const socials = [
-  { name: 'Facebook', icon: Facebook },
-  { name: 'Instagram', icon: Instagram },
-  { name: 'LinkedIn', icon: Linkedin },
-  { name: 'X', icon: null },
-];
+import { useTranslation } from 'react-i18next';
+import { trpc } from '@/providers/trpc';
 
 export default function Contact() {
+  const { t } = useTranslation();
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.2 });
   const mapRef = useScrollReveal<HTMLElement>({});
 
+  // Form state
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [type, setType] = useState('');
+  const [message, setMessage] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
+
+  const submitMutation = trpc.admin.public.submitContact.useMutation();
+
+  const { data: settings } = trpc.admin.public.getSettings.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+  });
+
+  const siteSettings = useMemo(() => {
+    const map: Record<string, string> = {};
+    settings?.forEach((s) => { map[s.key] = s.value || ''; });
+    return map;
+  }, [settings]);
+
+  const contactItems = [
+    { icon: MapPin, label: t('contact.info.address'), value: siteSettings['contact_address'] || t('contact.info.addressValue'), href: null },
+    { icon: Mail, label: t('contact.info.email'), value: siteSettings['contact_email'] || t('contact.info.emailValue'), href: `mailto:${siteSettings['contact_email'] || t('contact.info.emailValue')}` },
+    { icon: Phone, label: t('contact.info.phone'), value: siteSettings['contact_phone'] || t('contact.info.phoneValue'), href: `tel:${siteSettings['contact_phone'] || t('contact.info.phoneValue')}` },
+    { icon: Globe, label: t('contact.info.website'), value: siteSettings['contact_website'] || t('contact.info.websiteValue'), href: `https://${siteSettings['contact_website'] || t('contact.info.websiteValue')}` },
+  ];
+
+  const requestOptions = t('contact.form.requestOptions', { returnObjects: true }) as Array<{ value: string; label: string }>;
+
+  const socials = [
+    { name: 'Facebook', icon: Facebook, url: siteSettings['social_facebook'] || '#' },
+    { name: 'Instagram', icon: Instagram, url: siteSettings['social_instagram'] || '#' },
+    { name: 'LinkedIn', icon: Linkedin, url: siteSettings['social_linkedin'] || '#' },
+    { name: 'X', icon: null as React.ElementType | null, url: siteSettings['social_x'] || '#' },
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    try {
+      await submitMutation.mutateAsync({
+        firstName,
+        lastName,
+        email,
+        subject: subject || undefined,
+        type: type || undefined,
+        message,
+      });
+      setSubmitted(true);
+      setLastName('');
+      setFirstName('');
+      setEmail('');
+      setSubject('');
+      setType('');
+      setMessage('');
+    } catch {
+      setError('Une erreur est survenue. Veuillez réessayer.');
+    }
+  };
+
   return (
     <>
-      <PageHeader title="Contactez-nous" image="/assets/contact-header.jpg" />
+      <PageHeader title={t('contact.pageTitle')} image="/assets/contact-header.jpg" />
 
       <section ref={ref} className="bg-white py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-[7fr_5fr] gap-16">
           {/* Form */}
           <div data-reveal>
-            <p className="section-label">ENVOYEZ-NOUS UN MESSAGE</p>
+            <p className="section-label">{t('contact.form.label')}</p>
             <h2 className="font-playfair italic text-[28px] text-beco-dark leading-[1.3] mt-3">
-              Nous sommes à votre écoute
+              {t('contact.form.title')}
             </h2>
             <p className="font-raleway text-[14px] text-beco-dark/70 leading-[1.7] mt-3">
-              Vous avez une question, un projet de collaboration ou souhaitez en savoir plus
-              sur nos activités ? N'hésitez pas à nous contacter. Notre équipe vous répondra
-              dans les plus brefs délais.
+              {t('contact.form.description')}
             </p>
-            <form className="mt-8 flex flex-col gap-5">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <input type="text" placeholder="Votre nom" className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors" />
-                <input type="text" placeholder="Votre prénom" className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors" />
+
+            {submitted ? (
+              <div className="mt-8 p-6 bg-beco-olive-light rounded-lg">
+                <p className="font-raleway text-[15px] text-beco-dark font-medium">
+                  Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.
+                </p>
+                <button
+                  onClick={() => setSubmitted(false)}
+                  className="font-raleway text-[13px] text-beco-primary mt-4 hover:underline"
+                >
+                  Envoyer un autre message
+                </button>
               </div>
-              <input type="email" placeholder="Votre adresse email" className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors" />
-              <input type="text" placeholder="Sujet" className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors" />
-              <select className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors bg-white">
-                <option value="">Type de demande</option>
-                <option value="info">Information générale</option>
-                <option value="partnership">Partenariat</option>
-                <option value="research">Projet de recherche</option>
-                <option value="volunteer">Bénévolat</option>
-                <option value="donation">Don</option>
-                <option value="other">Autre</option>
-              </select>
-              <textarea placeholder="Votre message..." rows={6} className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors resize-none" />
-              <button type="submit" className="btn-primary self-start">
-                Envoyer le message
-              </button>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-5">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <input
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    required
+                    placeholder={t('contact.form.lastNamePlaceholder')}
+                    className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors"
+                  />
+                  <input
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
+                    placeholder={t('contact.form.firstNamePlaceholder')}
+                    className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors"
+                  />
+                </div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder={t('contact.form.emailPlaceholder')}
+                  className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors"
+                />
+                <input
+                  type="text"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  placeholder={t('contact.form.subjectPlaceholder')}
+                  className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors"
+                />
+                <select
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                  className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors bg-white"
+                >
+                  {requestOptions?.map((opt, i) => (
+                    <option key={i} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+                <textarea
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                  placeholder={t('contact.form.messagePlaceholder')}
+                  rows={6}
+                  className="w-full px-4 py-3.5 border border-black/15 rounded-lg font-raleway text-[14px] outline-none focus:border-beco-primary transition-colors resize-none"
+                />
+                {error && (
+                  <p className="font-raleway text-[13px] text-red-500">{error}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={submitMutation.isPending}
+                  className="btn-primary self-start disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {submitMutation.isPending ? 'Envoi en cours...' : t('contact.form.cta')}
+                </button>
+              </form>
+            )}
           </div>
 
           {/* Info */}
           <div data-reveal>
             <div className="bg-beco-off-white rounded-xl p-10">
               <h3 className="font-raleway font-semibold text-[16px] text-beco-dark mb-6">
-                Informations de contact
+                {t('contact.info.title')}
               </h3>
               <div className="space-y-6">
                 {contactItems.map((item, i) => (
@@ -93,13 +199,15 @@ export default function Contact() {
 
               <div className="border-t border-black/10 mt-7 pt-7">
                 <h4 className="font-raleway font-semibold text-[14px] text-beco-dark">
-                  Réseaux sociaux
+                  {t('contact.info.socialMedia')}
                 </h4>
                 <div className="flex flex-wrap gap-3 mt-4">
                   {socials.map((s, i) => (
                     <a
                       key={i}
-                      href="#"
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-4 py-2 border border-beco-primary rounded-lg font-raleway text-[13px] text-beco-primary hover:bg-beco-primary hover:text-white transition-all duration-300"
                     >
                       {s.icon && <s.icon className="w-4 h-4" />}
@@ -111,13 +219,13 @@ export default function Contact() {
 
               <div className="border-t border-black/10 mt-7 pt-7">
                 <h4 className="font-raleway font-semibold text-[14px] text-beco-dark">
-                  Horaires
+                  {t('contact.info.hours')}
                 </h4>
                 <p className="font-raleway text-[13px] text-beco-dark/65 mt-2">
-                  Lundi - Vendredi : 8h00 - 17h00
+                  {t('contact.info.weekdays')}
                 </p>
                 <p className="font-raleway text-[13px] text-beco-dark/65 mt-1">
-                  Samedi : 9h00 - 12h00
+                  {t('contact.info.saturday')}
                 </p>
               </div>
             </div>

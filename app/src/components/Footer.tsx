@@ -45,10 +45,14 @@ export default function Footer() {
             <div className="flex flex-col items-start gap-3 mb-5">
               <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white p-2 shadow-sm">
                 <img
-                  src="/assets/logo-icon.png?v=20260801"
+                  src="/assets/logo-icon.png?v=20260801a"
                   alt="BECO Logo"
                   loading="lazy"
                   className="h-full w-full rounded-full object-contain"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.src = '/assets/logo-icon.svg';
+                  }}
                 />
               </div>
               <div className="leading-tight">
@@ -182,10 +186,14 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white p-1 shadow-sm">
               <img
-                src="/assets/logo-icon.png?v=20260801"
+                src="/assets/logo-icon.png?v=20260801a"
                 alt="BECO"
                 loading="lazy"
                 className="h-full w-full rounded-full object-contain"
+                onError={(e) => {
+                  const target = e.currentTarget as HTMLImageElement;
+                  target.src = '/assets/logo-icon.svg';
+                }}
               />
             </div>
             <span className="font-playfair font-bold text-[11px] tracking-wider text-white/40 uppercase">

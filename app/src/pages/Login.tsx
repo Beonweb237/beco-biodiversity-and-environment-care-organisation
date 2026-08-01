@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 function getOAuthUrl() {
   const kimiAuthUrl = import.meta.env.VITE_KIMI_AUTH_URL;
@@ -18,11 +19,13 @@ function getOAuthUrl() {
 }
 
 export default function Login() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle>Welcome</CardTitle>
+          <CardTitle>{t('login.welcome')}</CardTitle>
         </CardHeader>
         <CardContent>
           <Button
@@ -32,7 +35,7 @@ export default function Login() {
               window.location.href = getOAuthUrl();
             }}
           >
-            Sign in with Kimi
+            {t('login.signInWithKimi')}
           </Button>
         </CardContent>
       </Card>
