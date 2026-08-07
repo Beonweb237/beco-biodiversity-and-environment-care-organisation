@@ -6,10 +6,9 @@ import { trpc } from '@/providers/trpc';
 
 const allPages = [
   { titleKey: 'nav.home', path: '/', keywords: ['accueil', 'home', 'beco', 'inicio', 'heim', 'الصفحة الرئيسية'] },
-  { titleKey: 'nav.about', path: '/about', keywords: ['a propos', 'about', 'histoire', 'mission', 'vision', 'valeurs', 'equipe', 'acerca', 'über', 'نبذة'] },
+  { titleKey: 'nav.about', path: '/about', keywords: ['a propos', 'about', 'histoire', 'mission', 'vision', 'valeurs', 'acerca', 'über', 'نبذة', 'equipe', 'team', 'membres', 'chercheurs', 'equipo', 'mitarbeiter', 'فريق'] },
   { titleKey: 'nav.projects', path: '/projects', keywords: ['projets', 'projects', 'conservation', 'recherche', 'proyectos', 'projekte', 'مشاريع'] },
   { titleKey: 'nav.news', path: '/news', keywords: ['actualites', 'news', 'publications', 'evenements', 'noticias', 'neuigkeiten', 'أخبار'] },
-  { titleKey: 'nav.team', path: '/team', keywords: ['equipe', 'team', 'membres', 'chercheurs', 'equipo', 'mitarbeiter', 'فريق'] },
   { titleKey: 'nav.involved', path: '/involved', keywords: ['impliquer', 'involved', 'don', 'benvolat', 'membre', 'adherer', 'participar', 'beteiligen', 'مشاركة'] },
   { titleKey: 'nav.contact', path: '/contact', keywords: ['contact', 'message', 'contacto', 'kontakt', 'اتصال'] },
   { titleKey: 'nav.legal', path: '/legal', keywords: ['mentions legales', 'legal', 'aviso', 'rechtliches', 'قانوني'] },

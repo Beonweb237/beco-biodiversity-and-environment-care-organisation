@@ -25,14 +25,15 @@ export default function About() {
   const objectives = t('about.objectives.list', { returnObjects: true }) as string[];
 
   // Build team members from DB or fallback
+  // `image` vide => photo générique (voir le rendu plus bas)
   const fallbackMembers = [
-    { name: 'Dr SIMEU NOUTCHOM Alain', role: 'Directeur Exécutif', status: 'PhD' },
-    { name: 'BAPITE NLOH Gloria', role: 'Secrétaire Générale', status: 'Doctorante' },
-    { name: 'TSAFACK TSAGUE Sharone', role: 'Vice-Secrétaire Générale', status: 'Doctorante' },
-    { name: 'NOUAKO EMENI Ange', role: 'Secrétaire Financière / Trésorière', status: 'Étudiante' },
-    { name: 'FOUOGHAP DIFOUO Carmel', role: 'Coordonnatrice des Projets', status: 'Doctorante' },
-    { name: 'TONFACK Robert', role: 'Coordonnateur Agriculture Durable', status: 'Doctorant' },
-    { name: 'MIMLBE Theophile / BOUTCHOUANG Will', role: 'Chargés de Communication / Webmasters', status: '' },
+    { name: 'Dr SIMEU NOUTCHOM Alain', role: 'Directeur Exécutif', status: 'PhD', image: '' },
+    { name: 'BAPITE NLOH Gloria', role: 'Secrétaire Générale', status: 'Doctorante', image: '/assets/team/bapite-nloh-gloria.jpg' },
+    { name: 'TSAFACK TSAGUE Sharone', role: 'Vice-Secrétaire Générale', status: 'Doctorante', image: '' },
+    { name: 'NOUAKO EMENI Ange', role: 'Secrétaire Financière / Trésorière', status: 'Étudiante', image: '' },
+    { name: 'FOUOGHAP DIFOUO Carmel', role: 'Coordonnatrice des Projets', status: 'Doctorante', image: '' },
+    { name: 'TONFACK Robert', role: 'Coordonnateur Agriculture Durable', status: 'Doctorant', image: '' },
+    { name: 'MIMLBE Theophile / BOUTCHOUANG Will', role: 'Chargés de Communication / Webmasters', status: '', image: '' },
   ];
 
   const displayMembers = dbMembers && dbMembers.length > 0

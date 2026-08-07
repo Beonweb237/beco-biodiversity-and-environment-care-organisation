@@ -27,7 +27,12 @@
     "description": "Biodiversity and Environment Care Organisation — Erhalt der Biodiversität und Umweltschutz in Kamerun und Afrika.",
     "address": "Yaoundé, Region Centre, Kamerun",
     "newsletter": "Newsletter",
+    "newsletterText": "Erhalten Sie unsere News und Projekt-Updates.",
     "followUs": "Folgen Sie uns",
+    "navigation": "Navigation",
+    "explore": "Entdecken",
+    "contact": "Kontakt",
+    "privacy": "Datenschutz",
     "partners": "Unsere Förderer und Partner"
   },
   "home": {
@@ -152,6 +157,7 @@
   },
   "projects": {
     "pageTitle": "Unsere Projekte",
+    "viewProject": "Projekt ansehen",
     "categories": {
       "label": "UNSERE ARBEITSBEREICHE",
       "title": "Konkrete Projekte vor Ort",

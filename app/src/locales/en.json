@@ -27,7 +27,12 @@
     "description": "Biodiversity and Environment Care Organisation — Conserving biodiversity and protecting the environment in Cameroon and Africa.",
     "address": "Yaoundé, Central Region, Cameroon",
     "newsletter": "Newsletter",
+    "newsletterText": "Get our news and the progress of our projects.",
     "followUs": "Follow us",
+    "navigation": "Navigation",
+    "explore": "Explore",
+    "contact": "Contact",
+    "privacy": "Privacy",
     "partners": "Our partners and funders"
   },
   "home": {
@@ -152,6 +157,7 @@
   },
   "projects": {
     "pageTitle": "Our projects",
+    "viewProject": "View project",
     "categories": {
       "label": "OUR AREAS OF ACTION",
       "title": "Concrete projects on the ground",

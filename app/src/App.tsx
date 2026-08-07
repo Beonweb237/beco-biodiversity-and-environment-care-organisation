@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 
@@ -9,7 +9,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import News from "./pages/News";
-import Team from "./pages/Team";
 import Involved from "./pages/Involved";
 import Contact from "./pages/Contact";
 import Search from "./pages/Search";
@@ -57,7 +56,8 @@ function PublicLayout() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/news" element={<News />} />
-          <Route path="/team" element={<Team />} />
+          {/* La page Équipe a été fusionnée dans « À propos » */}
+          <Route path="/team" element={<Navigate to="/about" replace />} />
           <Route path="/involved" element={<Involved />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/search" element={<Search />} />

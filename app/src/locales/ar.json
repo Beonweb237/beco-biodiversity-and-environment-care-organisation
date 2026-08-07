@@ -28,7 +28,12 @@
     "description": "Biodiversity and Environment Care Organisation — الحفاظ على التنوع البيولوجي وحماية البيئة في الكاميرون وأفريقيا.",
     "address": "ياوندي، منطقة الوسطى، الكاميرون",
     "newsletter": "النشرة البريدية",
+    "newsletterText": "احصل على أخبارنا وآخر مستجدات مشاريعنا.",
     "followUs": "تابعنا",
+    "navigation": "التنقل",
+    "explore": "استكشف",
+    "contact": "اتصل بنا",
+    "privacy": "الخصوصية",
     "partners": "شركاؤنا ومموّلونا"
   },
   "home": {
@@ -153,6 +158,7 @@
   },
   "projects": {
     "pageTitle": "مشاريعنا",
+    "viewProject": "عرض المشروع",
     "categories": {
       "label": "مجالات عملنا",
       "title": "مشاريع ملموسة على أرض الواقع",
