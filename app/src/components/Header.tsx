@@ -64,37 +64,52 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 h-[104px] transition-all duration-400 ${showBg
+      className={`fixed top-0 inset-x-0 z-50 h-[88px] transition-all duration-400 ${showBg
         ? 'bg-white/95 backdrop-blur-sm shadow-sm'
         : 'bg-transparent'
         }`}
     >
       <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
 
-        {/* Logo — agrandi pour que le nom de l'organisation y reste lisible */}
-        <Link to="/" className="flex items-center shrink-0" aria-label="BECO — Accueil">
-          <div className="flex h-[84px] w-[84px] items-center justify-center rounded-full bg-white p-1 shadow-sm ring-1 ring-black/5">
+        {/* Logo + nom de l'organisation en texte réel : c'est lui qui porte la lisibilité,
+            le texte gravé dans l'image restant illisible à cette taille.
+            Pas de rounded-full sur l'image : cela rognait l'arc de texte du bas. */}
+        <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label="BECO — Accueil">
+          <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-white p-1 shadow-sm ring-1 ring-black/5">
             <img
               src="/assets/logo-icon.png?v=20260801a"
-              alt="BECO — Biodiversity and Environmental Care Organisation"
-              className="h-full w-full rounded-full object-contain"
+              alt="BECO"
+              className="h-full w-full object-contain"
               onError={(e) => {
                 const target = e.currentTarget as HTMLImageElement;
                 target.src = '/assets/logo-icon.svg';
               }}
             />
           </div>
+          {/* Toujours visible dès sm ; légèrement réduit entre lg et xl, la plage où
+              la navigation complète laisse le moins de place. */}
+          <div className={`hidden sm:flex flex-col leading-tight ${showBg ? 'text-beco-primary' : 'text-white drop-shadow'}`}>
+            <span className="font-playfair font-bold text-[11.5px] xl:text-[13px]">
+              Biodiversity and Environment
+            </span>
+            <span className="font-playfair font-bold text-[11.5px] xl:text-[13px]">
+              Care Organisation
+            </span>
+            <span className="font-playfair font-bold text-[13px] xl:text-[15px] tracking-[0.12em]">
+              — BECO —
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-6">
 
           {/* Lien Accueil */}
           {navLinks.slice(0, 1).map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === link.path
+              className={`font-raleway font-bold text-[12px] xl:text-[13px] whitespace-nowrap uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === link.path
                 ? showBg ? 'text-beco-primary' : 'text-white'
                 : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
                 }`}
@@ -106,7 +121,7 @@ export default function Header() {
           {/* BECO — mène à « À propos », qui contient l'équipe */}
           <Link
             to="/about"
-            className={`font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === '/about'
+            className={`font-raleway font-bold text-[12px] xl:text-[13px] whitespace-nowrap uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === '/about'
               ? showBg ? 'text-beco-primary' : 'text-white'
               : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
               }`}
@@ -119,7 +134,7 @@ export default function Header() {
             <Link
               key={link.path}
               to={link.path}
-              className={`font-raleway font-bold text-[13px] uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === link.path
+              className={`font-raleway font-bold text-[12px] xl:text-[13px] whitespace-nowrap uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === link.path
                 ? showBg ? 'text-beco-primary' : 'text-white'
                 : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
                 }`}
@@ -169,7 +184,7 @@ export default function Header() {
 
           <Link
             to="/involved"
-            className="hidden sm:inline-flex items-center justify-center bg-beco-primary text-white rounded-full px-6 py-2.5 font-raleway font-semibold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-beco-primary-light"
+            className="hidden sm:inline-flex shrink-0 whitespace-nowrap items-center justify-center bg-beco-primary text-white rounded-full px-5 xl:px-6 py-2.5 font-raleway font-semibold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-beco-primary-light"
           >
             {t('common.donate')}
           </Link>
@@ -190,7 +205,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden absolute top-[104px] inset-x-0 bg-white shadow-lg py-6 px-6 max-h-[70vh] overflow-auto">
+        <div className="lg:hidden absolute top-[88px] inset-x-0 bg-white shadow-lg py-6 px-6 max-h-[70vh] overflow-auto">
           <nav className="flex flex-col gap-4">
             {/* Accueil */}
             <Link

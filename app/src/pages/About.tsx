@@ -25,15 +25,16 @@ export default function About() {
   const objectives = t('about.objectives.list', { returnObjects: true }) as string[];
 
   // Build team members from DB or fallback
-  // `image` vide => photo générique (voir le rendu plus bas)
+  // `image` vide => photo générique. `imagePos` recadre quand le visage n'est pas
+  // au centre du cliché (le cadre est carré, la photo souvent en portrait).
   const fallbackMembers = [
-    { name: 'Dr SIMEU NOUTCHOM Alain', role: 'Directeur Exécutif', status: 'PhD', image: '' },
-    { name: 'BAPITE NLOH Gloria', role: 'Secrétaire Générale', status: 'Doctorante', image: '/assets/team/bapite-nloh-gloria.jpg' },
-    { name: 'TSAFACK TSAGUE Sharone', role: 'Vice-Secrétaire Générale', status: 'Doctorante', image: '' },
-    { name: 'NOUAKO EMENI Ange', role: 'Secrétaire Financière / Trésorière', status: 'Étudiante', image: '' },
-    { name: 'FOUOGHAP DIFOUO Carmel', role: 'Coordonnatrice des Projets', status: 'Doctorante', image: '' },
-    { name: 'TONFACK Robert', role: 'Coordonnateur Agriculture Durable', status: 'Doctorant', image: '' },
-    { name: 'MIMLBE Theophile / BOUTCHOUANG Will', role: 'Chargés de Communication / Webmasters', status: '', image: '' },
+    { name: 'Dr SIMEU NOUTCHOM Alain', role: 'Chief Executive Officer (CEO)', status: '', image: '/assets/team/dr-simeu-noutchom-alain.jpg', imagePos: '' },
+    { name: 'BAPITE NLOH Gloria', role: 'Secrétaire Générale', status: 'Doctorante', image: '/assets/team/bapite-nloh-gloria.jpg', imagePos: 'center 35%' },
+    { name: 'TSAFACK TSAGUE Sharone', role: 'Vice-Secrétaire Générale', status: 'Doctorante', image: '', imagePos: '' },
+    { name: 'NOUAKO EMENI Ange', role: 'Secrétaire Financière / Trésorière', status: 'Étudiante', image: '', imagePos: '' },
+    { name: 'FOUOGHAP DIFOUO Carmel', role: 'Coordonnatrice des Projets', status: 'Doctorante', image: '/assets/team/fouoghap-difouo-carmel.jpg', imagePos: 'center 72%' },
+    { name: 'TONFACK Robert', role: 'Coordonnateur Agriculture Durable', status: 'Doctorant', image: '', imagePos: '' },
+    { name: 'MIMLBE Theophile / BOUTCHOUANG Will', role: 'Chargés de Communication / Webmasters', status: '', image: '', imagePos: '' },
   ];
 
   const displayMembers = dbMembers && dbMembers.length > 0
@@ -43,6 +44,7 @@ export default function About() {
       status: m.status || undefined,
       description: m.description || undefined,
       image: m.image || undefined,
+      imagePos: '',
     }))
     : fallbackMembers;
 
@@ -54,6 +56,44 @@ export default function About() {
         path="/about"
       />
       <PageHeader title={t('about.pageTitle')} image="/assets/about-header.jpg" />
+
+      {/* Team */}
+      <section ref={teamRef} className="bg-beco-off-white py-[100px]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-center mb-14" data-reveal>
+            <p className="section-label">{t('about.teamSection.label')}</p>
+            <h2 className="section-title mt-4">
+              {t('about.teamSection.title')}
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-14">
+            {displayMembers.map((member, i) => (
+              <div key={i} data-reveal className="group text-center">
+                <div className="w-full max-w-[168px] aspect-square mx-auto rounded-full overflow-hidden mb-5 bg-beco-olive-light ring-1 ring-black/5 shadow-[0_4px_16px_rgba(0,0,0,0.07)] group-hover:shadow-[0_8px_24px_rgba(0,0,0,0.13)] transition-shadow duration-300">
+                  <img
+                    src={member.image || '/assets/team-header.jpg'}
+                    alt={member.name}
+                    loading="lazy"
+                    style={member.imagePos ? { objectPosition: member.imagePos } : undefined}
+                    className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-500"
+                  />
+                </div>
+                <h4 className="font-raleway font-semibold text-[15px] text-beco-dark">
+                  {member.name}
+                </h4>
+                <p className="font-raleway text-[12.5px] text-beco-olive-accent mt-1.5">
+                  {member.role}
+                </p>
+                {member.status && (
+                  <p className="font-raleway text-[11.5px] text-beco-dark/50 mt-1">
+                    {member.status}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Story */}
       <section ref={storyRef} className="bg-white py-[100px]">
@@ -132,42 +172,6 @@ export default function About() {
                 <p className="font-raleway text-[14px] text-beco-dark/80 leading-[1.6]">
                   {obj}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section ref={teamRef} className="bg-beco-off-white py-[100px]">
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="text-center mb-14" data-reveal>
-            <p className="section-label">{t('about.teamSection.label')}</p>
-            <h2 className="section-title mt-4">
-              {t('about.teamSection.title')}
-            </h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {displayMembers.map((member, i) => (
-              <div key={i} data-reveal className="text-center">
-                <div className="w-full aspect-square rounded-full overflow-hidden mb-5 bg-beco-olive-light">
-                  <img
-                    src={member.image || '/assets/team-header.jpg'}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h4 className="font-raleway font-semibold text-[16px] text-beco-dark">
-                  {member.name}
-                </h4>
-                <p className="font-raleway text-[13px] text-beco-olive-accent mt-1">
-                  {member.role}
-                </p>
-                {member.status && (
-                  <p className="font-raleway text-[12px] text-beco-dark/50 mt-1">
-                    {member.status}
-                  </p>
-                )}
               </div>
             ))}
           </div>
