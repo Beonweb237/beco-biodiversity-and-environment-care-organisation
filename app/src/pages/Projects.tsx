@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { trpc } from '@/providers/trpc';
 
@@ -37,6 +38,11 @@ export default function Projects() {
 
   return (
     <>
+      <SEOHead
+        title={t('projects.pageTitle')}
+        description="Découvrez les projets de conservation, recherche et développement durable menés par BECO au Cameroun."
+        path="/projects"
+      />
       <PageHeader title={t('projects.pageTitle')} image="/assets/projects-header.jpg" />
 
       {/* Categories */}

@@ -29,17 +29,17 @@ export default function NewsArticle() {
 
   const article = dbArticle
     ? {
-        slug: dbArticle.slug,
-        tag: dbArticle.tag,
-        date: dbArticle.date || '',
-        title: dbArticle.title,
-        excerpt: dbArticle.excerpt,
-        content: dbArticle.content || dbArticle.excerpt,
-        image: dbArticle.image || (config?.image || '/assets/news-1.jpg'),
-        category: dbArticle.category || '',
-      }
+      slug: dbArticle.slug,
+      tag: dbArticle.tag,
+      date: dbArticle.date || '',
+      title: dbArticle.title,
+      excerpt: dbArticle.excerpt,
+      content: dbArticle.content || dbArticle.excerpt,
+      image: dbArticle.image || (config?.image || '/assets/news-1.jpg'),
+      category: dbArticle.category || '',
+    }
     : translationArticle
-    ? {
+      ? {
         slug: slug || '',
         tag: translationArticle.tag,
         date: translationArticle.date,
@@ -49,7 +49,7 @@ export default function NewsArticle() {
         image: config?.image || `/assets/news-${(staticIndex % 6) + 1}.jpg`,
         category: translationArticle.category,
       }
-    : null;
+      : null;
 
   if (isLoading) {
     return (
@@ -63,9 +63,9 @@ export default function NewsArticle() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-playfair italic text-[32px] text-beco-dark">Article non trouvé</h1>
+          <h1 className="font-playfair italic text-[32px] text-beco-dark">{t('news.notFound')}</h1>
           <Link to="/news" className="btn-outline mt-6 inline-flex">
-            Retour aux actualités
+            {t('news.backToNews')}
           </Link>
         </div>
       </div>
@@ -86,7 +86,7 @@ export default function NewsArticle() {
             className="inline-flex items-center gap-2 font-raleway text-[13px] text-beco-primary hover:text-beco-primary-light transition-colors mb-8 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            Retour aux actualités
+            {t('news.backToNews')}
           </Link>
 
           {/* Meta */}

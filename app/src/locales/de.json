@@ -156,12 +156,36 @@
       "label": "UNSERE ARBEITSBEREICHE",
       "title": "Konkrete Projekte vor Ort",
       "items": [
-        { "title": "Biodiversität & Naturschutz", "count": "4 Projekte", "desc": "Bestandsaufnahmen, Artenmonitoring und Schutz der Biodiversität" },
-        { "title": "Wiederherstellung von Ökosystemen", "count": "2 Projekte", "desc": "Aufforstung und Sanierung degradierter Landschaften" },
-        { "title": "Klimawandel", "count": "2 Projekte", "desc": "Anpassung und Resilienz von Gemeinschaften an den Klimawandel" },
-        { "title": "Umweltbildung", "count": "1 Projekt", "desc": "Sensibilisierung und Ausbildung von Gemeinschaften" },
-        { "title": "One Health", "count": "1 Projekt", "desc": "Integration von menschlicher, tierischer und ökologischer Gesundheit" },
-        { "title": "Wissenschaftliche Forschung", "count": "3 Projekte", "desc": "Studien und Innovationen für den Naturschutz" }
+        {
+          "title": "Biodiversität & Naturschutz",
+          "count": "4 Projekte",
+          "desc": "Bestandsaufnahmen, Artenmonitoring und Schutz der Biodiversität"
+        },
+        {
+          "title": "Wiederherstellung von Ökosystemen",
+          "count": "2 Projekte",
+          "desc": "Aufforstung und Sanierung degradierter Landschaften"
+        },
+        {
+          "title": "Klimawandel",
+          "count": "2 Projekte",
+          "desc": "Anpassung und Resilienz von Gemeinschaften an den Klimawandel"
+        },
+        {
+          "title": "Umweltbildung",
+          "count": "1 Projekt",
+          "desc": "Sensibilisierung und Ausbildung von Gemeinschaften"
+        },
+        {
+          "title": "One Health",
+          "count": "1 Projekt",
+          "desc": "Integration von menschlicher, tierischer und ökologischer Gesundheit"
+        },
+        {
+          "title": "Wissenschaftliche Forschung",
+          "count": "3 Projekte",
+          "desc": "Studien und Innovationen für den Naturschutz"
+        }
       ]
     },
     "current": {
@@ -227,8 +251,15 @@
     "pageTitle": "Aktuelles",
     "label": "UNSERE NEUIGKEITEN",
     "title": "Bleiben Sie über unsere Arbeit informiert",
-    "filters": ["Alle", "Projekte", "Publikationen", "Veranstaltungen"],
+    "filters": [
+      "Alle",
+      "Projekte",
+      "Publikationen",
+      "Veranstaltungen"
+    ],
     "readMore": "Weiterlesen →",
+    "notFound": "Artikel nicht gefunden",
+    "backToNews": "Zurück zu den Nachrichten",
     "fullContent": [
       "BECO hat offiziell sein neues Schutzprogramm zum Schutz des Graupapageis (Psittacus erithacus) im Mpem & Djim Nationalpark gestartet. Dieses von der 1Wild Foundation unterstützte Projekt zielt darauf ab, den Rückgang dieser emblematischen Art zu stoppen, die durch illegalen Handel und Lebensraumverlust bedroht ist.\n\nDas Programm umfasst mehrere Komponenten: wissenschaftliche Überwachung der Populationen durch Zählungen und direkte Beobachtungen, Sensibilisierung der lokalen Gemeinschaften für die Bedeutung des Artenschutzes, Bekämpfung von Wilderei und illegalem Handel sowie Kartierung prioritärer Nistgebiete.\n\nDie BECO-Teams sind bereits vor Ort, um die ersten Maßnahmen dieses ehrgeizigen Programms umzusetzen, das sich über mehrere Jahre erstrecken wird.",
       "Die British Ecological Society (BES) hat BECOs Projekt mit dem Titel „Akustische Variabilität von Orthopteren als Reaktion auf Klimavariablen entlang der Kamerun-Vulkanlinie\" für eine Förderung ausgewählt. Diese Förderung ermöglicht es unserer Organisation, eine eingehende Studie über die Auswirkungen des Klimawandels auf Orthopteren-Gemeinschaften durchzuführen.\n\nDas Projekt wird automatisierte akustische Aufzeichnungsgeräte einsetzen, die an mehreren Standorten in verschiedenen Höhenlagen entlang der Kamerun-Vulkanlinie installiert werden. Die gesammelten Daten werden mit Klimavariablen korreliert, um die Auswirkungen des Klimawandels auf diese Insektenpopulationen zu modellieren, die hervorragende Bioindikatoren für die Gesundheit von Ökosystemen sind.\n\nDieses Projekt stellt einen bedeutenden Fortschritt für die akustische Ökologieforschung in Zentralafrika dar und stärkt BECOs Position als Akteur in der wissenschaftlichen Forschung für den Naturschutz.",
@@ -288,13 +319,48 @@
     "title": "Ein Team engagierter Forscher und Fachleute",
     "description": "BECO vereint Expertinnen und Experten aus den Bereichen Biologie, Ökologie, Agrarwissenschaft und Kommunikation, alle vereint durch die gleiche Leidenschaft für die Natur und den Wunsch, etwas zu bewegen. Unser Team verbindet wissenschaftliche Exzellenz mit lokaler Verankerung, um Lösungen zu entwickeln, die auf die afrikanischen Gegebenheiten zugeschnitten sind.",
     "members": [
-      { "name": "Dr SIMEU NOUTCHOM Alain", "role": "Geschäftsführer", "status": "PhD", "description": "Gründer von BECO und Forscher im Bereich Biodiversitätsschutz. Er koordiniert sämtliche Aktivitäten der Organisation und beaufsichtigt die Forschungsprogramme." },
-      { "name": "BAPITE NLOH Gloria", "role": "Generalsekretärin", "status": "Doktorandin", "description": "Verantwortlich für die Verwaltung und interne Koordination der Organisation. Sie sorgt für den reibungslosen operativen Ablauf von BECO." },
-      { "name": "TSAFACK TSAGUE Sharone", "role": "Vize-Generalsekretärin", "status": "Doktorandin", "description": "Unterstützt die administrative Koordination und nimmt an Forschungs- und Naturschutzprojekten vor Ort teil." },
-      { "name": "NOUAKO EMENI Ange", "role": "Finanzsekretärin / Schatzmeisterin", "status": "Studentin", "description": "Verwaltet die Finanzen der Organisation, die Buchhaltung und die Überwachung der Projektbudgets. Sie sorgt für die finanzielle Transparenz von BECO." },
-      { "name": "FOUOGHAP DIFOUO Carmel", "role": "Projektkoordinatorin", "status": "Doktorandin", "description": "Überwacht die Planung, Umsetzung und Evaluierung aller Naturschutz- und Forschungsprojekte." },
-      { "name": "TONFACK Robert", "role": "Koordinator für nachhaltige Landwirtschaft", "status": "Doktorand", "description": "Spezialist für Agrarökologie und nachhaltige Landwirtschaft. Er koordiniert die Programme zu nachhaltigen landwirtschaftlichen Praktiken und Ernährungssicherheit." },
-      { "name": "MIMLBE Theophile / BOUTCHOUANG Will", "role": "Kommunikationsbeauftragte / Webmaster", "status": "", "description": "Verantwortlich für die Kommunikationsstrategie, soziale Medien und die Online-Präsenz von BECO. Sie entwickeln die digitalen Werkzeuge der Organisation." }
+      {
+        "name": "Dr SIMEU NOUTCHOM Alain",
+        "role": "Geschäftsführer",
+        "status": "PhD",
+        "description": "Gründer von BECO und Forscher im Bereich Biodiversitätsschutz. Er koordiniert sämtliche Aktivitäten der Organisation und beaufsichtigt die Forschungsprogramme."
+      },
+      {
+        "name": "BAPITE NLOH Gloria",
+        "role": "Generalsekretärin",
+        "status": "Doktorandin",
+        "description": "Verantwortlich für die Verwaltung und interne Koordination der Organisation. Sie sorgt für den reibungslosen operativen Ablauf von BECO."
+      },
+      {
+        "name": "TSAFACK TSAGUE Sharone",
+        "role": "Vize-Generalsekretärin",
+        "status": "Doktorandin",
+        "description": "Unterstützt die administrative Koordination und nimmt an Forschungs- und Naturschutzprojekten vor Ort teil."
+      },
+      {
+        "name": "NOUAKO EMENI Ange",
+        "role": "Finanzsekretärin / Schatzmeisterin",
+        "status": "Studentin",
+        "description": "Verwaltet die Finanzen der Organisation, die Buchhaltung und die Überwachung der Projektbudgets. Sie sorgt für die finanzielle Transparenz von BECO."
+      },
+      {
+        "name": "FOUOGHAP DIFOUO Carmel",
+        "role": "Projektkoordinatorin",
+        "status": "Doktorandin",
+        "description": "Überwacht die Planung, Umsetzung und Evaluierung aller Naturschutz- und Forschungsprojekte."
+      },
+      {
+        "name": "TONFACK Robert",
+        "role": "Koordinator für nachhaltige Landwirtschaft",
+        "status": "Doktorand",
+        "description": "Spezialist für Agrarökologie und nachhaltige Landwirtschaft. Er koordiniert die Programme zu nachhaltigen landwirtschaftlichen Praktiken und Ernährungssicherheit."
+      },
+      {
+        "name": "MIMLBE Theophile / BOUTCHOUANG Will",
+        "role": "Kommunikationsbeauftragte / Webmaster",
+        "status": "",
+        "description": "Verantwortlich für die Kommunikationsstrategie, soziale Medien und die Online-Präsenz von BECO. Sie entwickeln die digitalen Werkzeuge der Organisation."
+      }
     ]
   },
   "involved": {
@@ -348,12 +414,30 @@
       "phonePlaceholder": "Telefon",
       "interestPlaceholder": "Interessensbereich",
       "interestOptions": [
-        { "value": "", "label": "Interessensbereich" },
-        { "value": "conservation", "label": "Naturschutz" },
-        { "value": "research", "label": "Forschung" },
-        { "value": "education", "label": "Bildung" },
-        { "value": "communication", "label": "Kommunikation" },
-        { "value": "administration", "label": "Verwaltung" }
+        {
+          "value": "",
+          "label": "Interessensbereich"
+        },
+        {
+          "value": "conservation",
+          "label": "Naturschutz"
+        },
+        {
+          "value": "research",
+          "label": "Forschung"
+        },
+        {
+          "value": "education",
+          "label": "Bildung"
+        },
+        {
+          "value": "communication",
+          "label": "Kommunikation"
+        },
+        {
+          "value": "administration",
+          "label": "Verwaltung"
+        }
       ],
       "motivationPlaceholder": "Erzählen Sie uns mehr über Ihre Motivation und Fähigkeiten...",
       "cta": "Bewerbung abschicken"
@@ -362,10 +446,24 @@
       "label": "SPENDEN",
       "title": "Unterstützen Sie unsere Naturschutzarbeit",
       "description": "Ihr Beitrag, egal in welcher Höhe, ermöglicht es uns, unsere Schutzprojekte durchzuführen, junge Forscher auszubilden und die afrikanische Biodiversität zu schützen. Jede Spende zählt.",
-      "amounts": ["10 000 FCFA", "25 000 FCFA", "50 000 FCFA", "Freier Betrag"],
-      "secure": { "title": "Sicher", "text": "Ihre Transaktionen sind sicher und Ihre Daten geschützt." },
-      "receipt": { "title": "Spendenquittung", "text": "Für jede Spende erhalten Sie eine Spendenquittung." },
-      "transparency": { "title": "Transparenz", "text": "Jahresbericht mit detaillierter Darstellung der Mittelverwendung." }
+      "amounts": [
+        "10 000 FCFA",
+        "25 000 FCFA",
+        "50 000 FCFA",
+        "Freier Betrag"
+      ],
+      "secure": {
+        "title": "Sicher",
+        "text": "Ihre Transaktionen sind sicher und Ihre Daten geschützt."
+      },
+      "receipt": {
+        "title": "Spendenquittung",
+        "text": "Für jede Spende erhalten Sie eine Spendenquittung."
+      },
+      "transparency": {
+        "title": "Transparenz",
+        "text": "Jahresbericht mit detaillierter Darstellung der Mittelverwendung."
+      }
     }
   },
   "contact": {
@@ -380,13 +478,34 @@
       "subjectPlaceholder": "Betreff",
       "requestTypePlaceholder": "Art der Anfrage",
       "requestOptions": [
-        { "value": "", "label": "Art der Anfrage" },
-        { "value": "info", "label": "Allgemeine Information" },
-        { "value": "partnership", "label": "Partnerschaft" },
-        { "value": "research", "label": "Forschungsprojekt" },
-        { "value": "volunteer", "label": "Ehrenamt" },
-        { "value": "donation", "label": "Spende" },
-        { "value": "other", "label": "Sonstiges" }
+        {
+          "value": "",
+          "label": "Art der Anfrage"
+        },
+        {
+          "value": "info",
+          "label": "Allgemeine Information"
+        },
+        {
+          "value": "partnership",
+          "label": "Partnerschaft"
+        },
+        {
+          "value": "research",
+          "label": "Forschungsprojekt"
+        },
+        {
+          "value": "volunteer",
+          "label": "Ehrenamt"
+        },
+        {
+          "value": "donation",
+          "label": "Spende"
+        },
+        {
+          "value": "other",
+          "label": "Sonstiges"
+        }
       ],
       "messagePlaceholder": "Ihre Nachricht...",
       "cta": "Nachricht senden"
@@ -398,7 +517,7 @@
       "phone": "TELEFON",
       "website": "WEBSITE",
       "addressValue": "Yaoundé, Region Centre, Kamerun",
-      "emailValue": "beco@afrotropical.org",
+      "emailValue": "administration@becocameroon.org",
       "phoneValue": "+237 6 57 90 27 84",
       "websiteValue": "www.beco-afrotropical.org",
       "socialMedia": "Soziale Medien",
@@ -467,20 +586,131 @@
     "q6": "Bietet BECO Praktika an?",
     "a6": "Ja, BECO nimmt im Rahmen seiner Programme regelmäßig Praktikanten auf. Kontaktieren Sie uns über unsere Kontaktseite.",
     "q7": "Wie kann ich BECO kontaktieren?",
-    "a7": "Sie können uns per E-Mail unter beco@afrotropical.org, telefonisch unter +237 6 57 90 27 84 oder über unser Online-Kontaktformular erreichen.",
+    "a7": "Sie können uns per E-Mail unter administration@becocameroon.org, telefonisch unter +237 6 57 90 27 84 oder über unser Online-Kontaktformular erreichen.",
     "q8": "Arbeitet BECO mit internationalen Partnern zusammen?",
     "a8": "Ja, BECO arbeitet mit mehreren Partnern zusammen, darunter die Rufford Foundation, 1Wild Foundation, MBZ Species Conservation Fund, IDEA WILD, die British Ecological Society und CDKN."
   },
+  "focusAreaPage": {
+    "backLink": "Zurück zu den Schwerpunktbereichen",
+    "keyActions": "Unsere Kernmaßnahmen",
+    "relatedProjects": "Verwandte Projekte",
+    "viewAllProjects": "Alle unsere Projekte in diesem Bereich anzeigen",
+    "supportProgram": "Dieses Programm unterstützen",
+    "actionsText": "BECO führt konkrete Maßnahmen in diesem Bereich durch Forschungsprojekte, Naturschutzprogramme und Gemeinschaftsinitiativen durch, die an die lokalen Gegebenheiten Kameruns und Zentralafrikas angepasst sind."
+  },
+  "focusAreaActions": {
+    "biodiversity": [
+      "Bestandsaufnahme und Überwachung bedrohter Arten",
+      "Schutz natürlicher Lebensräume",
+      "Sensibilisierung lokaler Gemeinschaften",
+      "Internationale wissenschaftliche Partnerschaften"
+    ],
+    "environment": [
+      "Nachhaltige Bewirtschaftung natürlicher Ressourcen",
+      "Reduzierung von Umweltverschmutzung und Abfällen",
+      "Förderung erneuerbarer Energien",
+      "Umweltverträglichkeitsprüfungen"
+    ],
+    "climate": [
+      "Minderung von Treibhausgasemissionen",
+      "Anpassung gefährdeter Gemeinschaften",
+      "Aufforstung und Kohlenstoffsenken",
+      "Aufklärung über Klimarisiken"
+    ],
+    "agriculture": [
+      "Förderung der Agrarökologie",
+      "Ausbildung in nachhaltigen Praktiken",
+      "Ernährungssicherheit für Gemeinschaften",
+      "Wiederherstellung degradierter Böden"
+    ],
+    "onehealth": [
+      "Überwachung neu auftretender Krankheiten",
+      "Zusammenhang Mensch-Tier-Umwelt-Gesundheit",
+      "Interdisziplinäre Forschung",
+      "Prävention von Zoonosen"
+    ],
+    "wildlife": [
+      "Schutz bedrohter Arten",
+      "Bekämpfung der Wilderei",
+      "Überwachung von Tierpopulationen",
+      "Erhaltung ökologischer Korridore"
+    ],
+    "forest": [
+      "Aufforstung degradierter Gebiete",
+      "Wiederherstellung von Waldökosystemen",
+      "Gemeinschaftliche Agroforstwirtschaft",
+      "Schutz heiliger Wälder"
+    ],
+    "education": [
+      "Umweltbildung für Jugendliche",
+      "Workshops in Schulen",
+      "Sensibilisierungskampagnen",
+      "Erstellung von Bildungsmaterialien"
+    ],
+    "community": [
+      "Stärkung lokaler Bevölkerungen",
+      "Entwicklung nachhaltiger Wertschöpfungsketten",
+      "Gemeinschaftliche Mikroprojekte",
+      "Kapazitätsaufbau"
+    ],
+    "research": [
+      "Angewandte wissenschaftliche Studien",
+      "Akustisches und technologisches Monitoring",
+      "Veröffentlichung von Daten und Ergebnissen",
+      "Innovation für den Naturschutz"
+    ]
+  },
+  "volunteerForm": {
+    "successTitle": "Bewerbung erfolgreich gesendet!",
+    "successMessage": "Wir werden uns so schnell wie möglich bei Ihnen melden.",
+    "sendAnother": "Weitere Bewerbung senden",
+    "submitting": "Wird gesendet...",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "newsletterForm": {
+    "subscribeAgain": "Erneut abonnieren",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
   "focusAreas": [
-    { "title": "Erhalt der Biodiversität", "desc": "Bestandsaufnahmen, Überwachung und Schutz bedrohter Arten durch innovative wissenschaftliche Ansätze." },
-    { "title": "Umweltschutz", "desc": "Bewahrung von Ökosystemen und nachhaltige Bewirtschaftung natürlicher Ressourcen." },
-    { "title": "Klimawandel", "desc": "Minderung und Anpassung an den Klimawandel in gefährdeten Gemeinschaften." },
-    { "title": "Nachhaltige Landwirtschaft", "desc": "Förderung umweltfreundlicher landwirtschaftlicher Praktiken und Agrarökologie." },
-    { "title": "One Health", "desc": "Integration von menschlicher, tierischer und ökologischer Gesundheit für nachhaltige Entwicklung." },
-    { "title": "Wildtierschutz", "desc": "Schutz wildlebender Arten und ihrer Lebensräume vor Wilderei und Lebensraumverlust." },
-    { "title": "Waldrestaurierung", "desc": "Aufforstung und Sanierung degradierter Landschaften zur Wiederherstellung der Biodiversität." },
-    { "title": "Umweltbildung", "desc": "Sensibilisierung und Ausbildung von Gemeinschaften, Schulen und Jugendlichen im Naturschutz." },
-    { "title": "Gemeinschaftsentwicklung", "desc": "Begleitung lokaler Bevölkerungen hin zu nachhaltigen und eigenständigen Lebensweisen." },
-    { "title": "Forschung und Innovation", "desc": "Wissenschaftliche Studien und Entwicklung von Technologien für den Naturschutz." }
+    {
+      "title": "Erhalt der Biodiversität",
+      "desc": "Bestandsaufnahmen, Überwachung und Schutz bedrohter Arten durch innovative wissenschaftliche Ansätze."
+    },
+    {
+      "title": "Umweltschutz",
+      "desc": "Bewahrung von Ökosystemen und nachhaltige Bewirtschaftung natürlicher Ressourcen."
+    },
+    {
+      "title": "Klimawandel",
+      "desc": "Minderung und Anpassung an den Klimawandel in gefährdeten Gemeinschaften."
+    },
+    {
+      "title": "Nachhaltige Landwirtschaft",
+      "desc": "Förderung umweltfreundlicher landwirtschaftlicher Praktiken und Agrarökologie."
+    },
+    {
+      "title": "One Health",
+      "desc": "Integration von menschlicher, tierischer und ökologischer Gesundheit für nachhaltige Entwicklung."
+    },
+    {
+      "title": "Wildtierschutz",
+      "desc": "Schutz wildlebender Arten und ihrer Lebensräume vor Wilderei und Lebensraumverlust."
+    },
+    {
+      "title": "Waldrestaurierung",
+      "desc": "Aufforstung und Sanierung degradierter Landschaften zur Wiederherstellung der Biodiversität."
+    },
+    {
+      "title": "Umweltbildung",
+      "desc": "Sensibilisierung und Ausbildung von Gemeinschaften, Schulen und Jugendlichen im Naturschutz."
+    },
+    {
+      "title": "Gemeinschaftsentwicklung",
+      "desc": "Begleitung lokaler Bevölkerungen hin zu nachhaltigen und eigenständigen Lebensweisen."
+    },
+    {
+      "title": "Forschung und Innovation",
+      "desc": "Wissenschaftliche Studien und Entwicklung von Technologien für den Naturschutz."
+    }
   ]
 }

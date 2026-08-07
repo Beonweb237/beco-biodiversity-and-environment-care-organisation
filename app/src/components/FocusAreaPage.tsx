@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, CheckCircle, Leaf } from 'lucide-react';
 import PageHeader from './PageHeader';
+import SEOHead from './SEOHead';
 import type { FocusAreaConfig } from '../lib/focusAreaData';
-import { actionKeys } from '../lib/focusAreaData';
 
 interface FocusAreaPageProps {
   config: FocusAreaConfig;
@@ -14,10 +14,17 @@ export default function FocusAreaPage({ config }: FocusAreaPageProps) {
   const { t } = useTranslation();
   const areas = t('focusAreas', { returnObjects: true }) as Array<{ title: string; desc: string }>;
   const area = areas[config.index];
-  const actions = actionKeys.find((a) => a.key === config.slug)?.actions || [];
+  const allActions = t('focusAreaActions', { returnObjects: true }) as Record<string, string[]>;
+  const actions = allActions[config.slug] || [];
 
   return (
     <>
+      <SEOHead
+        title={area?.title || ''}
+        description={area?.desc || ''}
+        path={`/focus/${config.slug}`}
+        image={config.image}
+      />
       <PageHeader title={area?.title || ''} image={config.image} />
 
       <section className="bg-white py-[100px]">

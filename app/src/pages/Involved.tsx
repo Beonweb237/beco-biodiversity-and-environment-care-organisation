@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import PageHeader from '../components/PageHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { User, Building, Award, Check, Shield, FileText, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { trpc } from '@/providers/trpc';
+import SEOHead from '../components/SEOHead';
 
 export default function Involved() {
   const { t } = useTranslation();
@@ -21,6 +22,17 @@ export default function Involved() {
   const [volError, setVolError] = useState('');
 
   const submitVolunteer = trpc.admin.public.submitVolunteer.useMutation();
+
+  // Donate handler
+  const [selectedAmount, setSelectedAmount] = useState<string | null>(null);
+  const handleDonate = useCallback((amount: string) => {
+    setSelectedAmount(amount);
+    // TODO: Intégrer un système de paiement (Orange Money, MTN MoMo, PayPal)
+    // Pour l'instant, ouvre un email pré-rempli
+    const subject = encodeURIComponent(`Don BECO — ${amount}`);
+    const body = encodeURIComponent(`Bonjour, je souhaite faire un don de ${amount} à BECO. Merci de me contacter pour les modalités de paiement.`);
+    window.open(`mailto:beco@afrotropical.org?subject=${subject}&body=${body}`, '_blank');
+  }, []);
 
   const memberships = [
     {
@@ -49,6 +61,11 @@ export default function Involved() {
 
   return (
     <>
+      <SEOHead
+        title={t('involved.pageTitle')}
+        description={t('involved.donate.description')}
+        path="/involved"
+      />
       <PageHeader title={t('involved.pageTitle')} image="/assets/involved-header.jpg" />
 
       {/* Membership */}
@@ -83,7 +100,12 @@ export default function Involved() {
                     </li>
                   ))}
                 </ul>
-                <button className="btn-outline w-full mt-6">{t('involved.membership.cta')}</button>
+                <button
+                  className="btn-outline w-full mt-6"
+                  onClick={() => handleDonate('Adhésion')}
+                >
+                  {t('involved.membership.cta')}
+                </button>
               </div>
             ))}
           </div>
@@ -122,16 +144,16 @@ export default function Involved() {
                     <Check className="w-7 h-7 text-beco-primary" />
                   </div>
                   <p className="font-raleway font-semibold text-[15px] text-beco-dark">
-                    Candidature envoyée avec succès !
+                    {t('volunteerForm.successTitle')}
                   </p>
                   <p className="font-raleway text-[13px] text-beco-dark/60 mt-2">
-                    Nous vous recontacterons dans les plus brefs délais.
+                    {t('volunteerForm.successMessage')}
                   </p>
                   <button
                     onClick={() => { setVolSubmitted(false); setVolName(''); setVolEmail(''); setVolPhone(''); setVolInterest(''); setVolMotivation(''); }}
                     className="font-raleway text-[13px] text-beco-primary mt-4 hover:underline"
                   >
-                    Envoyer une autre candidature
+                    {t('volunteerForm.sendAnother')}
                   </button>
                 </div>
               ) : (
@@ -148,7 +170,7 @@ export default function Involved() {
                     });
                     setVolSubmitted(true);
                   } catch {
-                    setVolError('Une erreur est survenue. Veuillez réessayer.');
+                    setVolError(t('volunteerForm.error'));
                   }
                 }} className="flex flex-col gap-4">
                   <input
@@ -198,7 +220,7 @@ export default function Involved() {
                     disabled={submitVolunteer.isPending}
                     className="btn-primary w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {submitVolunteer.isPending ? 'Envoi en cours...' : t('involved.volunteer.cta')}
+                    {submitVolunteer.isPending ? t('volunteerForm.submitting') : t('involved.volunteer.cta')}
                   </button>
                 </form>
               )}
@@ -224,7 +246,11 @@ export default function Involved() {
             {donateAmounts?.map((amount, i) => (
               <button
                 key={i}
-                className="py-5 px-6 border-2 border-beco-primary rounded-xl font-raleway font-semibold text-[16px] text-beco-primary bg-transparent hover:bg-beco-primary hover:text-white transition-all duration-300 text-center"
+                onClick={() => handleDonate(amount)}
+                className={`py-5 px-6 border-2 rounded-xl font-raleway font-semibold text-[16px] transition-all duration-300 text-center ${selectedAmount === amount
+                    ? 'bg-beco-primary text-white border-beco-primary'
+                    : 'text-beco-primary border-beco-primary bg-transparent hover:bg-beco-primary hover:text-white'
+                  }`}
               >
                 {amount}
               </button>

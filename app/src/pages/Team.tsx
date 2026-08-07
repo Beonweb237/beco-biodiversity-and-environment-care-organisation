@@ -1,6 +1,7 @@
 import PageHeader from '../components/PageHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Linkedin, Mail } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 import { useTranslation } from 'react-i18next';
 import { trpc } from '@/providers/trpc';
 
@@ -26,28 +27,33 @@ export default function Team() {
   // Use DB members if available, fall back to translation data
   const displayMembers = dbMembers && dbMembers.length > 0
     ? dbMembers.map((m) => ({
-        name: m.name,
-        role: m.role,
-        status: m.status || undefined,
-        description: m.description || '',
-        image: m.image || undefined,
-        linkedin: m.linkedin || undefined,
-        email: m.email || undefined,
-      }))
+      name: m.name,
+      role: m.role,
+      status: m.status || undefined,
+      description: m.description || '',
+      image: m.image || undefined,
+      linkedin: m.linkedin || undefined,
+      email: m.email || undefined,
+    }))
     : Array.isArray(translationMembers)
       ? translationMembers.map((m) => ({
-          name: m.name,
-          role: m.role,
-          status: m.status,
-          description: m.description || '',
-          image: m.image,
-          linkedin: undefined,
-          email: undefined,
-        }))
+        name: m.name,
+        role: m.role,
+        status: m.status,
+        description: m.description || '',
+        image: m.image,
+        linkedin: undefined,
+        email: undefined,
+      }))
       : [];
 
   return (
     <>
+      <SEOHead
+        title={t('team.pageTitle')}
+        description="Rencontrez l'équipe de BECO : chercheurs, experts et passionnés dédiés à la conservation de la biodiversité au Cameroun."
+        path="/team"
+      />
       <PageHeader title={t('team.pageTitle')} image="/assets/team-header.jpg" />
 
       {/* Description */}

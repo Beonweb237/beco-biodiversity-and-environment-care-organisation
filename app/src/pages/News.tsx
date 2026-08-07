@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../components/PageHeader';
+import SEOHead from '../components/SEOHead';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useTranslation } from 'react-i18next';
 import { trpc } from '@/providers/trpc';
@@ -84,6 +85,11 @@ export default function News() {
 
   return (
     <>
+      <SEOHead
+        title={t('news.pageTitle')}
+        description="Restez informés des actualités, projets et événements de BECO pour la conservation de la biodiversité."
+        path="/news"
+      />
       <PageHeader title={t('news.pageTitle')} image="/assets/news-header.jpg" />
 
       <section ref={ref} className="bg-white py-[100px]">
@@ -101,11 +107,10 @@ export default function News() {
               <button
                 key={i}
                 onClick={() => handleFilterChange(i)}
-                className={`font-raleway font-medium text-[12px] uppercase px-5 py-2 rounded-full transition-all duration-300 ${
-                  activeFilter === i
+                className={`font-raleway font-medium text-[12px] uppercase px-5 py-2 rounded-full transition-all duration-300 ${activeFilter === i
                     ? 'bg-beco-primary text-white'
                     : 'bg-transparent border border-beco-primary text-beco-primary hover:bg-beco-primary hover:text-white'
-                }`}
+                  }`}
               >
                 {f}
               </button>
@@ -167,11 +172,10 @@ export default function News() {
                   <button
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
-                    className={`w-10 h-10 rounded-full border flex items-center justify-center font-raleway text-[13px] transition-colors duration-200 ${
-                      currentPage === 1
+                    className={`w-10 h-10 rounded-full border flex items-center justify-center font-raleway text-[13px] transition-colors duration-200 ${currentPage === 1
                         ? 'border-gray-200 text-gray-300 cursor-not-allowed'
                         : 'border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
-                    }`}
+                      }`}
                   >
                     &larr;
                   </button>
@@ -179,11 +183,10 @@ export default function News() {
                     <button
                       key={i}
                       onClick={() => setCurrentPage(i + 1)}
-                      className={`w-10 h-10 rounded-full flex items-center justify-center font-raleway font-medium text-[13px] transition-colors duration-200 ${
-                        currentPage === i + 1
+                      className={`w-10 h-10 rounded-full flex items-center justify-center font-raleway font-medium text-[13px] transition-colors duration-200 ${currentPage === i + 1
                           ? 'bg-beco-primary text-white'
                           : 'border border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
-                      }`}
+                        }`}
                     >
                       {i + 1}
                     </button>
@@ -191,11 +194,10 @@ export default function News() {
                   <button
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
-                    className={`w-10 h-10 rounded-full border flex items-center justify-center font-raleway text-[13px] transition-colors duration-200 ${
-                      currentPage === totalPages
+                    className={`w-10 h-10 rounded-full border flex items-center justify-center font-raleway text-[13px] transition-colors duration-200 ${currentPage === totalPages
                         ? 'border-gray-200 text-gray-300 cursor-not-allowed'
                         : 'border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
-                    }`}
+                      }`}
                   >
                     &rarr;
                   </button>

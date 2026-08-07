@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { trpc } from '@/providers/trpc';
 
 const areaSlugs = [
-  'biodiversite', 'environnement', 'climat', 'agriculture', 'one-health',
-  'faune', 'forets', 'education', 'communaute', 'recherche'
+  'biodiversity', 'environment', 'climate', 'agriculture', 'onehealth',
+  'wildlife', 'forest', 'education', 'community', 'research'
 ];
 
 export default function FocusAreas() {
@@ -19,9 +19,9 @@ export default function FocusAreas() {
 
   const areas = dbAreas && dbAreas.length > 0
     ? dbAreas.map((a) => ({
-        title: a.title,
-        desc: a.description,
-      }))
+      title: a.title,
+      desc: a.description,
+    }))
     : fallbackAreas;
 
   return (

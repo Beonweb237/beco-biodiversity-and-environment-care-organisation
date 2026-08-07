@@ -47,7 +47,7 @@ export default function Privacy() {
               <p>
                 {t('privacy.rightsText')}{' '}
                 Pour exercer ces droits, contactez-nous à :{' '}
-                <a href="mailto:beco@afrotropical.org" className="text-beco-primary hover:underline">beco@afrotropical.org</a>.
+                <a href="mailto:administration@becocameroon.org" className="text-beco-primary hover:underline">administration@becocameroon.org</a>.
               </p>
             </InfoBlock>
 

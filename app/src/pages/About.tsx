@@ -3,6 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Target, Eye, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { trpc } from '@/providers/trpc';
+import SEOHead from '../components/SEOHead';
 
 export default function About() {
   const { t } = useTranslation();
@@ -36,16 +37,21 @@ export default function About() {
 
   const displayMembers = dbMembers && dbMembers.length > 0
     ? dbMembers.map((m) => ({
-        name: m.name,
-        role: m.role,
-        status: m.status || undefined,
-        description: m.description || undefined,
-        image: m.image || undefined,
-      }))
+      name: m.name,
+      role: m.role,
+      status: m.status || undefined,
+      description: m.description || undefined,
+      image: m.image || undefined,
+    }))
     : fallbackMembers;
 
   return (
     <>
+      <SEOHead
+        title={t('about.pageTitle')}
+        description="Découvrez l'histoire, la mission et l'équipe de BECO, organisation dédiée à la conservation de la biodiversité au Cameroun."
+        path="/about"
+      />
       <PageHeader title={t('about.pageTitle')} image="/assets/about-header.jpg" />
 
       {/* Story */}

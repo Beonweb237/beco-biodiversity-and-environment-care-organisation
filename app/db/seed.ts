@@ -185,7 +185,7 @@ async function seed() {
     await db.insert(siteSettings).values([
       { key: "site_name", value: "BECO" },
       { key: "site_description", value: "Biodiversity and Environment Care Organisation" },
-      { key: "contact_email", value: "beco@afrotropical.org" },
+      { key: "contact_email", value: "administration@becocameroon.org" },
       { key: "contact_phone", value: "+237 6 57 90 27 84" },
       { key: "contact_address", value: "Yaoundé, Région du Centre, Cameroun" },
       { key: "facebook_url", value: "" },

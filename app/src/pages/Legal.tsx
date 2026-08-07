@@ -27,7 +27,7 @@ export default function Legal() {
                 {t('legal.identificationText')}
               </p>
               <p className="mt-2">
-                Email : <a href="mailto:beco@afrotropical.org" className="text-beco-primary hover:underline">beco@afrotropical.org</a><br />
+                Email : <a href="mailto:administration@becocameroon.org" className="text-beco-primary hover:underline">administration@becocameroon.org</a><br />
                 Téléphone : <a href="tel:+237657902784" className="text-beco-primary hover:underline">+237 6 57 90 27 84</a>
               </p>
             </InfoBlock>
@@ -48,7 +48,7 @@ export default function Legal() {
               <p>
                 {t('legal.dataProtectionText')}{' '}
                 Pour exercer ce droit, veuillez nous contacter à :{' '}
-                <a href="mailto:beco@afrotropical.org" className="text-beco-primary hover:underline">beco@afrotropical.org</a>.
+                <a href="mailto:administration@becocameroon.org" className="text-beco-primary hover:underline">administration@becocameroon.org</a>.
               </p>
             </InfoBlock>
 

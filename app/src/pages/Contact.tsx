@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import PageHeader from '../components/PageHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import SEOHead from '../components/SEOHead';
 import { MapPin, Mail, Phone, Globe, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { trpc } from '@/providers/trpc';
@@ -74,6 +75,11 @@ export default function Contact() {
 
   return (
     <>
+      <SEOHead
+        title={t('contact.pageTitle')}
+        description="Contactez BECO pour toute question, partenariat ou collaboration. Basé à Yaoundé, Cameroun."
+        path="/contact"
+      />
       <PageHeader title={t('contact.pageTitle')} image="/assets/contact-header.jpg" />
 
       <section ref={ref} className="bg-white py-[100px]">

@@ -20,7 +20,7 @@ export default function NewsletterCTA() {
       setSubmitted(true);
       setEmail('');
     } catch {
-      setError('Une erreur est survenue. Veuillez réessayer.');
+      setError(t('newsletterForm.error'));
     }
   };
 
@@ -54,7 +54,7 @@ export default function NewsletterCTA() {
                 onClick={() => setSubmitted(false)}
                 className="font-raleway text-[13px] text-white/70 hover:text-white mt-2 underline"
               >
-                S'inscrire à nouveau
+                {t('newsletterForm.subscribeAgain')}
               </button>
             </div>
           ) : (

@@ -55,17 +55,6 @@ export default function Footer() {
                   }}
                 />
               </div>
-              <div className="leading-tight">
-                <p className="font-playfair font-bold text-[14px] text-white leading-snug">
-                  Biodiversity and Environment
-                </p>
-                <p className="font-raleway text-[9px] uppercase tracking-[0.2em] text-[#C9B79C]">
-                  Care Organisation
-                </p>
-                <p className="font-playfair font-bold text-[18px] text-white tracking-wider mt-0.5">
-                  — BECO —
-                </p>
-              </div>
             </div>
             <p className="font-raleway text-[13px] text-white/70 leading-[1.7]">
               {t('footer.description')}
@@ -108,10 +97,10 @@ export default function Footer() {
               {t('footer.address')}
             </p>
             <a
-              href="mailto:beco@afrotropical.org"
+              href="mailto:administration@becocameroon.org"
               className="block font-raleway text-[13px] text-white/70 hover:text-white transition-colors duration-300 mb-1"
             >
-              beco@afrotropical.org
+              administration@becocameroon.org
             </a>
             <a
               href="tel:+237657902784"

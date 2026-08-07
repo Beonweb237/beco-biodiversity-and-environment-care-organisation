@@ -156,12 +156,36 @@
       "label": "OUR AREAS OF ACTION",
       "title": "Concrete projects on the ground",
       "items": [
-        { "title": "Biodiversity & Conservation", "count": "4 projects", "desc": "Inventories, species monitoring and biodiversity protection" },
-        { "title": "Ecosystem restoration", "count": "2 projects", "desc": "Reforestation and rehabilitation of degraded landscapes" },
-        { "title": "Climate change", "count": "2 projects", "desc": "Community adaptation and resilience to climate" },
-        { "title": "Environmental education", "count": "1 project", "desc": "Community awareness and training" },
-        { "title": "One Health", "count": "1 project", "desc": "Integrating human, animal and environmental health" },
-        { "title": "Scientific research", "count": "3 projects", "desc": "Studies and innovation for conservation" }
+        {
+          "title": "Biodiversity & Conservation",
+          "count": "4 projects",
+          "desc": "Inventories, species monitoring and biodiversity protection"
+        },
+        {
+          "title": "Ecosystem restoration",
+          "count": "2 projects",
+          "desc": "Reforestation and rehabilitation of degraded landscapes"
+        },
+        {
+          "title": "Climate change",
+          "count": "2 projects",
+          "desc": "Community adaptation and resilience to climate"
+        },
+        {
+          "title": "Environmental education",
+          "count": "1 project",
+          "desc": "Community awareness and training"
+        },
+        {
+          "title": "One Health",
+          "count": "1 project",
+          "desc": "Integrating human, animal and environmental health"
+        },
+        {
+          "title": "Scientific research",
+          "count": "3 projects",
+          "desc": "Studies and innovation for conservation"
+        }
       ]
     },
     "current": {
@@ -227,8 +251,15 @@
     "pageTitle": "News",
     "label": "OUR NEWS",
     "title": "Stay informed about our work",
-    "filters": ["All", "Projects", "Publications", "Events"],
+    "filters": [
+      "All",
+      "Projects",
+      "Publications",
+      "Events"
+    ],
     "readMore": "Read more →",
+    "notFound": "Article not found",
+    "backToNews": "Back to news",
     "fullContent": [
       "BECO has officially launched its new conservation programme dedicated to protecting African grey parrots (Psittacus erithacus) in Mpem & Djim National Park. This project, supported by the 1Wild Foundation, aims to halt the decline of this emblematic species threatened by illegal trade and habitat loss.\n\nThe programme includes several components: scientific monitoring of populations through counts and direct observations, raising awareness among local communities about the importance of protecting the species, combating poaching and illegal trafficking, as well as mapping priority nesting areas.\n\nBECO teams are already in the field deploying the first actions of this ambitious programme that will span several years.",
       "The British Ecological Society (BES) has selected BECO's project entitled \"Acoustic variability of Orthoptera in response to climate variables along the Cameroon Volcanic Line\" for funding. This grant will enable our organisation to conduct an in-depth study on the impact of climate change on Orthoptera communities.\n\nThe project will use automated acoustic recorders deployed at several sites at different altitudes along the Cameroon Volcanic Line. The collected data will be correlated with climate variables to model the impacts of climate change on these insect populations, which are excellent bioindicators of ecosystem health.\n\nThis project represents a significant advance for acoustic ecology research in Central Africa and strengthens BECO's position as a player in scientific research for conservation.",
@@ -288,13 +319,48 @@
     "title": "A team of dedicated researchers and professionals",
     "description": "BECO brings together experts in biology, ecology, agronomy and communication, all united by the same passion for nature and the desire to make a difference. Our team combines scientific expertise with local roots to develop solutions adapted to African realities.",
     "members": [
-      { "name": "Dr SIMEU NOUTCHOM Alain", "role": "Executive Director", "status": "PhD", "description": "Founder of BECO and researcher in biodiversity conservation. He coordinates all the organisation's activities and oversees research programmes." },
-      { "name": "BAPITE NLOH Gloria", "role": "Secretary General", "status": "PhD Candidate", "description": "Responsible for administration and internal coordination of the organisation. She ensures the smooth operational functioning of BECO." },
-      { "name": "TSAFACK TSAGUE Sharone", "role": "Vice Secretary General", "status": "PhD Candidate", "description": "Supports administrative coordination and participates in research and conservation projects in the field." },
-      { "name": "NOUAKO EMENI Ange", "role": "Financial Secretary / Treasurer", "status": "Student", "description": "Manages the organisation's finances, accounting and project budget monitoring. She ensures BECO's financial transparency." },
-      { "name": "FOUOGHAP DIFOUO Carmel", "role": "Project Coordinator", "status": "PhD Candidate", "description": "Oversees the planning, implementation and monitoring-evaluation of all conservation and research projects." },
-      { "name": "TONFACK Robert", "role": "Sustainable Agriculture Coordinator", "status": "PhD Candidate", "description": "Specialist in agroecology and sustainable agriculture. He coordinates programmes related to sustainable agricultural practices and food security." },
-      { "name": "MIMLBE Theophile / BOUTCHOUANG Will", "role": "Communications Officers / Webmasters", "status": "", "description": "Responsible for the communication strategy, social media and online presence of BECO. They develop the organisation's digital tools." }
+      {
+        "name": "Dr SIMEU NOUTCHOM Alain",
+        "role": "Executive Director",
+        "status": "PhD",
+        "description": "Founder of BECO and researcher in biodiversity conservation. He coordinates all the organisation's activities and oversees research programmes."
+      },
+      {
+        "name": "BAPITE NLOH Gloria",
+        "role": "Secretary General",
+        "status": "PhD Candidate",
+        "description": "Responsible for administration and internal coordination of the organisation. She ensures the smooth operational functioning of BECO."
+      },
+      {
+        "name": "TSAFACK TSAGUE Sharone",
+        "role": "Vice Secretary General",
+        "status": "PhD Candidate",
+        "description": "Supports administrative coordination and participates in research and conservation projects in the field."
+      },
+      {
+        "name": "NOUAKO EMENI Ange",
+        "role": "Financial Secretary / Treasurer",
+        "status": "Student",
+        "description": "Manages the organisation's finances, accounting and project budget monitoring. She ensures BECO's financial transparency."
+      },
+      {
+        "name": "FOUOGHAP DIFOUO Carmel",
+        "role": "Project Coordinator",
+        "status": "PhD Candidate",
+        "description": "Oversees the planning, implementation and monitoring-evaluation of all conservation and research projects."
+      },
+      {
+        "name": "TONFACK Robert",
+        "role": "Sustainable Agriculture Coordinator",
+        "status": "PhD Candidate",
+        "description": "Specialist in agroecology and sustainable agriculture. He coordinates programmes related to sustainable agricultural practices and food security."
+      },
+      {
+        "name": "MIMLBE Theophile / BOUTCHOUANG Will",
+        "role": "Communications Officers / Webmasters",
+        "status": "",
+        "description": "Responsible for the communication strategy, social media and online presence of BECO. They develop the organisation's digital tools."
+      }
     ]
   },
   "involved": {
@@ -348,12 +414,30 @@
       "phonePlaceholder": "Phone number",
       "interestPlaceholder": "Area of interest",
       "interestOptions": [
-        { "value": "", "label": "Area of interest" },
-        { "value": "conservation", "label": "Conservation" },
-        { "value": "research", "label": "Research" },
-        { "value": "education", "label": "Education" },
-        { "value": "communication", "label": "Communication" },
-        { "value": "administration", "label": "Administration" }
+        {
+          "value": "",
+          "label": "Area of interest"
+        },
+        {
+          "value": "conservation",
+          "label": "Conservation"
+        },
+        {
+          "value": "research",
+          "label": "Research"
+        },
+        {
+          "value": "education",
+          "label": "Education"
+        },
+        {
+          "value": "communication",
+          "label": "Communication"
+        },
+        {
+          "value": "administration",
+          "label": "Administration"
+        }
       ],
       "motivationPlaceholder": "Tell us more about your motivation and skills...",
       "cta": "Submit my application"
@@ -362,10 +446,24 @@
       "label": "MAKE A DONATION",
       "title": "Support our conservation work",
       "description": "Your contribution, whatever its size, enables us to carry out our conservation projects, train young researchers and protect African biodiversity. Every donation counts.",
-      "amounts": ["10,000 FCFA", "25,000 FCFA", "50,000 FCFA", "Custom amount"],
-      "secure": { "title": "Secure", "text": "Your transactions are secure and your data is protected." },
-      "receipt": { "title": "Tax receipt", "text": "A tax receipt will be issued for each donation." },
-      "transparency": { "title": "Transparency", "text": "Annual report detailing the use of funds." }
+      "amounts": [
+        "10,000 FCFA",
+        "25,000 FCFA",
+        "50,000 FCFA",
+        "Custom amount"
+      ],
+      "secure": {
+        "title": "Secure",
+        "text": "Your transactions are secure and your data is protected."
+      },
+      "receipt": {
+        "title": "Tax receipt",
+        "text": "A tax receipt will be issued for each donation."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "text": "Annual report detailing the use of funds."
+      }
     }
   },
   "contact": {
@@ -380,13 +478,34 @@
       "subjectPlaceholder": "Subject",
       "requestTypePlaceholder": "Request type",
       "requestOptions": [
-        { "value": "", "label": "Request type" },
-        { "value": "info", "label": "General information" },
-        { "value": "partnership", "label": "Partnership" },
-        { "value": "research", "label": "Research project" },
-        { "value": "volunteer", "label": "Volunteering" },
-        { "value": "donation", "label": "Donation" },
-        { "value": "other", "label": "Other" }
+        {
+          "value": "",
+          "label": "Request type"
+        },
+        {
+          "value": "info",
+          "label": "General information"
+        },
+        {
+          "value": "partnership",
+          "label": "Partnership"
+        },
+        {
+          "value": "research",
+          "label": "Research project"
+        },
+        {
+          "value": "volunteer",
+          "label": "Volunteering"
+        },
+        {
+          "value": "donation",
+          "label": "Donation"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
       ],
       "messagePlaceholder": "Your message...",
       "cta": "Send message"
@@ -398,7 +517,7 @@
       "phone": "PHONE",
       "website": "WEBSITE",
       "addressValue": "Yaoundé, Central Region, Cameroon",
-      "emailValue": "beco@afrotropical.org",
+      "emailValue": "administration@becocameroon.org",
       "phoneValue": "+237 6 57 90 27 84",
       "websiteValue": "www.beco-afrotropical.org",
       "socialMedia": "Social media",
@@ -467,20 +586,131 @@
     "q6": "Does BECO offer internships?",
     "a6": "Yes, BECO regularly welcomes interns as part of its programmes. Contact us via our Contact page.",
     "q7": "How to contact BECO?",
-    "a7": "You can contact us by email at beco@afrotropical.org, by phone at +237 6 57 90 27 84, or via our online contact form.",
+    "a7": "You can contact us by email at administration@becocameroon.org, by phone at +237 6 57 90 27 84, or via our online contact form.",
     "q8": "Does BECO work with international partners?",
     "a8": "Yes, BECO collaborates with several partners including the Rufford Foundation, 1Wild Foundation, MBZ Species Conservation Fund, IDEA WILD, the British Ecological Society and CDKN."
   },
+  "focusAreaPage": {
+    "backLink": "Back to focus areas",
+    "keyActions": "Our key actions",
+    "relatedProjects": "Related projects",
+    "viewAllProjects": "View all our projects in this area",
+    "supportProgram": "Support this program",
+    "actionsText": "BECO carries out concrete actions in this area through research projects, conservation programs and community initiatives adapted to the local realities of Cameroon and Central Africa."
+  },
+  "focusAreaActions": {
+    "biodiversity": [
+      "Inventories and monitoring of threatened species",
+      "Protection of natural habitats",
+      "Awareness-raising among local communities",
+      "International scientific partnerships"
+    ],
+    "environment": [
+      "Sustainable management of natural resources",
+      "Reduction of pollution and waste",
+      "Promotion of renewable energies",
+      "Environmental impact assessments"
+    ],
+    "climate": [
+      "Mitigation of greenhouse gas emissions",
+      "Adaptation of vulnerable communities",
+      "Reforestation and carbon sinks",
+      "Climate risk education"
+    ],
+    "agriculture": [
+      "Promotion of agroecology",
+      "Training in sustainable practices",
+      "Community food security",
+      "Restoration of degraded soils"
+    ],
+    "onehealth": [
+      "Surveillance of emerging diseases",
+      "Human-animal-environmental health link",
+      "Interdisciplinary research",
+      "Zoonosis prevention"
+    ],
+    "wildlife": [
+      "Protection of endangered species",
+      "Fight against poaching",
+      "Monitoring of animal populations",
+      "Conservation of ecological corridors"
+    ],
+    "forest": [
+      "Reforestation of degraded areas",
+      "Restoration of forest ecosystems",
+      "Community agroforestry",
+      "Protection of sacred forests"
+    ],
+    "education": [
+      "Youth environmental training",
+      "Workshops in schools",
+      "Awareness campaigns",
+      "Production of educational materials"
+    ],
+    "community": [
+      "Empowerment of local populations",
+      "Development of sustainable value chains",
+      "Community micro-projects",
+      "Capacity building"
+    ],
+    "research": [
+      "Applied scientific studies",
+      "Acoustic and technological monitoring",
+      "Publication of data and results",
+      "Innovation for conservation"
+    ]
+  },
+  "volunteerForm": {
+    "successTitle": "Application sent successfully!",
+    "successMessage": "We will contact you as soon as possible.",
+    "sendAnother": "Send another application",
+    "submitting": "Sending...",
+    "error": "An error occurred. Please try again."
+  },
+  "newsletterForm": {
+    "subscribeAgain": "Subscribe again",
+    "error": "An error occurred. Please try again."
+  },
   "focusAreas": [
-    { "title": "Biodiversity conservation", "desc": "Inventories, monitoring and protection of threatened species through innovative scientific approaches." },
-    { "title": "Environmental protection", "desc": "Preserving ecosystems and sustainable management of natural resources." },
-    { "title": "Climate change", "desc": "Climate change mitigation and adaptation in vulnerable communities." },
-    { "title": "Sustainable agriculture", "desc": "Promoting environmentally friendly agricultural practices and agroecology." },
-    { "title": "One Health", "desc": "Integrating human, animal and environmental health for sustainable development." },
-    { "title": "Wildlife conservation", "desc": "Protecting wild species and their habitats from poaching and habitat loss." },
-    { "title": "Forest restoration", "desc": "Reforestation and rehabilitation of degraded landscapes to restore biodiversity." },
-    { "title": "Environmental education", "desc": "Raising awareness and training communities, schools and young people in nature protection." },
-    { "title": "Community development", "desc": "Supporting local populations towards sustainable and self-reliant livelihoods." },
-    { "title": "Research and innovation", "desc": "Scientific studies and development of technologies for conservation." }
+    {
+      "title": "Biodiversity conservation",
+      "desc": "Inventories, monitoring and protection of threatened species through innovative scientific approaches."
+    },
+    {
+      "title": "Environmental protection",
+      "desc": "Preserving ecosystems and sustainable management of natural resources."
+    },
+    {
+      "title": "Climate change",
+      "desc": "Climate change mitigation and adaptation in vulnerable communities."
+    },
+    {
+      "title": "Sustainable agriculture",
+      "desc": "Promoting environmentally friendly agricultural practices and agroecology."
+    },
+    {
+      "title": "One Health",
+      "desc": "Integrating human, animal and environmental health for sustainable development."
+    },
+    {
+      "title": "Wildlife conservation",
+      "desc": "Protecting wild species and their habitats from poaching and habitat loss."
+    },
+    {
+      "title": "Forest restoration",
+      "desc": "Reforestation and rehabilitation of degraded landscapes to restore biodiversity."
+    },
+    {
+      "title": "Environmental education",
+      "desc": "Raising awareness and training communities, schools and young people in nature protection."
+    },
+    {
+      "title": "Community development",
+      "desc": "Supporting local populations towards sustainable and self-reliant livelihoods."
+    },
+    {
+      "title": "Research and innovation",
+      "desc": "Scientific studies and development of technologies for conservation."
+    }
   ]
 }
