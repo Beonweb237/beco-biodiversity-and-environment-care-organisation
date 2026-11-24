@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useSiteSettings, settingsToMap } from '@/lib/api/public';
 import { submitContact } from '@/lib/api/forms';
 import BlueskyIcon from '../components/BlueskyIcon';
+import XIcon from '../components/XIcon';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -41,7 +42,7 @@ export default function Contact() {
     { name: 'Facebook', icon: Facebook, url: siteSettings['facebook_url'] || '#' },
     { name: 'Instagram', icon: Instagram, url: siteSettings['instagram_url'] || '#' },
     { name: 'LinkedIn', icon: Linkedin, url: siteSettings['linkedin_url'] || '#' },
-    { name: 'X', icon: null as React.ElementType | null, url: siteSettings['twitter_url'] || '#' },
+    { name: 'X', icon: XIcon, url: siteSettings['twitter_url'] || '#' },
     { name: 'Bluesky', icon: BlueskyIcon, url: siteSettings['bluesky_url'] || '#' },
   ];
 

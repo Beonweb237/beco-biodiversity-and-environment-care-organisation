@@ -15,6 +15,7 @@ import { useSiteSettings, settingsToMap } from '@/lib/api/public';
 import { submitNewsletter } from '@/lib/api/forms';
 import { partners } from '@/lib/partnersData';
 import BlueskyIcon from '@/components/BlueskyIcon';
+import XIcon from '@/components/XIcon';
 
 const CONTACT_EMAIL = 'administration@becocameroon.org';
 const CONTACT_PHONE = '+237 6 57 90 27 84';
@@ -71,6 +72,7 @@ export default function Footer() {
     { name: 'Facebook', icon: Facebook, url: siteSettings['facebook_url'] },
     { name: 'Instagram', icon: Instagram, url: siteSettings['instagram_url'] },
     { name: 'LinkedIn', icon: Linkedin, url: siteSettings['linkedin_url'] },
+    { name: 'X', icon: XIcon, url: siteSettings['twitter_url'] },
     { name: 'Bluesky', icon: BlueskyIcon, url: siteSettings['bluesky_url'] },
   ].filter((s) => s.url && s.url !== '#');
 
