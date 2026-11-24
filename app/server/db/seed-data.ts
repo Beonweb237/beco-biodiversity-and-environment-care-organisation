@@ -201,4 +201,5 @@ export const seedSettings = [
   { key: "instagram_url", value: "" },
   { key: "linkedin_url", value: "" },
   { key: "twitter_url", value: "" },
+  { key: "bluesky_url", value: "" },
 ];

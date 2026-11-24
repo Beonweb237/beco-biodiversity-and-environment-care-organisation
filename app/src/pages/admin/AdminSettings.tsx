@@ -35,6 +35,7 @@ export default function AdminSettings() {
     { key: "instagram_url", label: "Instagram" },
     { key: "linkedin_url", label: "LinkedIn" },
     { key: "twitter_url", label: "X (Twitter)" },
+    { key: "bluesky_url", label: "Bluesky" },
   ];
 
   return (
