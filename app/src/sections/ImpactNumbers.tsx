@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { usePublicStats } from '@/lib/api/public';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,9 +46,7 @@ export default function ImpactNumbers() {
   const { t } = useTranslation();
   const ref = useRef<HTMLElement>(null);
 
-  const { data: dbStats } = trpc.admin.public.getStats.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: dbStats } = usePublicStats();
 
   const stats = [
     { value: dbStats?.activeProjects ?? 4, suffix: '+', label: t('home.impactNumbers.activeProjects') },
@@ -92,7 +90,7 @@ export default function ImpactNumbers() {
             data-stat
             className={`${i < stats.length - 1 ? 'lg:border-r lg:border-white/20' : ''}`}
           >
-            <p className="font-playfair font-bold italic text-[40px] sm:text-[48px] text-white">
+            <p className="font-playfair font-bold text-[40px] sm:text-[48px] text-white">
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />
             </p>
             <p className="font-raleway text-[13px] text-white/70 uppercase tracking-[0.1em] mt-2">

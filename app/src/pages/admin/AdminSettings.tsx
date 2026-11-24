@@ -1,21 +1,14 @@
 import { useState } from "react";
-import { trpc } from "@/providers/trpc";
+import { useAdminSettings, useUpdateSetting, useAdminUsers, useCreateAdminUser, useToggleAdminUser } from "@/lib/api/admin";
 import { Save, Shield, UserPlus, Check } from "lucide-react";
 
 export default function AdminSettings() {
-  const utils = trpc.useUtils();
-  const { data: settings } = trpc.admin.settings.list.useQuery();
-  const { data: adminUsersList } = trpc.admin.users.list.useQuery();
+  const { data: settings } = useAdminSettings();
+  const { data: adminUsersList } = useAdminUsers();
 
-  const updateMut = trpc.admin.settings.update.useMutation({
-    onSuccess: () => utils.admin.settings.list.invalidate(),
-  });
-  const createUserMut = trpc.admin.users.create.useMutation({
-    onSuccess: () => utils.admin.users.list.invalidate(),
-  });
-  const toggleUserMut = trpc.admin.users.toggleActive.useMutation({
-    onSuccess: () => utils.admin.users.list.invalidate(),
-  });
+  const updateMut = useUpdateSetting();
+  const createUserMut = useCreateAdminUser();
+  const toggleUserMut = useToggleAdminUser();
 
   const [newUser, setNewUser] = useState({ username: "", password: "", name: "", email: "", role: "admin" as "admin" | "superadmin" });
   const [showAddUser, setShowAddUser] = useState(false);
@@ -144,7 +137,7 @@ export default function AdminSettings() {
                   {u.isActive ? "Actif" : "Inactif"}
                 </span>
                 <button
-                  onClick={() => { if (confirm(u.isActive ? "Désactiver cet utilisateur ?" : "Réactiver cet utilisateur ?")) toggleUserMut.mutate({ id: u.id }); }}
+                  onClick={() => { if (confirm(u.isActive ? "Désactiver cet utilisateur ?" : "Réactiver cet utilisateur ?")) toggleUserMut.mutate(u.id); }}
                   className="text-xs text-gray-500 hover:text-beco-primary"
                 >
                   {u.isActive ? "Désactiver" : "Activer"}

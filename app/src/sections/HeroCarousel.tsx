@@ -102,18 +102,16 @@ export default function HeroCarousel() {
       {slides.map((slide, i) => (
         <div
           key={i}
-          className={`absolute inset-0 transition-opacity ease-out ${
-            i === active ? 'opacity-100 z-10' : 'opacity-0 z-0'
-          }`}
+          className={`absolute inset-0 transition-opacity ease-out ${i === active ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
           style={{ transitionDuration: i === active ? '1500ms' : '800ms' }}
         >
           <img
             src={slide.image}
             alt={slide.title}
             loading={i === 0 ? 'eager' : 'lazy'}
-            className={`absolute inset-0 w-full h-full object-cover ${
-              i === active ? 'ken-burns' : ''
-            }`}
+            className={`absolute inset-0 w-full h-full object-cover ${i === active ? 'ken-burns' : ''
+              }`}
           />
           <div className="absolute inset-0 bg-black/45" />
         </div>
@@ -127,7 +125,7 @@ export default function HeroCarousel() {
         <p className="slide-label font-raleway font-semibold text-[11px] uppercase tracking-[0.15em] text-beco-secondary">
           {slides[active].label}
         </p>
-        <h1 className="slide-title font-playfair font-bold italic text-[32px] sm:text-[42px] lg:text-[52px] text-white leading-[1.15] mt-4">
+        <h1 className="slide-title font-playfair font-bold text-[32px] sm:text-[42px] lg:text-[52px] text-white leading-[1.15] mt-4">
           {slides[active].title}
         </h1>
         <div className="slide-cta mt-8">
@@ -146,11 +144,10 @@ export default function HeroCarousel() {
             role="tab"
             aria-selected={i === active}
             aria-label={`Diapositive ${i + 1}`}
-            className={`w-2.5 h-2.5 rounded-full border-[1.5px] border-white/50 transition-all duration-300 ${
-              i === active
+            className={`w-2.5 h-2.5 rounded-full border-[1.5px] border-white/50 transition-all duration-300 ${i === active
                 ? 'bg-white border-white'
                 : 'bg-transparent hover:border-white'
-            }`}
+              }`}
           />
         ))}
       </div>

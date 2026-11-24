@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { trpc } from "@/providers/trpc";
+import { useAdminLogin } from "@/lib/api/admin";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
-import { Leaf, Lock, User } from "lucide-react";
+import { Lock, User } from "lucide-react";
 
 export default function AdminLogin() {
   const [username, setUsername] = useState("");
@@ -9,7 +9,7 @@ export default function AdminLogin() {
   const [error, setError] = useState("");
   const { user, isLoading } = useAdminAuth();
 
-  const loginMutation = trpc.adminAuth.login.useMutation({
+  const loginMutation = useAdminLogin({
     onSuccess: (data) => {
       if (data.success && data.token) {
         localStorage.setItem("adminToken", data.token);
@@ -47,10 +47,18 @@ export default function AdminLogin() {
       <div className="w-full max-w-[400px]">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-beco-primary mb-4">
-            <Leaf className="w-7 h-7 text-beco-secondary" />
+          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white p-1.5 shadow-sm border border-gray-200">
+            <img
+              src="/assets/logo-icon.png?v=20260801a"
+              alt="Logo BECO"
+              className="h-full w-full rounded-full object-contain"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                target.src = '/assets/logo-icon.svg';
+              }}
+            />
           </div>
-          <h1 className="font-playfair font-bold italic text-2xl text-beco-dark">
+          <h1 className="font-playfair font-bold text-2xl text-beco-dark">
             BECO
           </h1>
           <p className="text-sm text-gray-500 mt-1">Espace d'administration</p>

@@ -1,7 +1,7 @@
 {
   "common": {
     "siteName": "BECO",
-    "tagline": "Biodiversity and Environment Care Organisation",
+    "tagline": "Biodiversity and Environmental Care Organization",
     "donate": "Donate",
     "readMore": "Learn more →",
     "discoverProject": "Discover the project →",
@@ -15,7 +15,7 @@
   },
   "nav": {
     "home": "Home",
-    "about": "About",
+    "about": "About us",
     "projects": "Projects",
     "news": "News",
     "team": "Team",
@@ -24,7 +24,7 @@
     "legal": "LEGAL NOTICES"
   },
   "footer": {
-    "description": "Biodiversity and Environment Care Organisation — Conserving biodiversity and protecting the environment in Cameroon and Africa.",
+    "description": "Biodiversity and Environmental Care Organization — Conserving biodiversity and protecting the environment in Cameroon and Africa.",
     "address": "Yaoundé, Central Region, Cameroon",
     "newsletter": "Newsletter",
     "newsletterText": "Get our news and the progress of our projects.",
@@ -120,7 +120,7 @@
     "story": {
       "label": "OUR STORY",
       "title": "Born from a passion for African nature",
-      "p1": "The Biodiversity and Environment Care Organisation (BECO) is an independent, apolitical, non-profit organisation, founded in 2025 in Yaoundé, Cameroon. Founded by Dr SIMEU NOUTCHOM Alain and a team of passionate young researchers, BECO was born from a simple observation: African biodiversity, among the richest in the world, is threatened like never before.",
+      "p1": "The Biodiversity and Environmental Care Organization (BECO) is an independent, apolitical, non-profit organisation, founded in 2025 in Yaoundé, Cameroon. Founded by Dr SIMEU NOUTCHOM Alain and a team of passionate young researchers, BECO was born from a simple observation: African biodiversity, among the richest in the world, is threatened like never before.",
       "p2": "Faced with ecosystem degradation, habitat loss and the effects of climate change, we chose action. Our approach combines rigorous scientific research, community engagement and technological innovation to create sustainable solutions adapted to the African context.",
       "p3": "Today, BECO carries out several active projects in Cameroon, mobilises a network of international partners and trains the next generation of African conservationists."
     },
@@ -271,7 +271,7 @@
       "The British Ecological Society (BES) has selected BECO's project entitled \"Acoustic variability of Orthoptera in response to climate variables along the Cameroon Volcanic Line\" for funding. This grant will enable our organisation to conduct an in-depth study on the impact of climate change on Orthoptera communities.\n\nThe project will use automated acoustic recorders deployed at several sites at different altitudes along the Cameroon Volcanic Line. The collected data will be correlated with climate variables to model the impacts of climate change on these insect populations, which are excellent bioindicators of ecosystem health.\n\nThis project represents a significant advance for acoustic ecology research in Central Africa and strengthens BECO's position as a player in scientific research for conservation.",
       "BECO has received its second Rufford Small Grant (no. 48049-2) to continue passive acoustic monitoring of Orthoptera in Mpem & Djim National Park. After a conclusive first phase, this second funding will expand the spatial and temporal coverage of the monitoring.\n\nOrthoptera (grasshoppers and crickets) are key indicators of ecosystem health. Their diversity and abundance provide information on the conservation status of habitats. Using acoustic sensors deployed in different park habitats, BECO researchers can identify species present and assess biodiversity non-invasively.\n\nA reference acoustic database will be created, providing a valuable resource for future research and conservation actions in the region.",
       "Our Executive Director, Dr SIMEU NOUTCHOM Alain, has been selected as a fellow of the CDKN (Climate and Development Knowledge Network) programme for early-career African researchers. This prestigious programme aims to support the next generation of African scientists working on climate change issues.\n\nDr SIMEU NOUTCHOM Alain will benefit from personalised mentoring, funding for his research project and networking opportunities with other African researchers. He will join a community of fellows committed to advancing climate research across the continent.\n\nThis recognition testifies to the quality of BECO's work and its commitment to training tomorrow's scientific talent.",
-      "The Biodiversity and Environment Care Organisation (BECO) has been officially founded and registered in Yaoundé, Cameroon, by a group of passionate young researchers. Founded by Dr SIMEU NOUTCHOM Alain, the organisation was born from a simple observation: African biodiversity, among the richest in the world, is threatened like never before.\n\nBased in Yaoundé, BECO's mission is to promote biodiversity conservation, environmental sustainability, climate change mitigation and adaptation, sustainable agriculture, public health and community empowerment.\n\nFrom its creation, the BECO team mobilised to launch the first research and conservation projects, notably in Mpem & Djim National Park, laying the foundations for an organisation set to play a major role in biodiversity conservation in Central Africa.",
+      "The Biodiversity and Environmental Care Organization (BECO) has been officially founded and registered in Yaoundé, Cameroon, by a group of passionate young researchers. Founded by Dr SIMEU NOUTCHOM Alain, the organisation was born from a simple observation: African biodiversity, among the richest in the world, is threatened like never before.\n\nBased in Yaoundé, BECO's mission is to promote biodiversity conservation, environmental sustainability, climate change mitigation and adaptation, sustainable agriculture, public health and community empowerment.\n\nFrom its creation, the BECO team mobilised to launch the first research and conservation projects, notably in Mpem & Djim National Park, laying the foundations for an organisation set to play a major role in biodiversity conservation in Central Africa.",
       "The first data collected as part of the Orthoptera acoustic monitoring project in Mpem & Djim National Park reveal a remarkable richness of the Orthoptera community present in the park. The recordings made by acoustic sensors deployed in different habitats show an unsuspected diversity of species.\n\nPreliminary analyses indicate the presence of numerous species of grasshoppers and crickets, some of which may be new to science or never before documented in this region of Cameroon. These results confirm the importance of Mpem & Djim National Park as a biodiversity refuge.\n\nBECO plans to publish these results in an international scientific journal, contributing to the knowledge and conservation of Cameroonian biodiversity."
     ],
     "articles": [
@@ -307,7 +307,7 @@
         "tag": "Organisation",
         "date": "June 2025",
         "title": "Official founding of BECO in Yaoundé",
-        "excerpt": "The Biodiversity and Environment Care Organisation is officially founded and registered in Yaoundé, Cameroon, by a group of passionate young researchers.",
+        "excerpt": "The Biodiversity and Environmental Care Organization is officially founded and registered in Yaoundé, Cameroon, by a group of passionate young researchers.",
         "category": "Events"
       },
       {
@@ -544,7 +544,7 @@
   "legal": {
     "pageTitle": "Legal notices",
     "identification": "Organisation identification",
-    "identificationText": "BECO — Biodiversity and Environment Care Organisation\nNon-governmental, apolitical, non-profit organisation\nHeadquarters: Yaoundé, Central Region, Cameroon",
+    "identificationText": "BECO — Biodiversity and Environmental Care Organization\nNon-governmental, apolitical, non-profit organisation\nHeadquarters: Yaoundé, Central Region, Cameroon",
     "director": "Publication director",
     "directorText": "Dr SIMEU NOUTCHOM Alain, Executive Director of BECO.",
     "hosting": "Hosting",
@@ -580,7 +580,7 @@
     "title": "Everything you need to know",
     "description": "Find answers to the most common questions about BECO, our activities and how to get involved.",
     "q1": "What is BECO?",
-    "a1": "BECO (Biodiversity and Environment Care Organisation) is a non-governmental, apolitical, non-profit organisation founded in 2025 in Yaoundé, Cameroon, working for biodiversity conservation and environmental protection.",
+    "a1": "BECO (Biodiversity and Environmental Care Organization) is a non-governmental, apolitical, non-profit organisation founded in 2025 in Yaoundé, Cameroon, working for biodiversity conservation and environmental protection.",
     "q2": "How can I become a member of BECO?",
     "a2": "BECO offers three membership categories: Active Member, Institutional Member and Honorary Member. Visit our 'Get Involved' page to choose the plan that suits you.",
     "q3": "How can I make a donation?",

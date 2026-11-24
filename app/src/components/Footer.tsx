@@ -11,7 +11,8 @@ import {
   Phone,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { useSiteSettings, settingsToMap } from '@/lib/api/public';
+import { submitNewsletter } from '@/lib/api/forms';
 import { partners } from '@/lib/partnersData';
 
 const CONTACT_EMAIL = 'administration@becocameroon.org';
@@ -21,29 +22,23 @@ export default function Footer() {
   const { t } = useTranslation();
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
-  const subscribeMutation = trpc.admin.public.submitNewsletter.useMutation();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { data: settings } = useSiteSettings();
 
-  const { data: settings } = trpc.admin.public.getSettings.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
-
-  const siteSettings = useMemo(() => {
-    const map: Record<string, string> = {};
-    settings?.forEach((s) => {
-      map[s.key] = s.value || '';
-    });
-    return map;
-  }, [settings]);
+  const siteSettings = useMemo(() => settingsToMap(settings), [settings]);
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newsletterEmail.trim()) return;
+    if (!newsletterEmail.trim() || isSubmitting) return;
+    setIsSubmitting(true);
     try {
-      await subscribeMutation.mutateAsync({ email: newsletterEmail.trim() });
+      await submitNewsletter(newsletterEmail.trim());
       setSubscribed(true);
       setNewsletterEmail('');
     } catch {
       // silencieux en footer
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -209,7 +204,7 @@ export default function Footer() {
                     />
                     <button
                       type="submit"
-                      disabled={subscribeMutation.isPending}
+                      disabled={isSubmitting}
                       aria-label={t('common.subscribe')}
                       className="absolute end-1.5 top-1/2 -translate-y-1/2 flex h-9 w-9 items-center justify-center rounded-full bg-beco-secondary text-beco-primary hover:bg-white hover:scale-105 transition-all duration-300 disabled:opacity-50"
                     >

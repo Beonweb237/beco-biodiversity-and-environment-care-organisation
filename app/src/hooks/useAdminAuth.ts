@@ -1,5 +1,6 @@
 import { useCallback } from "react";
-import { trpc } from "@/providers/trpc";
+import { useAdminMe } from "@/lib/api/admin";
+import { queryClient } from "@/providers/api";
 
 export interface AdminUser {
   id: number;
@@ -10,17 +11,13 @@ export interface AdminUser {
 }
 
 export function useAdminAuth() {
-  const utils = trpc.useUtils();
-  const { data: user, isLoading } = trpc.adminAuth.me.useQuery(undefined, {
-    retry: false,
-    refetchOnWindowFocus: false,
-  });
+  const { data: user, isLoading } = useAdminMe();
 
   const logout = useCallback(() => {
     localStorage.removeItem("adminToken");
-    utils.adminAuth.me.invalidate();
+    queryClient.clear();
     window.location.href = "/administrateur";
-  }, [utils]);
+  }, []);
 
   return {
     user: user as AdminUser | null | undefined,

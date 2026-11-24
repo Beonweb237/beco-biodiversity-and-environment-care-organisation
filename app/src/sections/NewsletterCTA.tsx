@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { submitNewsletter } from '@/lib/api/forms';
 
 export default function NewsletterCTA() {
   const { t } = useTranslation();
@@ -9,18 +9,21 @@ export default function NewsletterCTA() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const subscribeMutation = trpc.admin.public.submitNewsletter.useMutation();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     if (!email.trim()) return;
+    setIsSubmitting(true);
     try {
-      await subscribeMutation.mutateAsync({ email: email.trim() });
+      await submitNewsletter(email.trim());
       setSubmitted(true);
       setEmail('');
     } catch {
       setError(t('newsletterForm.error'));
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -35,7 +38,7 @@ export default function NewsletterCTA() {
 
       <div className="relative z-10 flex flex-col justify-center items-center text-center h-full px-6">
         <div data-reveal>
-          <h2 className="font-playfair italic text-[28px] sm:text-[32px] text-white">
+          <h2 className="font-playfair text-[28px] sm:text-[32px] text-white">
             {t('home.newsletter.title')}
           </h2>
         </div>
@@ -69,10 +72,10 @@ export default function NewsletterCTA() {
               />
               <button
                 type="submit"
-                disabled={subscribeMutation.isPending}
+                disabled={isSubmitting}
                 className="btn-primary whitespace-nowrap disabled:opacity-50"
               >
-                {subscribeMutation.isPending ? '...' : t('home.newsletter.cta')}
+                {isSubmitting ? '...' : t('home.newsletter.cta')}
               </button>
               {error && (
                 <p className="font-raleway text-[13px] text-red-300 col-span-full">{error}</p>

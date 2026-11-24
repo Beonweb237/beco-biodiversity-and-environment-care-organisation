@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Upload, X, ImageIcon, Loader2 } from "lucide-react";
-import { trpc } from "@/providers/trpc";
+import { uploadImage } from "@/lib/api/forms";
+import AdminImageGallery from "./AdminImageGallery";
 
 interface AdminImageUploaderProps {
   value: string;
@@ -18,8 +19,6 @@ export default function AdminImageUploader({
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
-
-  const uploadMutation = trpc.admin.public.uploadImage.useMutation();
 
   const handleUrlChange = (url: string) => {
     setPreviewError(false);
@@ -48,7 +47,7 @@ export default function AdminImageUploader({
         reader.readAsDataURL(file);
       });
 
-      const result = await uploadMutation.mutateAsync({
+      const result = await uploadImage({
         name: file.name,
         type: file.type,
         base64,
@@ -90,7 +89,7 @@ export default function AdminImageUploader({
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
 
-      {/* URL Input + Upload button */}
+      {/* URL Input + Galerie + Upload button */}
       <div className="flex gap-2">
         <input
           ref={inputRef}
@@ -99,6 +98,7 @@ export default function AdminImageUploader({
           className="flex-1 px-3 py-2 border rounded-lg text-sm outline-none focus:border-beco-primary"
           placeholder="/assets/... ou URL https://..."
         />
+        <AdminImageGallery value={value} onChange={handleUrlChange} />
         {value && (
           <button
             onClick={handleClear}
@@ -143,11 +143,10 @@ export default function AdminImageUploader({
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={() => document.getElementById("image-upload-input")?.click()}
-          className={`mt-2 w-full h-28 rounded-lg border-2 border-dashed flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-colors ${
-            isDragging
-              ? "border-beco-primary bg-beco-primary/5"
-              : "border-gray-300 hover:border-gray-400 bg-gray-50/50"
-          }`}
+          className={`mt-2 w-full h-28 rounded-lg border-2 border-dashed flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-colors ${isDragging
+            ? "border-beco-primary bg-beco-primary/5"
+            : "border-gray-300 hover:border-gray-400 bg-gray-50/50"
+            }`}
         >
           <Upload className={`w-5 h-5 ${isDragging ? "text-beco-primary" : "text-gray-400"}`} />
           <p className="text-xs text-gray-500">

@@ -54,7 +54,7 @@ export default function FocusAreaPage({ config }: FocusAreaPageProps) {
                 {t('focusAreaPage.actionsText')}
               </p>
 
-              <h3 className="font-playfair italic text-[20px] text-beco-dark mt-8 mb-4">
+              <h3 className="font-playfair text-[20px] text-beco-dark mt-8 mb-4">
                 {t('focusAreaPage.keyActions')}
               </h3>
               <ul className="space-y-2.5">

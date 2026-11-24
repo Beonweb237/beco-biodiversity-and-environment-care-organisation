@@ -39,10 +39,15 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-white text-beco-dark font-raleway antialiased;
   }
-  h1, h2, h3, h4 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     @apply font-playfair;
   }
 }
@@ -51,14 +56,17 @@
   .btn-primary {
     @apply inline-flex items-center justify-center bg-beco-primary text-white rounded-full px-8 py-3.5 font-raleway font-semibold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-beco-primary-light hover:scale-[1.02] hover:shadow-lg;
   }
+
   .btn-outline {
     @apply inline-flex items-center justify-center border-2 border-beco-primary text-beco-primary bg-transparent rounded-full px-8 py-3.5 font-raleway font-semibold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-beco-primary hover:text-white;
   }
+
   .section-label {
     @apply font-raleway font-semibold text-[11px] uppercase tracking-[0.12em] text-beco-olive-accent;
   }
+
   .section-title {
-    @apply font-playfair italic text-[32px] leading-[1.3] text-beco-dark;
+    @apply font-playfair text-[32px] leading-[1.3] text-beco-dark;
   }
 }
 
@@ -66,8 +74,14 @@
   .ken-burns {
     animation: kenBurns 8s linear forwards;
   }
+
   @keyframes kenBurns {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.08); }
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(1.08);
+    }
   }
 }

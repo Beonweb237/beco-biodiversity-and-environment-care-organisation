@@ -4,7 +4,8 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import SEOHead from '../components/SEOHead';
 import { MapPin, Mail, Phone, Globe, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { useSiteSettings, settingsToMap } from '@/lib/api/public';
+import { submitContact } from '@/lib/api/forms';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -20,18 +21,11 @@ export default function Contact() {
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const submitMutation = trpc.admin.public.submitContact.useMutation();
+  const { data: settings } = useSiteSettings();
 
-  const { data: settings } = trpc.admin.public.getSettings.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
-
-  const siteSettings = useMemo(() => {
-    const map: Record<string, string> = {};
-    settings?.forEach((s) => { map[s.key] = s.value || ''; });
-    return map;
-  }, [settings]);
+  const siteSettings = useMemo(() => settingsToMap(settings), [settings]);
 
   const contactItems = [
     { icon: MapPin, label: t('contact.info.address'), value: siteSettings['contact_address'] || t('contact.info.addressValue'), href: null },
@@ -43,17 +37,18 @@ export default function Contact() {
   const requestOptions = t('contact.form.requestOptions', { returnObjects: true }) as Array<{ value: string; label: string }>;
 
   const socials = [
-    { name: 'Facebook', icon: Facebook, url: siteSettings['social_facebook'] || '#' },
-    { name: 'Instagram', icon: Instagram, url: siteSettings['social_instagram'] || '#' },
-    { name: 'LinkedIn', icon: Linkedin, url: siteSettings['social_linkedin'] || '#' },
-    { name: 'X', icon: null as React.ElementType | null, url: siteSettings['social_x'] || '#' },
+    { name: 'Facebook', icon: Facebook, url: siteSettings['facebook_url'] || '#' },
+    { name: 'Instagram', icon: Instagram, url: siteSettings['instagram_url'] || '#' },
+    { name: 'LinkedIn', icon: Linkedin, url: siteSettings['linkedin_url'] || '#' },
+    { name: 'X', icon: null as React.ElementType | null, url: siteSettings['twitter_url'] || '#' },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    setIsSubmitting(true);
     try {
-      await submitMutation.mutateAsync({
+      await submitContact({
         firstName,
         lastName,
         email,
@@ -70,6 +65,8 @@ export default function Contact() {
       setMessage('');
     } catch {
       setError('Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -87,7 +84,7 @@ export default function Contact() {
           {/* Form */}
           <div data-reveal>
             <p className="section-label">{t('contact.form.label')}</p>
-            <h2 className="font-playfair italic text-[28px] text-beco-dark leading-[1.3] mt-3">
+            <h2 className="font-playfair text-[28px] text-beco-dark leading-[1.3] mt-3">
               {t('contact.form.title')}
             </h2>
             <p className="font-raleway text-[14px] text-beco-dark/70 leading-[1.7] mt-3">
@@ -163,10 +160,10 @@ export default function Contact() {
                 )}
                 <button
                   type="submit"
-                  disabled={submitMutation.isPending}
+                  disabled={isSubmitting}
                   className="btn-primary self-start disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {submitMutation.isPending ? 'Envoi en cours...' : t('contact.form.cta')}
+                  {isSubmitting ? 'Envoi en cours...' : t('contact.form.cta')}
                 </button>
               </form>
             )}

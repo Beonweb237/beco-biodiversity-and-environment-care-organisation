@@ -1,3 +1,13 @@
-api/
-db/
-contracts/
+# Vercel — fichiers exclus du déploiement.
+# ATTENTION : ne PAS exclure api/, server/ ni dist/ (fonction Express unique qui
+# sert l'API ET les fichiers statiques dist/public via includeFiles).
+node_modules
+.env
+.env.*
+.env.local
+.supabase-pass.txt
+*.log
+.git
+vite-audit.err.log
+vite-audit.out.log
+.backend-features.json

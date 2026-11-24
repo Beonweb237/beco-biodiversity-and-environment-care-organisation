@@ -1,15 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { usePublicProjects } from '@/lib/api/public';
 
 export default function FeaturedProjects() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.2 });
 
-  const { data: projects, isLoading } = trpc.admin.public.getPublishedProjects.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: projects, isLoading } = usePublicProjects();
 
   // Fallback static projects from translations when no DB data
   const fallbackProjects = [
@@ -36,11 +34,11 @@ export default function FeaturedProjects() {
 
   const displayProjects = projects && projects.length > 0
     ? projects.map((p) => ({
-        image: p.image || '/assets/project-parrot.jpg',
-        tag: p.tag,
-        title: p.title,
-        description: p.description,
-      }))
+      image: p.image || '/assets/project-parrot.jpg',
+      tag: p.tag,
+      title: p.title,
+      description: p.description,
+    }))
     : fallbackProjects;
 
   return (
@@ -63,9 +61,8 @@ export default function FeaturedProjects() {
               <div
                 key={i}
                 data-reveal
-                className={`grid md:grid-cols-2 rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] ${
-                  i % 2 === 1 ? 'md:[direction:rtl]' : ''
-                }`}
+                className={`grid md:grid-cols-2 rounded-xl overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)] ${i % 2 === 1 ? 'md:[direction:rtl]' : ''
+                  }`}
               >
                 <div className={i % 2 === 1 ? 'md:[direction:ltr]' : ''}>
                   <img
@@ -75,14 +72,13 @@ export default function FeaturedProjects() {
                   />
                 </div>
                 <div
-                  className={`bg-beco-olive-light p-8 lg:p-10 flex flex-col justify-center ${
-                    i % 2 === 1 ? 'md:[direction:ltr]' : ''
-                  }`}
+                  className={`bg-beco-olive-light p-8 lg:p-10 flex flex-col justify-center ${i % 2 === 1 ? 'md:[direction:ltr]' : ''
+                    }`}
                 >
                   <span className="inline-block self-start font-raleway font-semibold text-[10px] uppercase tracking-[0.12em] text-beco-olive-accent px-3 py-1 border border-beco-olive-accent rounded-full">
                     {project.tag}
                   </span>
-                  <h3 className="font-playfair italic text-[22px] lg:text-[24px] text-beco-dark mt-4 leading-[1.3]">
+                  <h3 className="font-playfair text-[22px] lg:text-[24px] text-beco-dark mt-4 leading-[1.3]">
                     {project.title}
                   </h3>
                   <p className="font-raleway text-[14px] text-beco-dark/70 leading-[1.7] mt-3">

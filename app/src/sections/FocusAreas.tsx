@@ -1,6 +1,6 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { usePublicFocusAreas } from '@/lib/api/public';
 
 const areaSlugs = [
   'biodiversity', 'environment', 'climate', 'agriculture', 'onehealth',
@@ -11,9 +11,7 @@ export default function FocusAreas() {
   const { t } = useTranslation();
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.1 });
 
-  const { data: dbAreas, isLoading } = trpc.admin.public.getPublishedFocusAreas.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: dbAreas, isLoading } = usePublicFocusAreas();
 
   const fallbackAreas = t('focusAreas', { returnObjects: true }) as Array<{ title: string; desc: string }>;
 

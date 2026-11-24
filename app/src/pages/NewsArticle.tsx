@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Tag, Share2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { useNewsBySlug } from '@/lib/api/public';
 import PageHeader from '../components/PageHeader';
 import { newsConfigs } from '../lib/newsData';
 
@@ -13,10 +13,7 @@ export default function NewsArticle() {
   const staticIndex = newsConfigs.findIndex((c) => c.slug === slug);
   const config = staticIndex >= 0 ? newsConfigs[staticIndex] : null;
 
-  const { data: dbArticle, isLoading } = trpc.admin.public.getNewsBySlug.useQuery(
-    { slug: slug || '' },
-    { enabled: !!slug, refetchOnWindowFocus: false }
-  );
+  const { data: dbArticle, isLoading } = useNewsBySlug(slug || '');
 
   const allNews = t('news.articles', { returnObjects: true }) as Array<{
     tag: string; date: string; title: string; excerpt: string; category: string;
@@ -63,7 +60,7 @@ export default function NewsArticle() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-playfair italic text-[32px] text-beco-dark">{t('news.notFound')}</h1>
+          <h1 className="font-playfair text-[32px] text-beco-dark">{t('news.notFound')}</h1>
           <Link to="/news" className="btn-outline mt-6 inline-flex">
             {t('news.backToNews')}
           </Link>

@@ -1,6 +1,6 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { usePublicPartners } from '@/lib/api/public';
 import { useMemo } from 'react';
 import { partners, getPartnerLogo } from '@/lib/partnersData';
 
@@ -10,33 +10,25 @@ export default function Funders() {
   const { t } = useTranslation();
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.1 });
 
-  const { data: settings } = trpc.admin.public.getSettings.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: dbPartners } = usePublicPartners();
 
   const funders = useMemo(() => {
-    const fundersSetting = settings?.find((s) => s.key === 'site_funders');
-    if (fundersSetting?.value) {
-      try {
-        const parsed = JSON.parse(fundersSetting.value);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed.map((f: { name?: string; abbr?: string; logo?: string }) => ({
-            name: f.name || '',
-            abbr: f.abbr || f.name || '',
-            logo: f.logo || getPartnerLogo(f.abbr, f.name),
-          }));
-        }
-      } catch {}
+    if (dbPartners && dbPartners.length > 0) {
+      return dbPartners.map((p) => ({
+        name: p.name,
+        abbr: p.abbr,
+        logo: p.logo || getPartnerLogo(p.abbr, p.name),
+      }));
     }
     return defaultFunders;
-  }, [settings]);
+  }, [dbPartners]);
 
   return (
     <section ref={ref} className="bg-white py-20">
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="text-center mb-12" data-reveal>
           <p className="section-label">{t('home.funders.label')}</p>
-          <h2 className="font-playfair italic text-[28px] text-beco-dark mt-3">
+          <h2 className="font-playfair text-[28px] text-beco-dark mt-3">
             {t('home.funders.title')}
           </h2>
         </div>

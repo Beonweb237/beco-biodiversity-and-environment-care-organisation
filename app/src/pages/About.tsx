@@ -2,24 +2,37 @@ import PageHeader from '../components/PageHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Target, Eye, Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { usePublicTeam, usePageContent } from '@/lib/api/public';
 import SEOHead from '../components/SEOHead';
+import { getPageDef } from '@contracts/pageContent';
 
 export default function About() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const storyRef = useScrollReveal<HTMLElement>({ stagger: 0.2 });
   const mvvRef = useScrollReveal<HTMLElement>({ stagger: 0.15 });
   const objRef = useScrollReveal<HTMLElement>({ stagger: 0.08 });
   const teamRef = useScrollReveal<HTMLElement>({ stagger: 0.1 });
 
-  const { data: dbMembers } = trpc.admin.public.getPublishedTeam.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: dbMembers } = usePublicTeam();
+
+  // Contenu éditable de la page (stocké en base par langue, repli FR côté API).
+  const lang = (i18n.language || 'fr').split('-')[0];
+  const { data: pageContent } = usePageContent('about', lang);
+  const sections = pageContent?.sections ?? {};
+  const pageDef = getPageDef('about');
+
+  /** Valeur éditée si présente, sinon traduction i18n par défaut. */
+  const resolve = (sectionId: string, fieldKey: string): string => {
+    const edited = sections?.[sectionId]?.[fieldKey];
+    if (edited) return edited;
+    const field = pageDef?.sections.find((s) => s.id === sectionId)?.fields.find((f) => f.key === fieldKey);
+    return field ? t(field.i18n) : '';
+  };
 
   const values = [
-    { icon: Target, title: t('about.mvv.mission'), text: t('about.mvv.missionText') },
-    { icon: Eye, title: t('about.mvv.vision'), text: t('about.mvv.visionText') },
-    { icon: Heart, title: t('about.mvv.values'), text: t('about.mvv.valuesText') },
+    { icon: Target, title: resolve('mvv', 'mission'), text: resolve('mvv', 'missionText') },
+    { icon: Eye, title: resolve('mvv', 'vision'), text: resolve('mvv', 'visionText') },
+    { icon: Heart, title: resolve('mvv', 'values'), text: resolve('mvv', 'valuesText') },
   ];
 
   const objectives = t('about.objectives.list', { returnObjects: true }) as string[];
@@ -51,19 +64,19 @@ export default function About() {
   return (
     <>
       <SEOHead
-        title={t('about.pageTitle')}
+        title={resolve('header', 'pageTitle')}
         description="Découvrez l'histoire, la mission et l'équipe de BECO, organisation dédiée à la conservation de la biodiversité au Cameroun."
         path="/about"
       />
-      <PageHeader title={t('about.pageTitle')} image="/assets/about-header.jpg" />
+      <PageHeader title={resolve('header', 'pageTitle')} image="/assets/about-header.jpg" />
 
       {/* Team */}
       <section ref={teamRef} className="bg-beco-off-white py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-14" data-reveal>
-            <p className="section-label">{t('about.teamSection.label')}</p>
+            <p className="section-label">{resolve('teamSection', 'title')}</p>
             <h2 className="section-title mt-4">
-              {t('about.teamSection.title')}
+              {resolve('teamSection', 'label')}
             </h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-14">
@@ -99,18 +112,18 @@ export default function About() {
       <section ref={storyRef} className="bg-white py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div data-reveal>
-            <p className="section-label">{t('about.story.label')}</p>
+            <p className="section-label">{resolve('story', 'label')}</p>
             <h2 className="section-title mt-4">
-              {t('about.story.title')}
+              {resolve('story', 'title')}
             </h2>
             <p className="font-raleway text-[15px] text-beco-dark/75 leading-[1.7] mt-5">
-              {t('about.story.p1')}
+              {resolve('story', 'p1')}
             </p>
             <p className="font-raleway text-[15px] text-beco-dark/75 leading-[1.7] mt-4">
-              {t('about.story.p2')}
+              {resolve('story', 'p2')}
             </p>
             <p className="font-raleway text-[15px] text-beco-dark/75 leading-[1.7] mt-4">
-              {t('about.story.p3')}
+              {resolve('story', 'p3')}
             </p>
           </div>
           <div data-reveal className="overflow-hidden rounded-lg">
@@ -127,8 +140,8 @@ export default function About() {
       <section ref={mvvRef} className="bg-beco-off-white py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-14" data-reveal>
-            <p className="section-label">{t('about.mvv.label')}</p>
-            <h2 className="section-title mt-4">{t('about.mvv.title')}</h2>
+            <p className="section-label">{resolve('mvv', 'label')}</p>
+            <h2 className="section-title mt-4">{resolve('mvv', 'title')}</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((item, i) => (
@@ -138,7 +151,7 @@ export default function About() {
                 className="bg-white rounded-xl p-12 text-center shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
               >
                 <item.icon className="w-12 h-12 text-beco-primary mx-auto mb-6" />
-                <h3 className="font-playfair italic text-[24px] text-beco-dark">
+                <h3 className="font-playfair text-[24px] text-beco-dark">
                   {item.title}
                 </h3>
                 <p className="font-raleway text-[14px] text-beco-dark/70 leading-[1.7] mt-4">
@@ -154,9 +167,9 @@ export default function About() {
       <section ref={objRef} className="bg-white py-[100px]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-14" data-reveal>
-            <p className="section-label">{t('about.objectives.label')}</p>
+            <p className="section-label">{resolve('objectives', 'label')}</p>
             <h2 className="section-title mt-4">
-              {t('about.objectives.title')}
+              {resolve('objectives', 'title')}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -166,7 +179,7 @@ export default function About() {
                 data-reveal
                 className="flex gap-5 p-6 bg-beco-off-white rounded-lg"
               >
-                <span className="font-playfair font-bold italic text-[32px] text-beco-primary leading-none min-w-[48px]">
+                <span className="font-playfair font-bold text-[32px] text-beco-primary leading-none min-w-[48px]">
                   {i + 1}
                 </span>
                 <p className="font-raleway text-[14px] text-beco-dark/80 leading-[1.6]">

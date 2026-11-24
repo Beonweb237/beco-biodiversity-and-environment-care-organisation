@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { trpc } from "@/providers/trpc";
+import { useAdminMessages, useMarkMessageRead, useDeleteMessage } from "@/lib/api/admin";
 import {
   MailOpen,
   Mail,
@@ -10,14 +10,12 @@ import {
   Clock,
   ChevronDown,
   ChevronUp,
-  Filter,
 } from "lucide-react";
 import AdminConfirmDialog from "./AdminConfirmDialog";
 import { ToastContainer, type ToastData, type ToastType } from "./AdminToast";
 
 export default function AdminMessages() {
-  const utils = trpc.useUtils();
-  const { data: messages } = trpc.admin.messages.list.useQuery();
+  const { data: messages } = useAdminMessages();
   const [search, setSearch] = useState("");
   const [filterRead, setFilterRead] = useState<"all" | "unread" | "read">("all");
   const [expandedId, setExpandedId] = useState<number | null>(null);
@@ -33,18 +31,14 @@ export default function AdminMessages() {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };
 
-  const markReadMut = trpc.admin.messages.markRead.useMutation({
+  const markReadMut = useMarkMessageRead({
     onSuccess: () => {
-      utils.admin.messages.list.invalidate();
-      utils.admin.stats.get.invalidate();
       addToast("success", "Message marqué comme lu");
     },
   });
 
-  const deleteMut = trpc.admin.messages.delete.useMutation({
+  const deleteMut = useDeleteMessage({
     onSuccess: () => {
-      utils.admin.messages.list.invalidate();
-      utils.admin.stats.get.invalidate();
       setDeleteTarget(null);
       addToast("success", "Message supprimé");
     },
@@ -113,7 +107,7 @@ export default function AdminMessages() {
         open={!!deleteTarget}
         title="Supprimer le message"
         message={`Êtes-vous sûr de vouloir supprimer le message de ${deleteTarget?.name} ? Cette action est irréversible.`}
-        onConfirm={() => deleteTarget && deleteMut.mutate({ id: deleteTarget.id })}
+        onConfirm={() => deleteTarget && deleteMut.mutate(deleteTarget.id)}
         onCancel={() => setDeleteTarget(null)}
         isPending={deleteMut.isPending}
       />
@@ -232,7 +226,7 @@ export default function AdminMessages() {
               <div className="flex flex-col gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
                 {!msg.isRead && (
                   <button
-                    onClick={() => markReadMut.mutate({ id: msg.id })}
+                    onClick={() => markReadMut.mutate(msg.id)}
                     className="text-xs text-beco-primary hover:underline font-medium whitespace-nowrap"
                   >
                     Marquer lu

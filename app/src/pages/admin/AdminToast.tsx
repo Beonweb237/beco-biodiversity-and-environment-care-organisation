@@ -60,19 +60,4 @@ export function ToastContainer({ toasts, onDismiss }: { toasts: ToastData[]; onD
   );
 }
 
-export function useToastManager() {
-  let toasts: ToastData[] = [];
-  let setToasts: (t: ToastData[]) => void = () => {};
 
-  const createToast = (type: ToastType, message: string) => {
-    const id = crypto.randomUUID();
-    const newToast: ToastData = { id, type, message };
-    setToasts((prev) => [...prev, newToast]);
-  };
-
-  const dismissToast = (id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
-  };
-
-  return { toasts, setToasts, createToast, dismissToast };
-}

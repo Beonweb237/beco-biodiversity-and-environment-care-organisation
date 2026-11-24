@@ -37,13 +37,20 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProjects from "./pages/admin/AdminProjects";
+import AdminProjectsEdit from "./pages/admin/AdminProjectsEdit";
 import AdminNews from "./pages/admin/AdminNews";
+import AdminNewsEdit from "./pages/admin/AdminNewsEdit";
 import AdminTeam from "./pages/admin/AdminTeam";
+import AdminTeamEdit from "./pages/admin/AdminTeamEdit";
 import AdminMessages from "./pages/admin/AdminMessages";
+import AdminVolunteers from "./pages/admin/AdminVolunteers";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminFocusAreas from "./pages/admin/AdminFocusAreas";
+import AdminFocusAreaEdit from "./pages/admin/AdminFocusAreaEdit";
 import AdminActivityLogs from "./pages/admin/AdminActivityLogs";
 import AdminProfile from "./pages/admin/AdminProfile";
+import AdminPages from "./pages/admin/AdminPages";
+import AdminPageContentEdit from "./pages/admin/AdminPageContentEdit";
 
 function PublicLayout() {
   return (
@@ -94,14 +101,23 @@ function AdminRoutes() {
             <Routes>
               <Route path="/dashboard" element={<AdminDashboard />} />
               <Route path="/projets" element={<AdminProjects />} />
+              <Route path="/projets/nouveau" element={<AdminProjectsEdit create />} />
+              <Route path="/projets/:id" element={<AdminProjectsEdit />} />
               <Route path="/actualites" element={<AdminNews />} />
+              <Route path="/actualites/nouveau" element={<AdminNewsEdit create />} />
+              <Route path="/actualites/:id" element={<AdminNewsEdit />} />
               <Route path="/equipe" element={<AdminTeam />} />
+              <Route path="/equipe/nouveau" element={<AdminTeamEdit create />} />
+              <Route path="/equipe/:id" element={<AdminTeamEdit />} />
               <Route path="/messages" element={<AdminMessages />} />
+              <Route path="/benevoles" element={<AdminVolunteers />} />
               <Route path="/parametres" element={<AdminSettings />} />
               <Route path="/domaines" element={<AdminFocusAreas />} />
+              <Route path="/domaines/nouveau" element={<AdminFocusAreaEdit create />} />
+              <Route path="/domaines/:id" element={<AdminFocusAreaEdit />} />
               <Route path="/activite" element={<AdminActivityLogs />} />
-              <Route path="/profil" element={<AdminProfile />} />
-            </Routes>
+              <Route path="/profil" element={<AdminProfile />} />              <Route path="/pages" element={<AdminPages />} />
+              <Route path="/pages/:pageId" element={<AdminPageContentEdit />} />            </Routes>
           </AdminLayout>
         }
       />

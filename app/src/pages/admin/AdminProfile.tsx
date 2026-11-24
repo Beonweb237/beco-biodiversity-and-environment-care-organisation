@@ -1,25 +1,15 @@
 import { useState } from "react";
-import { trpc } from "@/providers/trpc";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import {
   Shield,
-  User,
   Lock,
-  Save,
-  Check,
-  Eye,
-  EyeOff,
 } from "lucide-react";
-import { ToastContainer, type ToastData, type ToastType } from "./AdminToast";
+import { ToastContainer, type ToastData } from "./AdminToast";
 
 export default function AdminProfile() {
   const { user } = useAdminAuth();
   const [toasts, setToasts] = useState<ToastData[]>([]);
 
-  const addToast = (type: ToastType, message: string) => {
-    const id = crypto.randomUUID();
-    setToasts((prev) => [...prev, { id, type, message }]);
-  };
   const dismissToast = (id: string) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   };

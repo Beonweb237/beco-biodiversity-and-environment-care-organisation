@@ -8,13 +8,14 @@ import {
   Mail,
   Settings,
   LogOut,
-  Leaf,
   Shield,
   Menu,
   X,
   Globe,
   History,
   UserCircle,
+  UserCheck,
+  FileText,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -24,7 +25,9 @@ const navItems = [
   { label: "Actualités", path: "/administrateur/actualites", icon: Newspaper },
   { label: "Équipe", path: "/administrateur/equipe", icon: Users },
   { label: "Domaines", path: "/administrateur/domaines", icon: Globe },
+  { label: "Pages", path: "/administrateur/pages", icon: FileText },
   { label: "Messages", path: "/administrateur/messages", icon: Mail },
+  { label: "Bénévoles", path: "/administrateur/benevoles", icon: UserCheck },
   { label: "Journal", path: "/administrateur/activite", icon: History },
   { label: "Paramètres", path: "/administrateur/parametres", icon: Settings },
 ];
@@ -60,15 +63,24 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-beco-primary text-white flex flex-col transition-transform duration-300 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        }`}
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-beco-primary text-white flex flex-col transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+          }`}
       >
         {/* Logo */}
         <div className="p-6 border-b border-white/10 flex items-center gap-3">
-          <Leaf className="w-6 h-6 text-beco-secondary" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white p-1">
+            <img
+              src="/assets/logo-icon.png?v=20260801a"
+              alt="Logo BECO"
+              className="h-full w-full rounded-full object-contain"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                target.src = '/assets/logo-icon.svg';
+              }}
+            />
+          </div>
           <div>
-            <span className="font-playfair font-bold italic text-lg">BECO</span>
+            <span className="font-playfair font-bold text-lg">BECO</span>
             <span className="block text-[10px] text-white/50 uppercase tracking-wider">Administration</span>
           </div>
           <button
@@ -86,11 +98,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               key={item.path}
               to={item.path}
               onClick={() => setSidebarOpen(false)}
-              className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${
-                location.pathname === item.path
-                  ? "bg-white/15 text-white font-medium"
-                  : "text-white/70 hover:bg-white/10 hover:text-white"
-              }`}
+              className={`flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-colors duration-200 ${location.pathname === item.path
+                ? "bg-white/15 text-white font-medium"
+                : "text-white/70 hover:bg-white/10 hover:text-white"
+                }`}
             >
               <item.icon className="w-4.5 h-4.5" />
               {item.label}
@@ -141,7 +152,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           >
             <Menu className="w-5 h-5" />
           </button>
-          <h1 className="font-playfair italic text-xl text-beco-dark">
+          <h1 className="font-playfair text-xl text-beco-dark">
             {navItems.find((i) => i.path === location.pathname)?.label || "Admin"}
           </h1>
           <div className="ml-auto flex items-center gap-2">

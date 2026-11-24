@@ -2,7 +2,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Search as SearchIcon, ArrowLeft, Newspaper, FolderKanban } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
-import { trpc } from '@/providers/trpc';
+import { usePublicProjects, usePublicNews } from '@/lib/api/public';
 
 const allPages = [
   { titleKey: 'nav.home', path: '/', keywords: ['accueil', 'home', 'beco', 'inicio', 'heim', 'الصفحة الرئيسية'] },
@@ -19,15 +19,9 @@ export default function Search() {
   const [searchParams] = useSearchParams();
   const query = (searchParams.get('q') || '').trim();
 
-  // Fetch DB content for search
-  const { data: dbProjects } = trpc.admin.public.getPublishedProjects.useQuery(undefined, {
-    enabled: query.length > 0,
-    staleTime: 60000,
-  });
-  const { data: dbNews } = trpc.admin.public.getPublishedNews.useQuery(undefined, {
-    enabled: query.length > 0,
-    staleTime: 60000,
-  });
+  // Fetch API content for search
+  const { data: dbProjects } = usePublicProjects(query.length > 0);
+  const { data: dbNews } = usePublicNews(query.length > 0);
 
   // Static page search
   const pageResults = query

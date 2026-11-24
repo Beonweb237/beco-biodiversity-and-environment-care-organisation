@@ -3,7 +3,7 @@ import PageHeader from '../components/PageHeader';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { User, Building, Award, Check, Shield, FileText, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { submitVolunteer as submitVolunteerApi } from '@/lib/api/forms';
 import SEOHead from '../components/SEOHead';
 
 export default function Involved() {
@@ -20,8 +20,7 @@ export default function Involved() {
   const [volMotivation, setVolMotivation] = useState('');
   const [volSubmitted, setVolSubmitted] = useState(false);
   const [volError, setVolError] = useState('');
-
-  const submitVolunteer = trpc.admin.public.submitVolunteer.useMutation();
+  const [volSubmitting, setVolSubmitting] = useState(false);
 
   // Donate handler
   const [selectedAmount, setSelectedAmount] = useState<string | null>(null);
@@ -117,7 +116,7 @@ export default function Involved() {
         <div className="max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div data-reveal>
             <p className="section-label text-beco-secondary">{t('involved.volunteer.label')}</p>
-            <h2 className="font-playfair italic text-[32px] text-white leading-[1.3] mt-4">
+            <h2 className="font-playfair text-[32px] text-white leading-[1.3] mt-4">
               {t('involved.volunteer.title')}
             </h2>
             <p className="font-raleway text-[15px] text-white/85 leading-[1.7] mt-4">
@@ -160,8 +159,9 @@ export default function Involved() {
                 <form onSubmit={async (e) => {
                   e.preventDefault();
                   setVolError('');
+                  setVolSubmitting(true);
                   try {
-                    await submitVolunteer.mutateAsync({
+                    await submitVolunteerApi({
                       fullName: volName,
                       email: volEmail,
                       phone: volPhone || undefined,
@@ -171,6 +171,8 @@ export default function Involved() {
                     setVolSubmitted(true);
                   } catch {
                     setVolError(t('volunteerForm.error'));
+                  } finally {
+                    setVolSubmitting(false);
                   }
                 }} className="flex flex-col gap-4">
                   <input
@@ -217,10 +219,10 @@ export default function Involved() {
                   )}
                   <button
                     type="submit"
-                    disabled={submitVolunteer.isPending}
+                    disabled={volSubmitting}
                     className="btn-primary w-full mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {submitVolunteer.isPending ? t('volunteerForm.submitting') : t('involved.volunteer.cta')}
+                    {volSubmitting ? t('volunteerForm.submitting') : t('involved.volunteer.cta')}
                   </button>
                 </form>
               )}
@@ -248,8 +250,8 @@ export default function Involved() {
                 key={i}
                 onClick={() => handleDonate(amount)}
                 className={`py-5 px-6 border-2 rounded-xl font-raleway font-semibold text-[16px] transition-all duration-300 text-center ${selectedAmount === amount
-                    ? 'bg-beco-primary text-white border-beco-primary'
-                    : 'text-beco-primary border-beco-primary bg-transparent hover:bg-beco-primary hover:text-white'
+                  ? 'bg-beco-primary text-white border-beco-primary'
+                  : 'text-beco-primary border-beco-primary bg-transparent hover:bg-beco-primary hover:text-white'
                   }`}
               >
                 {amount}

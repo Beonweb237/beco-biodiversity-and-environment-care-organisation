@@ -1,4 +1,4 @@
-import { trpc } from "@/providers/trpc";
+import { useAdminStats, useAdminMessages } from "@/lib/api/admin";
 import { Link } from "react-router-dom";
 import {
   FolderOpen,
@@ -20,8 +20,8 @@ const statCards = [
 ];
 
 export default function AdminDashboard() {
-  const { data: stats } = trpc.admin.stats.get.useQuery();
-  const { data: recentMessages } = trpc.admin.messages.list.useQuery();
+  const { data: stats } = useAdminStats();
+  const { data: recentMessages } = useAdminMessages();
 
   return (
     <div className="space-y-6">
@@ -92,9 +92,8 @@ export default function AdminDashboard() {
               className="px-6 py-4 flex items-start gap-3 hover:bg-gray-50/50 transition-colors"
             >
               <div
-                className={`w-2.5 h-2.5 rounded-full mt-1.5 flex-shrink-0 ${
-                  msg.isRead ? "bg-gray-300" : "bg-rose-400"
-                }`}
+                className={`w-2.5 h-2.5 rounded-full mt-1.5 flex-shrink-0 ${msg.isRead ? "bg-gray-300" : "bg-rose-400"
+                  }`}
               />
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-800 truncate">

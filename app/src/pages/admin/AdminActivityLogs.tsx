@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { trpc } from "@/providers/trpc";
+import { useAdminActivityLogs } from "@/lib/api/admin";
 import {
   Activity,
   Plus,
@@ -10,7 +10,6 @@ import {
   ToggleLeft,
   MailOpen,
   Download,
-  Settings,
   History,
   Clock,
 } from "lucide-react";
@@ -66,7 +65,7 @@ export default function AdminActivityLogs() {
   const [entityFilter, setEntityFilter] = useState<string>("");
   const [actionFilter, setActionFilter] = useState<string>("");
 
-  const { data, isLoading } = trpc.admin.activityLogs.list.useQuery({
+  const { data, isLoading } = useAdminActivityLogs({
     limit: PAGE_SIZE,
     offset: page * PAGE_SIZE,
     entity: entityFilter || undefined,

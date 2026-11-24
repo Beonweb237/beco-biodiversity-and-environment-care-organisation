@@ -19,7 +19,7 @@ export default function NewsArticlePage({ config }: NewsArticlePageProps) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-playfair italic text-[32px] text-beco-dark">Article non trouvé</h1>
+          <h1 className="font-playfair text-[32px] text-beco-dark">Article non trouvé</h1>
           <Link to="/news" className="btn-outline mt-6 inline-flex">
             Retour aux actualités
           </Link>
@@ -98,7 +98,7 @@ export default function NewsArticlePage({ config }: NewsArticlePageProps) {
           {/* Related */}
           {relatedNews.length > 0 && (
             <div className="mt-16">
-              <h3 className="font-playfair italic text-[22px] text-beco-dark mb-6">
+              <h3 className="font-playfair text-[22px] text-beco-dark mb-6">
                 Articles similaires
               </h3>
               <div className="grid sm:grid-cols-3 gap-6">

@@ -72,8 +72,8 @@ export default function Header() {
       <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
 
         {/* Logo + nom de l'organisation en texte réel : c'est lui qui porte la lisibilité,
-            le texte gravé dans l'image restant illisible à cette taille.
-            Pas de rounded-full sur l'image : cela rognait l'arc de texte du bas. */}
+              le texte gravé dans l'image restant illisible à cette taille.
+              Pas de rounded-full sur l'image : cela rognait l'arc de texte du bas. */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label="BECO — Accueil">
           <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-full bg-white p-1 shadow-sm ring-1 ring-black/5">
             <img
@@ -90,10 +90,10 @@ export default function Header() {
               la navigation complète laisse le moins de place. */}
           <div className={`hidden sm:flex flex-col leading-tight ${showBg ? 'text-beco-primary' : 'text-white drop-shadow'}`}>
             <span className="font-playfair font-bold text-[11.5px] xl:text-[13px]">
-              Biodiversity and Environment
+              Biodiversity and Environmental
             </span>
             <span className="font-playfair font-bold text-[11.5px] xl:text-[13px]">
-              Care Organisation
+              Care Organization
             </span>
             <span className="font-playfair font-bold text-[13px] xl:text-[15px] tracking-[0.12em]">
               — BECO —
@@ -118,7 +118,7 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* BECO — mène à « À propos », qui contient l'équipe */}
+          {/* À propos — mène à la page « À propos », qui contient l'équipe */}
           <Link
             to="/about"
             className={`font-raleway font-bold text-[12px] xl:text-[13px] whitespace-nowrap uppercase tracking-[0.1em] transition-colors duration-300 ${location.pathname === '/about'
@@ -126,7 +126,7 @@ export default function Header() {
               : showBg ? 'text-beco-dark/70 hover:text-beco-primary' : 'text-white/70 hover:text-white'
               }`}
           >
-            BECO
+            {t('nav.about')}
           </Link>
 
           {/* Reste des liens */}
@@ -216,13 +216,13 @@ export default function Header() {
               {t('nav.home')}
             </Link>
 
-            {/* BECO — mène à « À propos », qui contient l'équipe */}
+            {/* À propos — mène à la page « À propos », qui contient l'équipe */}
             <Link
               to="/about"
               className={`font-raleway font-medium text-sm uppercase tracking-[0.1em] py-2 ${location.pathname === '/about' ? 'text-beco-primary' : 'text-beco-dark/70'
                 }`}
             >
-              BECO
+              {t('nav.about')}
             </Link>
 
             {/* Reste des liens */}

@@ -20,7 +20,7 @@ export default function PageHeader({ title, image }: PageHeaderProps) {
       />
       <div className="absolute inset-0 bg-[#1A1A1A]/55" />
       <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6">
-        <h1 className="font-playfair font-bold italic text-[36px] sm:text-[48px] text-white leading-[1.15]">
+        <h1 className="font-playfair font-bold text-[36px] sm:text-[48px] text-white leading-[1.15]">
           {title}
         </h1>
         <nav className="flex items-center gap-2 mt-3">

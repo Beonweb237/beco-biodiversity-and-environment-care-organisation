@@ -4,7 +4,7 @@ import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useTranslation } from 'react-i18next';
-import { trpc } from '@/providers/trpc';
+import { usePublicNews } from '@/lib/api/public';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -23,9 +23,7 @@ export default function News() {
   const [currentPage, setCurrentPage] = useState(1);
   const ref = useScrollReveal<HTMLElement>({ stagger: 0.12 });
 
-  const { data: dbNews, isLoading } = trpc.admin.public.getPublishedNews.useQuery(undefined, {
-    refetchOnWindowFocus: false,
-  });
+  const { data: dbNews, isLoading } = usePublicNews();
 
   const filters = t('news.filters', { returnObjects: true }) as string[];
   const allNews = t('news.articles', { returnObjects: true }) as Array<{
@@ -108,8 +106,8 @@ export default function News() {
                 key={i}
                 onClick={() => handleFilterChange(i)}
                 className={`font-raleway font-medium text-[12px] uppercase px-5 py-2 rounded-full transition-all duration-300 ${activeFilter === i
-                    ? 'bg-beco-primary text-white'
-                    : 'bg-transparent border border-beco-primary text-beco-primary hover:bg-beco-primary hover:text-white'
+                  ? 'bg-beco-primary text-white'
+                  : 'bg-transparent border border-beco-primary text-beco-primary hover:bg-beco-primary hover:text-white'
                   }`}
               >
                 {f}
@@ -173,8 +171,8 @@ export default function News() {
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1}
                     className={`w-10 h-10 rounded-full border flex items-center justify-center font-raleway text-[13px] transition-colors duration-200 ${currentPage === 1
-                        ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                        : 'border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
+                      ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                      : 'border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
                       }`}
                   >
                     &larr;
@@ -184,8 +182,8 @@ export default function News() {
                       key={i}
                       onClick={() => setCurrentPage(i + 1)}
                       className={`w-10 h-10 rounded-full flex items-center justify-center font-raleway font-medium text-[13px] transition-colors duration-200 ${currentPage === i + 1
-                          ? 'bg-beco-primary text-white'
-                          : 'border border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
+                        ? 'bg-beco-primary text-white'
+                        : 'border border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
                         }`}
                     >
                       {i + 1}
@@ -195,8 +193,8 @@ export default function News() {
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
                     className={`w-10 h-10 rounded-full border flex items-center justify-center font-raleway text-[13px] transition-colors duration-200 ${currentPage === totalPages
-                        ? 'border-gray-200 text-gray-300 cursor-not-allowed'
-                        : 'border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
+                      ? 'border-gray-200 text-gray-300 cursor-not-allowed'
+                      : 'border-beco-primary/20 text-beco-dark hover:border-beco-primary hover:text-beco-primary'
                       }`}
                   >
                     &rarr;

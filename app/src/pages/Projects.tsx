@@ -1,13 +1,33 @@
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowUpRight } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import SEOHead from '../components/SEOHead';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { projects, type ProjectData } from '@/lib/projectsData';
+import { usePublicProjects } from '@/lib/api/public';
+import { projects as staticProjects, type ProjectData } from '@/lib/projectsData';
 
 export default function Projects() {
   const { t } = useTranslation();
   const projRef = useScrollReveal<HTMLElement>({ stagger: 0.15 });
+
+  const { data: dbProjects } = usePublicProjects();
+
+  // Projets dynamisés depuis Supabase (avec repli sur les données statiques)
+  const projects = useMemo<ProjectData[]>(() => {
+    if (dbProjects && dbProjects.length > 0) {
+      return dbProjects.map((p) => ({
+        title: p.title,
+        description: p.description,
+        image: p.image || '/assets/project-parrot.jpg',
+        tag: p.tag,
+        url: p.url || '#',
+        date: p.date || undefined,
+        funder: p.funder || undefined,
+      }));
+    }
+    return staticProjects;
+  }, [dbProjects]);
 
   const [featured, ...others] = projects;
 
@@ -44,7 +64,7 @@ export default function Projects() {
             </div>
             <div className="p-8 lg:p-12 flex flex-col justify-center">
               <ProjectMeta project={featured} />
-              <h3 className="font-playfair italic text-[24px] lg:text-[28px] text-beco-dark leading-[1.3] mt-4 group-hover:text-beco-primary transition-colors duration-300">
+              <h3 className="font-playfair text-[24px] lg:text-[28px] text-beco-dark leading-[1.3] mt-4 group-hover:text-beco-primary transition-colors duration-300">
                 {featured.title}
               </h3>
               <p className="font-raleway text-[14px] lg:text-[15px] text-beco-dark/70 leading-[1.8] mt-4">
@@ -75,7 +95,7 @@ export default function Projects() {
                 </div>
                 <div className="p-7 lg:p-8 flex flex-col flex-1">
                   <ProjectMeta project={project} />
-                  <h3 className="font-playfair italic text-[19px] lg:text-[21px] text-beco-dark leading-[1.35] mt-4 group-hover:text-beco-primary transition-colors duration-300">
+                  <h3 className="font-playfair text-[19px] lg:text-[21px] text-beco-dark leading-[1.35] mt-4 group-hover:text-beco-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                   <p className="font-raleway text-[13.5px] text-beco-dark/70 leading-[1.75] mt-3">
