@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 // Public site
 import Header from "./components/Header";
@@ -57,6 +58,7 @@ function PublicLayout() {
     <>
       <Header />
       <ScrollToTopButton />
+      <WhatsAppButton />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
